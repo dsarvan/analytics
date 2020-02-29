@@ -1,0 +1,3 @@
+EmpID | EmpName | Basic	                    	        
+101 | Arjun | 40000	                    	        
+102 | Raman | 50000	                    	        
