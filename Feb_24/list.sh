@@ -1,6 +1,6 @@
 # File: list.sh
 # Name: D.Saravanan    Date: 24/02/2020
-# Program to read input from user and write/append to a file
+# Bash script to read input from user and write/append to a file
 
 touch list.csv
 
