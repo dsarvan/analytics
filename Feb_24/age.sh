@@ -1,6 +1,6 @@
 # File: age.sh
 # Name: D.Saravanan    Date: 24/02/2020
-# Program to display number of persons in a given age group
+# Bash script to display number of persons in a given age group
 
 while read line
 do
