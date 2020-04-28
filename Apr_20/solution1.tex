@@ -1,0 +1,97 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage{t1enc}
+\usepackage[a4paper, left=20mm, right=20mm, top=10mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings} 
+\usepackage{helvet}
+
+\lstdefinestyle{mystyle}{
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+} 
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+\pagenumbering{arabic}
+
+\begin{center}
+\textbf{Answers to Question Set 1} \\
+Date: 20/04/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\vspace{20px}
+
+\textbf{Question 1:} \\
+Print "Hello world" in python using all the possible methods. \\
+
+\lstinputlisting[language=Python]{question1.py}
+
+\vspace{30px}
+
+\textbf{Question 2:} \\
+What are all the different Python Distributions available ? \\
+Python Distributions aside from the offical CPython distribution:
+\begin{itemize}
+\item ActivePython
+\item Anaconda
+\item ChinesePython Project
+\item Enthought's Canopy
+\item Ipython and its IPyKit variant
+\item IronPython
+\item Jython
+\item MesaPy
+\item MicroPython
+\item PocketPython
+\item Portable Python
+\item Pycopy
+\item PyIMSL Studio
+\item PyPy
+\item Python(x,y)
+\item PythonForArmLinux
+\item PythonLabsPython
+\item PythonwarePython
+\item RustPython
+\item StacklessPython
+\item Tiny Python
+\item Win9xPython
+\item WinPython
+\end{itemize}
+
+\vspace{30px}
+
+\textbf{Question 3:}\\
+i. Person A has a slow computer but he is well versed in python programming which Python run
+method will you suggest him.\\
+a) Python Shell and c) IPython\\
+ii. Person B having a decent computer is new to Python which Python run method will you 
+suggest him.\\
+b) Jupyter notebook and c) IPython\\
+
+\vspace{30px}
+
+\textbf{Question 4:}\\
+Write a python code to get two string from user and display them in two lines.\\
+Note: Program should be of 2 lines only\\
+
+\lstinputlisting[language=Python]{question4.py}
+
+\end{document}
