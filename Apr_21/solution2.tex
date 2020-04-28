@@ -1,0 +1,89 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, left=20mm, right=20mm, top=20mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{times}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{empty}
+
+\begin{center}
+\textbf{Answers to Question Set 2} \\
+Date: 21/04/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\textbf{Question 1:} \\
+Write a python program to accept only two words from the user and display error like
+message using print() if the user disobeys. \\
+
+Program: 
+\lstinputlisting[language=Python]{question1.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output1.txt}
+
+\vspace{20px}
+
+\textbf{Question 2:} \\
+Write a python program to accept multiple words and display them. \\
+
+Program:
+\lstinputlisting[language=Python]{question2.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output2.txt}
+
+\vspace{20px}
+
+\textbf{Question 3:} \\
+Consider the following python code \\
+$a = 2.0$ \\
+$b = 1.832$ \\ 
+$c = a-b$
+
+\vspace{5px}
+
+output of c variable: \\
+$0.16799999999999993$ \\
+
+\vspace{5px}
+
+rectify it: \\
+
+Program:
+\lstinputlisting[language=Python]{question3.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output3.txt}
+
+\end{document}
