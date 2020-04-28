@@ -1,0 +1,100 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, left=20mm, right=20mm, top=30mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{times}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{Answers to Question Set 3} \\
+Date: 22/04/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\textbf{Question 1:} \\
+Write a python program to find the number of vowels present in a string given by an user. \\
+
+Program: 
+\lstinputlisting[language=Python]{question1.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output1.txt}
+
+\vspace{30px}
+
+\textbf{Question 2:} \\
+Write a python program to display all the possible combination pair of the given two lists\\
+x=[1,2,3,4,5]\\
+y=["a","b","c"] \\
+
+Program:
+\lstinputlisting[language=Python]{question2.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output2.txt}
+
+\vspace{30px}
+
+\textbf{Question 3:} \\
+Write a python program to get number of lines from the user and print the patterns. \\
+
+Program: Level 1
+\lstinputlisting[language=Python]{question31.py}
+
+\vspace{5px}
+
+Output: Level 1
+\lstinputlisting{output31.txt}
+
+\vspace{5px}
+
+\pagebreak
+
+Program: Level 2
+\lstinputlisting[language=Python]{question32.py}
+
+\vspace{5px}
+
+Output: Level 2
+\lstinputlisting{output32.txt}
+
+\vspace{5px}
+
+Program: Level 3
+\lstinputlisting[language=Python]{question33.py}
+
+\vspace{5px}
+
+Output: Level 3
+\lstinputlisting{output33.txt}
+
+\end{document}
