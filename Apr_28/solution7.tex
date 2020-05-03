@@ -1,0 +1,171 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, left=15mm, right=15mm, top=15mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{times}
+
+\graphicspath{ {/home/saran/Analytics/Apr_27/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{Answers to Question Set 7} \\
+Date: 28/04/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\begin{enumerate}
+
+\item[1.] Print the total missing values in the dataset. \\
+
+Program:
+\lstinputlisting[language=Python]{question1.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output1.txt}
+
+\vspace{5px}
+
+\item[2.] Print the percentage of missing values in the dataset column wise. \\
+
+Program:
+\lstinputlisting[language=Python]{question2.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output2.txt}
+
+\vspace{5px}
+
+\item[3.] Print the percentage of total unit missing values. \\
+
+Program:
+\lstinputlisting[language=Python]{question3.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output3.txt}
+
+\vspace{5px}
+
+\item[4.] Remove all rows which are having at the least one null values in it, what is the
+total number of rows after dropping and what is the percentage of rows lost due to this 
+operation. \\
+
+Program:
+\lstinputlisting[language=Python]{question4.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output4.txt}
+
+\vspace{5px}
+
+\item[5.] Remove all columns which are having at the least one null values in it. What is 
+the total number of columns after dropping and what is the percentage of columns lost due to
+this operation. \\
+
+Program:
+\lstinputlisting[language=Python]{question5.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output5.txt}
+
+\vspace{5px}
+
+\item[6.] Print all the columns name separated by a line. \\
+
+Program:
+\lstinputlisting[language=Python]{question6.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output6.txt}
+
+\vspace{5px}
+
+\pagebreak
+
+\item[7.] Extract a sample of 100 rows at random from the dataset. \\
+
+Program:
+\lstinputlisting[language=Python]{question7.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output7.txt}
+
+\vspace{5px}
+
+\item[8.] Replace all the NA/Null values in the previous ouput (sample dataset) with the 
+values that came directly after it in the same column. \\
+
+Program:
+\lstinputlisting[language=Python]{question8.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output8.txt}
+
+\vspace{5px}
+
+\item[9.] In continuation with the previous step fill the remaining missing values with
+zeros. \\
+
+Program:
+\lstinputlisting[language=Python]{question9.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output9.txt}
+
+\vspace{5px}
+
+\item[10.] Print the missing values count of the cleaned sample dataset. \\ 	
+
+Program:
+\lstinputlisting[language=Python]{question10.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output10.txt}
+
+\end{enumerate}
+
+\end{document}
