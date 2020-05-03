@@ -1,0 +1,90 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, left=20mm, right=20mm, top=20mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{times}
+
+\graphicspath{ {/home/saran/Analytics/Apr_27/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{Answers to Question Set 6} \\
+Date: 27/04/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\vspace{10px}
+
+\textbf{Question 1:} \\
+Write a python program to generate 9 random integers in numpy. Convert it to a 3$\times$3 matrix 
+and then convert it to a dataframe. \\
+
+Program: 
+\lstinputlisting[language=Python]{question1.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output1.txt}
+
+\vspace{10px}
+
+\textbf{Question 2:} \\
+Write a python program to generate a dataframe with the random values in column and 
+calculate the mean and the standard deviation. \\
+
+Program:
+\lstinputlisting[language=Python]{question2.py}
+
+\vspace{5px}
+
+\pagebreak
+
+Output:
+\lstinputlisting{output2.txt}
+
+\vspace{10px}
+
+\textbf{Question 3:} \\
+Write a python program to plot the mean and the standard deviation from the dataframe of
+previous question using pandas inbuilt plot function and save the dataframe as JSON file 
+format.\\
+
+Program:
+\lstinputlisting[language=Python]{question3.py}
+
+\vspace{10px}
+
+Output:
+
+%figure_1
+\begin{figure}[ht!]
+\includegraphics[width=18cm,height=9cm,keepaspectratio]{dframe.pdf}
+\end{figure}
+
+\end{document}
