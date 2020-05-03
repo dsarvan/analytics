@@ -1,0 +1,112 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, left=12mm, right=12mm, top=15mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{times}
+
+\graphicspath{ {/home/saran/Analytics/Apr_27/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{Answers to Question Set 8} \\
+Date: 29/04/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\begin{enumerate}
+
+\item[1.] Using gapminder Dataset find India's average performance in the following
+features: "lifeExp", "pop", "gdpPercap" \\
+
+Program:
+\lstinputlisting[language=Python]{question1.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output1.txt}
+
+\vspace{10px}
+
+\item[2.] Find the entire world's average performance in the above features. \\
+
+Program:
+\lstinputlisting[language=Python]{question2.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output2.txt}
+
+\vspace{10px}
+
+\item[3.] Create different datasets consisting of its member countries in its grouping. \\
+
+Program: BRICS
+\lstinputlisting[language=Python]{question31.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output31.txt}
+
+\vspace{10px}
+
+Program: SAARC
+\lstinputlisting[language=Python]{question32.py}
+
+\vspace{5px}
+
+\pagebreak
+
+Output:
+\lstinputlisting{output32.txt}
+
+\vspace{10px}
+
+Program: BIMSTEC
+\lstinputlisting[language=Python]{question33.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output33.txt}
+
+\vspace{10px}
+
+Program: G4
+\lstinputlisting[language=Python]{question34.py}
+
+\vspace{5px}
+
+Output:
+\lstinputlisting{output34.txt}
+
+\end{enumerate}
+
+\end{document}
