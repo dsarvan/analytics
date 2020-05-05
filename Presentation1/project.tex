@@ -1,0 +1,257 @@
+\documentclass[8pt]{beamer}
+\mode<presentation>{}
+
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xspace}
+%\usepackage{caption}
+%\usepackage{subcaption}
+
+\graphicspath{{/home/ndayalan/Analytics/Presentation1/Images/}}
+\usetheme{metropolis}
+\setbeamercolor{frametitle}{fg=mDarkTeal, bg=black!2}
+
+\title{Big Data and Physics}
+\author{\normalsize{D. Saravanan}}
+\institute{
+	\normalsize{Advance Diploma in Big Data Analytics}\\
+	\normalsize{National Institute of Electronis and Information Technology Chennai}
+	}
+\date{02/03/2020}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline}
+\begin{itemize}
+\item Introduction
+\item Physics preamble
+\item LHC Experiment
+\item Calculation of Invariant Mass
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction}
+\begin{itemize}
+\begin{figure}[ht!]
+\includegraphics[width=0.7\linewidth]{lhc_computing.jpeg}
+\end{figure}
+\item In the era of big data, every scientific discipline must find a way to tackle
+ challenges in storing, handling and interpreting large amounts of raw information.
+ \\[0.5cm]
+\item As scholarly research is becoming increasingly digitized, the importance of 
+ managing and sharing data is being felt throughout the scientific community.\\[0.5cm]
+\item As data, software and ideas become available to everyone, science can take 
+advantage of the network effect to radically accelerate.\\[0.5cm]
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Physics preamble}
+\begin{figure}[ht!]
+\includegraphics[width=0.7\linewidth]{scale1.jpeg}
+\centering
+\end{figure}
+\begin{itemize}
+\item If the protons and the neutrons were 10 cm across, then the quarks and electrons
+would be less than 0.01 mm in size and the entire atom would be about 10 km
+across.\\[0.5cm]
+\item No particle can move with a speed faster than the speed of light in vacuum, 
+however, there is no limit to the energy a particle can attain.\\[0.5cm]
+\item Energy and mass are two sides of the same coin. Mass can transform into energy
+and vice versa in accordance with Einstein's equation $(E = mc^{2})$.\\[0.5cm]
+\item In high-energy accelerators, particles normally travel very close to the speed of
+light and the transformation happens at each collision.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Physics preamble}
+\begin{itemize}
+\item Gravitation: Gravity makes apples fall to the ground. It is an attractive force.
+On an astronomical scale it binds matter in planets and stars, and holds stars together
+in galaxies.
+[Felt by: all particles; Carrier: Graviton (Not yet discovered)]\\[0.5cm]
+\item Electromagnetic: It holds electrons to nuclei in atoms, binds atoms into molecules
+and is responsible for the properties of solids, liquids and gases.
+[Felt by: quarks and charged leptons; Carrier: photons]\\[0.5cm]
+\item Strong: The strong force binds quarks together to make protons and neutrons (and
+other particles). It also binds protons and neutrons in nuclei, where it overcomes the
+enormous electrical repulsion between protons. Particles that interact via the strong
+force are also called 'hardons'.
+[Felt by: quarks; Carrier: gluons]\\[0.5cm]
+\item Weak: The weak force underlies natural radioactivity. It is also essential for the
+nuclear reactions in the centres of stars like the Sun, where hydrogen is converted into
+helium.
+[Felt by: quarks and leptons; Carrier: intermediate vector bosons] 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Physics preamble}
+\begin{figure}[ht!]
+\includegraphics[width=0.7\linewidth]{smep.png}
+\centering
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{LHC Experiment}
+\begin{itemize}
+\begin{figure}[ht!]
+\includegraphics[width=0.7\linewidth]{detector.png}
+\end{figure}
+\item \textbf{L}arge \textbf{H}ardon \textbf{C}ollider accelerator at CERN in Geneva.
+\\[0.5cm]
+\item At the LHC, two beams of 100 billion subatomic particles are collided at high
+speeds in the hopes of finding Higgs boson.\\[0.5cm]
+\item One of the main challenges in running the LHC is handling the vast amounts of data
+it produces.\\[0.5cm]
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{LHC Experiment}
+\begin{figure}[ht!]
+\includegraphics[width=0.7\linewidth]{collider.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{LHC Experiment}
+\begin{figure}[ht!]
+\includegraphics[width=0.7\linewidth]{collision.jpeg}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{LHC Experiment}
+	\begin{figure}[ht!]
+		\includegraphics[width=0.7\linewidth]{collisions2.png}
+	\end{figure}
+\end{frame}
+
+%\begin{frame}
+%\frametitle{LHC Experiment}
+%\begin{itemize}
+%\item We get protons by stripping electrons from hydrogen atoms.\\[0.5cm]
+%\item Protons are injected into the PS Booster (PSB) at an energy of 50 MeV.\[0.5cm]
+%\item The booster accelerates them to 1.4 GeV. The beam is then fed to the Proton
+%Synchrotron (PS) where it is accelerated to 25 GeV.\\[0.5cm]
+%\item Protons are then sent to the Super Proton Synchroton (SPS) where they are 
+%accelerated to 450 GeV.\\[0.5cm]
+%\item They are finally transferred to the LHC (both in a clockwise and an anticlockwise
+%direction) where they are accelerated for 20 minutes to 6.5 TeV. Beams circulate for
+%many hours inside the LHC beam pipes under normal operating conditions.\\[0.5cm]
+%\end{itemize}
+%\end{frame}
+
+\begin{frame}
+\frametitle{LHC Experiment}
+\begin{itemize}
+\item Lets compare the LHC to a 100-megapixel digital camera that takes 40 million 
+electronic "pictures" of the colliding proton bunches per second.\\[0.5cm] 
+\item To keep the amount of data within reason, "empty" pictures - pictures that contain
+no data - are immediately thrown away.\\[0.5cm]
+\item The challenge researches are facing is to keep the interesting "pictures" for
+further analysis and filter and throw away the ones that are empty.\\[0.5cm]
+\item With 40 million pictures per second taken by the Detector, the experiment produces
+40 TB of raw data per second, which are being filtered down to 1GB per second.\\[0.5cm]
+\item To further complicate the challenge, only one picture in 100 billion is, for
+example, a Higgs boson. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Data Set information}
+\begin{itemize}
+\item Data analysis in Bash using the CMS Open Data from 2011.\\[0.5cm]
+\item Datasets derived from the Run2011A SingleElectron, SingleMu,
+DoubleElectron, and DoubleMu primary datasets.\\[0.5cm]  
+\item These data were selected from the primary datasets in order to obtain candidate
+J/psi and Y events, candidate W and Z boson events and general di-electron and dimuon 
+spectra.\\[0.5cm]
+\item Dataset semantics:
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{l l l}
+Run & : & The run number of the event\\
+Event & : & The event number\\
+E,px,py,pz & : & For a lepton, either a muon or an electron, the total\\
+	   &   & energy and components of the momentum (in GeV)\\
+pt         & : & The transverse momentum of the lepton (in units of GeV),\\
+	   &   & either a muon or an electron\\
+eta       & : & The pseudorapidity of the lepton, either a muon or an electron\\
+phi   & : & The phi angle (in radians) of the lepton, either a muon or an electron\\
+Q     & : & The charge of the lepton, either a muon or an electron\\
+M     & : & The invariant mass (in GeV) of either two muons or two electrons\\
+\end{tabular}
+\end{center}
+\end{table}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Calculating the Invariant Mass}
+\begin{itemize}
+\item The CSV file contains events from the CMS detector where two muons were detected.
+\item The value for the mass is calculated from the values of the energy and the
+momentum.
+\item The invariant mass can be calculated with the following equation:
+	\begin{equation*}
+		M = \sqrt{(\sum E)^{2} - || \sum p ||^{2} }
+	\end{equation}
+where $M$ is the invariant mass, $\sum E$ is the total energy, and $\sum p$ is the total
+momentum. To calculate the invariant mass in the code, we are going to use the values of
+$px, py, pz$ and the values of the energy for the two particles.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results}
+\begin{figure}[ht!]
+\includegraphics[width=1\linewidth]{jpsi.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results}
+\begin{itemize}
+\item Now in the histogram we can clearly see a very big peak around 3.1 GeV and a 
+smaller peak around 3.7 GeV.\\[0.5cm]
+\item These two peaks correspond to the mass of two particles that have di-muon decay
+(decay into a muon and an anti-muon).\\[0.5cm]
+\item If we look in the Particle Data Group database, we find that these two particles
+are mesons: the J/psi(1S) meson and the psi(2S) meson, respectively.
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\frametitle{LHC Experiment}
+%\begin{figure}
+%\centering
+%\begin{subfigure}{0.5\textwidth}
+%	\centering
+%	\includegraphics[width=0.3\linewidth]{enlert.jpg}
+%	\caption{Francois Englert}
+%	\label{fig:sub1}
+%\end{subfigure}%
+%\begin{subfigure}(0.5\textwidth}
+%	\centering
+%	\includegraphics[width=0.3\linewidth]{higgs.jpg}
+%	\caption{Peter W. Higgs}
+%	\label{fig.sub2}
+%\end{subfigure}
+%\end{figure}
+%\end{frame}
+ 
+\end{document}
