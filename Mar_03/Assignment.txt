@@ -1,0 +1,51 @@
+Assignment Questions 
+Date: 03/03/2020
+
+Question No.1
+
+A) Create Data Frame
+
+		Age	Height	Weight	Sex
+Alex		25	177	57	F	
+Lilly		31	163	69	F
+Mark		23	190	83	M
+Oliver		52	179	75	M
+Martha		76	163	70	F
+Lucas		49	183	83	M
+Caroline        26	164	53	F
+
+B) Create Data Frame
+
+Working
+Yes
+No
+No
+Yes
+Yes
+No
+Yes
+
+Add the above column to the previous one.
+
+Question No.2
+
+>VADeaths
+
+		Rural_Male	Rural_Female	Urban_Male	Urban_Female
+50-54		11.7		8.7		15.4		8.4
+55-59		18.1		11.7		24.3		13.6
+60-64		26.9		20.3		37.0		19.3
+65-69		41.0		30.9		54.6		35.1
+70-74		66.0		54.3		71.1		50.0
+
+A) Create a new variable, named Total, which is the sum of each row.
+B) Change the order of the columns so total is the first variable.
+
+
+Question No.3
+
+A) Create a data frame with the datasets state.abb, state.area, state.division, state.name, state.region.
+The row names should be the names of the states.
+
+B) Rename the column names so only the first 3 letters after the full stop appear
+(e.g. States.abb will be abb).
