@@ -1,0 +1,11 @@
+id,Country,Age,Sex
+1,India,10,M
+2,India,NaN,F
+3,China,43,M
+4,Italy,NaN,F
+5,India,18,M
+6,China,15,F
+7,Italy,34,M
+8,China,20,F
+9,China,NaN,M
+10,Italy,30,F
