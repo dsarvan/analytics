@@ -1,0 +1,141 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, left=10mm, right=10mm, top=20mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{times}
+%\usepackage{lmodern}
+
+\graphicspath{ {/home/saran/Analytics/May_01/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{Assignment Probability} \\
+Date: 04/05/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\vspace{10px}
+
+\begin{enumerate}
+
+\item[1.] Three coins are tossed. Find the probability of getting
+\begin{enumerate}
+
+\item[a)] At least one head \\
+The outcomes of this experiment are ordered pairs of H and T. \\
+The sample space is S = \{HHH, TTT, HTT, THT, TTH, THH, HTH, HHT\} \\
+The sample space has eight total number of outcomes. \\
+Let event E =  at least one head. \\
+There are seven outcomes that meet this condition, 
+ \{HHH, HTT, THT, TTH, THH, HTH, HHT\}.\\
+\begin{equation*}
+P(E) = \frac{7}{8} = 0.875	
+\end{equation*}
+
+\item[b)] Exactly 2 heads \\
+Let event E = exactly 2 heads. \\
+There are three outcomes that meet this condition,
+\{THH, HTH, HHT\}. \\
+\begin{equation*}
+P(E) = \frac{3}{8} = 0.375
+\end{equation*}
+
+\end{enumerate}
+\vspace{5px}
+
+
+\vspace{10px}
+
+\pagebreak
+
+\item[2.] An integer is choosen at random out of the integers from 1 to 100. What is the
+probability that it is
+
+\begin{enumerate}
+
+\item[a)] Multiple of 5 \\
+The sample space is S = \{1, 2, 3, . . ., 100\} \\
+From integers 1 to 100, there are 20 integers that are multiple by 5, which are known from
+$100//5 = 20$. \\
+Let event E = multiple of 5. 
+\begin{equation*}
+P(E) = \frac{20}{100} = 0.2
+\end{equation*}
+
+\item[b)] Divisible by 7 \\
+From integers 1 to 100, there are 14 integers that are divisible by 7, which are known from
+as $100//7 = 14$. \\
+Let event E = divisible by 7.
+\begin{equation*}
+P(E) = \frac{14}{100} = 0.14
+\end{equation*}
+
+\item[c)] Greater then 70 \\
+From integers 1 to 100, there are 30 integers that are greater than 70. \\
+Let event E = greater then 70. \\
+\begin{equation*}
+P(E) = \frac{30}{100} = 0.3
+\end{equation*}
+\end{enumerate}
+
+
+Program:
+
+\vspace{5px}
+
+\pagebreak
+
+Output:
+
+\vspace{10px}
+
+\pagebreak
+
+\item[3.] Generate Prime Numbers till 1000 and find the following among this population.
+\begin{enumerate}
+\item[a)] Mean
+\item[b)] Median
+\item[c)] Range
+\item[d)] Quartile
+\item[e)] Inter-Quartile Range
+\item[f)] Variance
+\item[g)] Standard Deviation
+\end{enumerate}
+
+Program: 
+\lstinputlisting[language=Python]{prime.py}
+
+\vspace{5px}
+
+\pagebreak
+
+Output:
+
+\end{enumerate}
+
+\end{document}
