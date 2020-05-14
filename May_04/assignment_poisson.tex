@@ -1,0 +1,111 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, left=10mm, right=10mm, top=20mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{times}
+%\usepackage{lmodern}
+
+\graphicspath{ {/home/saran/Analytics/May_01/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{Assignment Poisson Distribution} \\
+Date: 04/05/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\vspace{10px}
+
+\begin{enumerate}
+
+\item[1.] Find the probability that atmost $5$ defective fuses will be found in a box of 
+$200$ fuses if experience shows that $2$ per cent of such fuses are defective. \\
+
+\begin{enumerate}
+
+\item[a)] At least $3$ successes \\
+The outcomes of this experiment are ordered pairs of H and T. \\
+The sample space is S = \{HHH, TTT, HTT, THT, TTH, THH, HTH, HHT\} \\
+The sample space has eight total number of outcomes. \\
+Let event E =  at least one head. \\
+There are seven outcomes that meet this condition, 
+ \{HHH, HTT, THT, TTH, THH, HTH, HHT\}.\\
+\begin{equation*}
+P(E) = \frac{7}{8} = 0.875	
+\end{equation*}
+
+\item[b)] At most $3$ successes \\
+Let event E = exactly 2 heads. \\
+There are three outcomes that meet this condition,
+\{THH, HTH, HHT\}. \\
+\begin{equation*}
+P(E) = \frac{3}{8} = 0.375
+\end{equation*}
+
+\item[c)] Exactly $3$ failures \\
+
+\end{enumerate}
+
+\item[2.] The number of accidents in a year attributed to taxi drivers in a city follows a
+Poisson distribution with mean equal to $3$. Out of $1000$ taxi drivers, find approximetly
+the number of drivers with \\
+
+\begin{enumerate}
+
+\item[a)] No accidents in a year \\
+The sample space is S = \{1, 2, 3, . . ., 100\} \\
+From integers 1 to 100, there are 20 integers that are multiple by 5, which are known from
+$100//5 = 20$. \\
+Let event E = multiple of 5. 
+\begin{equation*}
+P(E) = \frac{20}{100} = 0.2
+\end{equation*}
+
+\item[b)] More than $3$ accidents in a year \\
+From integers 1 to 100, there are 14 integers that are divisible by 7, which are known from
+as $100//7 = 14$. \\
+Let event E = divisible by 7.
+\begin{equation*}
+P(E) = \frac{14}{100} = 0.14
+\end{equation*}
+
+\end{enumerate}
+
+\item[3.] From the records of $10$ Indian Army corps kept over $20$ years the following data
+were obtained showing the number of deaths caused by the horse. Calculate the theoretical
+Poisson frequencies \\
+
+\begin{enumerate}
+
+\item[a)] Find the Frequencies of the distribution of heads and tabulate the results.
+\item[b)] Calculate the mean number of sucess and standard deviations.
+
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
