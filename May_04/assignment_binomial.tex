@@ -1,0 +1,119 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=2cm, left=1cm, right=1.5cm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{times}
+
+\graphicspath{ {/home/saran/Analytics/May_01/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{Assignment Binomial Distribution} \\
+Date: 04/05/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\vspace{10px}
+
+\begin{enumerate}
+
+\item[1.] For a Binomial Distribution parameter $n = 5$ and $p = 0.3$ Find the probabilities
+of getting
+
+\begin{enumerate}
+
+\item[a)] At least $3$ successes \\
+The probability that a random variable $X$  with binomial distribution $B(n,p)$ is equal to
+the value $k$, where $k = 0, 1,...n$, is given by
+
+\begin{equation*}
+P(X = k) = \binom nk p^{k} (1-p)^{n-k} = \frac{n!}{k! (n-k)!} p^{k} (1-p)^{n-k}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+		P(X \geq 3) & = P(X = 3) + P(X = 4) + P(X = 5) \\ \\
+		& = \binom 53 (0.3)^{3} (1-0.3)^{2} + \binom 54 (0.3)^{4} (1-0.3) + \binom 55 (0.3)^{5} \\ \\
+		& = \frac{5!}{3! (5-3)!} (0.3)^{3} (0.7)^{2} + \frac{5!}{4! (5-4)!} (0.3)^{4} (0.7) + \frac{5!}{5! (5-5)!} (0.3)^{5}
+\end{split}
+\end{equation*}
+
+\item[b)] At most $3$ successes \\
+\begin{equation*}
+\begin{split}
+		P(X \leq 3) & = P(X = 0) + P(X = 1) + P(X = 2) + P(X = 3) \\ \\
+		& = \binom 50
+\end{split}
+\end{equation*}
+
+\item[c)] Exactly $3$ failures \\
+
+\end{enumerate}
+
+\item[2.] If on an average one vessel in every ten is wrecked, find the probability that out
+of five vessels expected to arrive, four at least will arrive safely. 
+
+\begin{enumerate}
+
+\item[a)] Multiple of 5 \\
+The sample space is S = \{1, 2, 3, . . ., 100\} \\
+From integers 1 to 100, there are 20 integers that are multiple by 5, which are known from
+$100//5 = 20$. \\
+Let event E = multiple of 5. 
+\begin{equation*}
+P(E) = \frac{20}{100} = 0.2
+\end{equation*}
+
+\item[b)] Divisible by 7 \\
+From integers 1 to 100, there are 14 integers that are divisible by 7, which are known from
+as $100//7 = 14$. \\
+Let event E = divisible by 7.
+\begin{equation*}
+P(E) = \frac{14}{100} = 0.14
+\end{equation*}
+
+\item[c)] Greater then 70 \\
+From integers 1 to 100, there are 30 integers that are greater than 70. \\
+Let event E = greater then 70. \\
+\begin{equation*}
+P(E) = \frac{30}{100} = 0.3
+\end{equation*}
+
+\end{enumerate}
+
+\item[3.] Five coins are tossed 3,200 times.
+
+\begin{enumerate}
+
+\item[a)] Find the Frequencies of the distribution of heads and tabulate the results.
+\item[b)] Calculate the mean number of sucess and standard deviations.
+
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
