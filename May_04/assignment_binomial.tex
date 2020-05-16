@@ -12,7 +12,7 @@
 \usepackage{listings}
 \usepackage{times}
 
-\graphicspath{ {/home/saran/Analytics/May_01/} }
+\graphicspath{ {/home/saran/Analytics/May_04/} }
 
 \lstdefinestyle{mystyle}{
 	backgroundcolor=\color{white},
@@ -57,61 +57,117 @@ P(X = k) = \binom nk p^{k} (1-p)^{n-k} = \frac{n!}{k! (n-k)!} p^{k} (1-p)^{n-k}
 
 \begin{equation*}
 \begin{split}
-		P(X \geq 3) & = P(X = 3) + P(X = 4) + P(X = 5) \\ \\
-		& = \binom 53 (0.3)^{3} (1-0.3)^{2} + \binom 54 (0.3)^{4} (1-0.3) + \binom 55 (0.3)^{5} \\ \\
-		& = \frac{5!}{3! (5-3)!} (0.3)^{3} (0.7)^{2} + \frac{5!}{4! (5-4)!} (0.3)^{4} (0.7) + \frac{5!}{5! (5-5)!} (0.3)^{5}
+		P(X \geq 3) & = P(X = 3) + P(X = 4) + P(X = 5) \\ 
+		& = \binom 53 (0.3)^{3} (1-0.3)^{2} + \binom 54 (0.3)^{4} (1-0.3) + \binom 55 (0.3)^{5} \\ 
+		& = \frac{5!}{3! (5-3)!} (0.3)^{3} (0.7)^{2} + \frac{5!}{4! (5-4)!} (0.3)^{4} (0.7) + \frac{5!}{5! (5-5)!} (0.3)^{5} \\
+		& = 0.1323 + 0.0283 + 0.0024 \\
+		& = 0.1630
 \end{split}
 \end{equation*}
 
-\item[b)] At most $3$ successes \\
+\item[b)] At most $3$ successes \\ \\
+Method 1:
 \begin{equation*}
 \begin{split}
-		P(X \leq 3) & = P(X = 0) + P(X = 1) + P(X = 2) + P(X = 3) \\ \\
-		& = \binom 50
+		P(X \leq 3) & = P(X = 0) + P(X = 1) + P(X = 2) + P(X = 3) \\ 
+		& = \binom 50 (1-0.3)^{5} + \binom 51 (0.3) (1-0.3)^{4} + \binom 52 (0.3)^{2} (1-0.3)^{3} + \binom 53 (0.3)^{3} (1-0.3)^{2} \\
+		& = \frac{5!}{0! (5-0)!} (0.7)^{5} + \frac{5!}{1! (5-1)!} (0.3) (0.7)^{4} + \frac{5!}{2! (5-2)!} (0.3)^{2} (0.7)^{3} + \frac{5!}{3! (5-3)!} (0.3)^{3} (0.7)^{2} \\
+		& = 0.1681 + 0.3601 + 0.3087 + 0.1323 \\
+		& = 0.9692
 \end{split}
 \end{equation*}
 
+Method 2:
+\begin{equation*}
+\begin{split}
+		P(X \leq 3) & = 1 - P(X > 3) \\
+		& = 1 - (P(X = 4) + P(X = 5)) \\
+		& = 1 - \left( \binom 54 (0.3)^{4} (1-0.3) + \binom 55 (0.3)^{5} \right) \\
+		& = 1 - \left( \frac{5!}{4! (5-4)!} (0.3)^{4} (0.7) + \frac{5!}{5! (5-5)!} (0.3)^{5} \right) \\
+		& = 1 - (0.0283 + 0.0024) \\
+		& = 0.9692
+\end{split}
+\end{equation*}
+
+\pagebreak
+
 \item[c)] Exactly $3$ failures \\
+\begin{equation*}
+\begin{split}
+		P(X = 2) & = \binom 52 (0.3)^{2} (1-0.3)^{3} \\
+		& = \frac{5!}{2! (5-2)!} (0.3)^{2} (0.7)^{3} \\
+		& = 0.3087
+\end{split}
+\end{equation*}
 
 \end{enumerate}
+
+Program:
+\lstinputlisting[language=Python]{bdist.py}
+
+\pagebreak
+
+Output:
+\lstinputlisting{outputb1.txt}
+
+\vspace{1cm}
+
+Program: Binomial Distribution using Scipy package
+\lstinputlisting[language=Python]{bdistribution.py}
+
+Output:
+\lstinputlisting{outputb2.txt}
 
 \item[2.] If on an average one vessel in every ten is wrecked, find the probability that out
-of five vessels expected to arrive, four at least will arrive safely. 
+of five vessels expected to arrive, four at least will arrive safely. \\
 
-\begin{enumerate}
+The probability of success, $p = 0.9$ and the number of observations, $n = 5$.
 
-\item[a)] Multiple of 5 \\
-The sample space is S = \{1, 2, 3, . . ., 100\} \\
-From integers 1 to 100, there are 20 integers that are multiple by 5, which are known from
-$100//5 = 20$. \\
-Let event E = multiple of 5. 
 \begin{equation*}
-P(E) = \frac{20}{100} = 0.2
+\begin{split}
+		P(X \geq 4) & = P(X = 4) + P(X = 5) \\
+		& = \binom 54 (0.9)^{4} (1-0.9) + \binom 55 (0.9)^{5} \\
+		& = \frac{5!}{4! (5-4)!} (0.9)^{4} (0.1) + \frac{5!}{5! (5-5)!} (0.9)^{5} \\
+		& = 0.3280 + 0.5905 \\
+		& = 0.9185
+\end{split}
 \end{equation*}
 
-\item[b)] Divisible by 7 \\
-From integers 1 to 100, there are 14 integers that are divisible by 7, which are known from
-as $100//7 = 14$. \\
-Let event E = divisible by 7.
-\begin{equation*}
-P(E) = \frac{14}{100} = 0.14
-\end{equation*}
+Program: 
+\lstinputlisting[language=Python]{vessels.py}
 
-\item[c)] Greater then 70 \\
-From integers 1 to 100, there are 30 integers that are greater than 70. \\
-Let event E = greater then 70. \\
-\begin{equation*}
-P(E) = \frac{30}{100} = 0.3
-\end{equation*}
-
-\end{enumerate}
+Output:
+\lstinputlisting{outputb3.txt}
 
 \item[3.] Five coins are tossed 3,200 times.
 
-\begin{enumerate}
+Program:
+\lstinputlisting[language=Python]{binormdist.py} \begin{enumerate}
+
+\pagebreak
 
 \item[a)] Find the Frequencies of the distribution of heads and tabulate the results.
-\item[b)] Calculate the mean number of sucess and standard deviations.
+
+\lstinputlisting{outputb4.txt}
+
+%figure_1
+\begin{figure}[ht!]
+\includegraphics[width=18cm,height=9cm,keepaspectratio]{binormdistplot.pdf}
+\centering
+\end{figure}
+
+\vspace{2cm}
+
+\item[b)] Calculate the mean number of sucess and standard deviation.
+		\begin{enumerate}
+				\item[ ] Mean, $\mu_{X} = np = 5 \times 0.5 = 2.5$
+				\item[ ] Variance, $\sigma^{2}_{X} = np(1-p) = 5 \times 0.5 \times (1-0.5) = 1.25$
+				\item[ ] Standard Deviation, $\sigma_{X} = \sqrt{np(1-p)} = \sqrt{1.25} = 1.12$
+		\end{enumerate}
+
+Output:
+\lstinputlisting{outputb5.txt}
+
 
 \end{enumerate}
 
