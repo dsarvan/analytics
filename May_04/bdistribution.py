@@ -6,7 +6,7 @@ from scipy.stats import binom
 pls = binom.sf(k=3, n=5, p=0.3, loc=1)
 print("The probability of getting at least 3 success: {:.4f}".format(pls))
 
-# compute cumulative density function (CDF)
+# compute cumulative distribution function (CDF)
 # P(X <= 3)
 pms = binom.cdf(k=3, n=5, p=0.3, loc=0)
 print("The probability of getting at most 3 success: {:.4f}".format(pms))
