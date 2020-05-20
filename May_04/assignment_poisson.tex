@@ -1,8 +1,8 @@
-\documentclass[a4paper,11pt,openright]{report}
+\documentclass[a4paper,10pt,openright]{report}
 \setlength{\parindent}{0pt} % set noindent for entire file
 
 \usepackage[utf8]{inputenc}
-\usepackage[a4paper, left=10mm, right=10mm, top=20mm]{geometry}
+\usepackage[a4paper, top=2cm, left=1cm, right=1.5cm]{geometry}
 \usepackage{xcolor,graphicx}
 \usepackage{amsmath}
 \usepackage{setspace}
@@ -11,7 +11,6 @@
 \usepackage{enumitem}
 \usepackage{listings}
 \usepackage{times}
-%\usepackage{lmodern}
 
 \graphicspath{ {/home/saran/Analytics/May_01/} }
 
@@ -43,33 +42,38 @@ Date: 04/05/2020 \hspace{2mm} Name: D.Saravanan
 
 \begin{enumerate}
 
-\item[1.] Find the probability that atmost $5$ defective fuses will be found in a box of 
-$200$ fuses if experience shows that $2$ per cent of such fuses are defective. \\
+\item[1.] Find the probability that at most $5$ defective fuses will be found in a box of 
+$200$ fuses if experience shows that $2$ percent of such fuses are defective. \\
 
-\begin{enumerate}
-
-\item[a)] At least $3$ successes \\
-The outcomes of this experiment are ordered pairs of H and T. \\
-The sample space is S = \{HHH, TTT, HTT, THT, TTH, THH, HTH, HHT\} \\
-The sample space has eight total number of outcomes. \\
-Let event E =  at least one head. \\
-There are seven outcomes that meet this condition, 
- \{HHH, HTT, THT, TTH, THH, HTH, HHT\}.\\
+Poisson Distribution Formula:
 \begin{equation*}
-P(E) = \frac{7}{8} = 0.875	
+P(X = k) = \frac{\lambda^{k} e^{-\lambda}}{k!}
 \end{equation*}
 
-\item[b)] At most $3$ successes \\
-Let event E = exactly 2 heads. \\
-There are three outcomes that meet this condition,
-\{THH, HTH, HHT\}. \\
+where, \\
+$k = 0, 1, 2, 3,..., \infty$\\
+$\lambda$ = mean number of occurrences in the interval \\
+$e$ = Euler's constant $\approx 2.71828$ \\
+
+
+$N = 200$ and $p = 1/50$ \\
+Expectation value of $k$, $E[k] = \lambda = 200 \times 1/50 = 4$
+
+
+
 \begin{equation*}
-P(E) = \frac{3}{8} = 0.375
+P(X \leq 5)  = \sum_{k=0}^{5} \frac{\lambda^{k} e^{-\lambda}}{k!}
+		     = \sum_{k=0}^{5} \frac{4^{k} e^{-4}}{k!}
+			 = 0.7851
 \end{equation*}
 
-\item[c)] Exactly $3$ failures \\
+Program:
+\lstinputlisting[language=Python]{pdistribution.py}
 
-\end{enumerate}
+Output:
+\lstinputlisting{outputp2.txt}
+
+\vspace{1cm}
 
 \item[2.] The number of accidents in a year attributed to taxi drivers in a city follows a
 Poisson distribution with mean equal to $3$. Out of $1000$ taxi drivers, find approximetly
@@ -77,35 +81,89 @@ the number of drivers with \\
 
 \begin{enumerate}
 
-\item[a)] No accidents in a year \\
-The sample space is S = \{1, 2, 3, . . ., 100\} \\
-From integers 1 to 100, there are 20 integers that are multiple by 5, which are known from
-$100//5 = 20$. \\
-Let event E = multiple of 5. 
+\item[a)] No accidents in a year 
 \begin{equation*}
-P(E) = \frac{20}{100} = 0.2
+P(X = 0) = \frac{3^{0} e^{-3}}{0!} = 0.0498
 \end{equation*}
 
-\item[b)] More than $3$ accidents in a year \\
-From integers 1 to 100, there are 14 integers that are divisible by 7, which are known from
-as $100//7 = 14$. \\
-Let event E = divisible by 7.
+\item[b)] More than $3$ accidents in a year 
 \begin{equation*}
-P(E) = \frac{14}{100} = 0.14
+\begin{split}
+		P(X > 3) & = 1 - P(X \leq 3) \\ 
+		& = 1 - (P(X = 0) + P(X = 1) + P(X = 2) + P(X = 3)) \\
+		& = 1 - \left( \frac{3^{0} e^{-3}}{0!} + \frac{3^{1} e^{-3}}{1!} + \frac{3^{2} e^{-3}}{2!} + \frac{3^{3} e^{-3}}{3!} \right) \\
+		& = 1 - (0.0498 + 0.1494 + 0.2240 + 0.2240) \\
+		& = 0.3528
+\end{split}
 \end{equation*}
 
 \end{enumerate}
+
+\pagebreak
+
+Program:
+\lstinputlisting[language=Python]{pdist.py}
+
+Output:
+\lstinputlisting{outputp1.txt}
+
+\pagebreak
+
+Program: Scipy package
+\lstinputlisting[language=Python]{taxi.py}
+
+Output:
+\lstinputlisting{outputp3.txt}
 
 \item[3.] From the records of $10$ Indian Army corps kept over $20$ years the following data
 were obtained showing the number of deaths caused by the horse. Calculate the theoretical
-Poisson frequencies \\
+Poisson frequencies. \\
+\begin{tabular}{|l|r|r|r|r|r|}
+\hline
+No. of Deaths: & 0 & 1 & 2 & 3 & 4 \\
+\hline
+Frequency : & 109 & 65 & 22 & 3 & 1 \\
+\hline
+\end{tabular} \\
 
-\begin{enumerate}
+$N = 109 + 65 + 22 + 3 + 1 = 200$ \\ \\
+$\sum_{}^{} k \cdot F = 0 \cdot 109 + 1 \cdot 65 + 2 \cdot 22 + 3 \cdot 3 + 4 \cdot 1 = 122$ \\ \\
+Mean, $\lambda = (\sum_{}^{} k \cdot F)/N = 122/200 = 0.61$ \\
 
-\item[a)] Find the Frequencies of the distribution of heads and tabulate the results.
-\item[b)] Calculate the mean number of sucess and standard deviations.
+Calculation of Probability:
+\begin{equation*}
+		\begin{split}
+				P(X = 0) & = \frac{(0.61)^{0} e^{-0.61}}{0!} = 0.5433 \\
+				P(X = 1) & = \frac{(0.61)^{1} e^{-0.61}}{1!} = 0.3314 \\
+				P(X = 2) & = \frac{(0.61)^{2} e^{-0.61}}{2!} = 0.1011 \\
+				P(X = 3) & = \frac{(0.61)^{3} e^{-0.61}}{3!} = 0.0206 \\
+				P(X = 4) & = \frac{(0.61)^{4} e^{-0.61}}{4!} = 0.0031
+		\end{split}
+\end{equation*}
 
-\end{enumerate}
+\begin{tabular}{|l|r|r|r|r|r|}
+\hline
+No. of Deaths : & 0 & 1 & 2 & 3 & 4 \\
+\hline
+Frequency : & 109 & 65 & 22 & 3 & 1 \\
+\hline
+Calculated Frequency, $N \cdot P(k)$ : & 108.7 & 66.3 & 20.2 & 4.1 & 0.6 \\
+\hline
+\end{tabular}
+
+Program:
+\lstinputlisting[language=Python]{pfrequency.py}
+
+Output:
+\lstinputlisting{outputp4.txt}
+
+Program: Scipy package
+\lstinputlisting[language=Python]{calculated.py}
+
+\begin{figure}[ht!]
+\includegraphics[width=18cm,height=9cm,keepaspectratio]{frequency.pdf}
+\centering
+\end{figure}
 
 \end{enumerate}
 \end{document}
