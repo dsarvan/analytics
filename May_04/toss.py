@@ -82,4 +82,4 @@ else:
 
     evalue = num2words(evalue)
 
-    print("The Probability of getting extactly {} {} = {}\n".format(evalue, side, count/length))
+    print("The Probability of getting exactly {} {} = {}\n".format(evalue, side, count/length))
