@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt,openright]{report}
+\documentclass[a4paper,10pt,openright]{report}
 \setlength{\parindent}{0pt} % set noindent for entire file
 
 \usepackage[utf8]{inputenc}
@@ -13,7 +13,7 @@
 \usepackage{times}
 %\usepackage{lmodern}
 
-\graphicspath{ {/home/saran/Analytics/May_01/} }
+\graphicspath{ {/home/saran/Analytics/May_04/} }
 
 \lstdefinestyle{mystyle}{
 	backgroundcolor=\color{white},
@@ -45,20 +45,233 @@ Date: 04/05/2020 \hspace{2mm} Name: D.Saravanan
 
 \item[1.] Find the area under the standard normal curve which lie 
 
+A normal distribution in a variate $X$ with mean $\mu$ and variance $\sigma^{2}$ is
+a statistic distribution with probability density function 
+\begin{equation*}
+P(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-(x-\mu)^{2}/(2\sigma^{2})} 
+\end{equation*}
+
+The standard normal distribution is given by taking $\mu = 0$ and $\sigma^{2} = 1$ in 
+a general normal distribution. An arbitrary normal distribution can be converted to a
+standard normal distribution by changing variables to $Z \equiv (X-\mu)/\sigma$, so
+$dz = dx/\sigma$, yielding
+\begin{equation*}
+P(x) dx = \frac{1}{\sqrt{2\pi}} e^{-z^{2}/2} dz
+\end{equation*}
+
+Normal distributions have many convenient properties, so random variates with unknown
+distributions are often assumed to be normal. It is often a good approximation due to the
+central limit theorem. This theorem states that the mean of any set of variates with any 
+distribution having a finite mean and variance tends to the normal distribution. Many common
+attributes such as test scores, height, etc., follow roughly normal distributions, with few
+members at the high and low ends and many in the middle.
+
+\pagebreak
+
 \begin{enumerate}
 
 \item[a)] To the right of $Z = 2.70$
-\item[b)] To the left of $Z = 1.73$
-\item[c)] To the right of $Z = -0.66$
-\item[d)] To the left of $Z = -1.88$
-\item[e)] Between $Z = -0.90$ and $Z = -1.85$
-\item[f)] Between $Z = -1.45$ and $Z = -1.45$
-\item[g)] Between $Z = -0.90$ and $Z = 1.58$
+\begin{equation*}
+P(Z > 2.70) = \frac{1}{\sqrt{2\pi}} \int_{2.70}^{\infty} e^{-z^{2}/2} dz = 0.00347
+\end{equation*}
 
+\vspace{1cm}
+
+Program:
+\lstinputlisting[language=Python]{integration1a.py}
+Output:
+\lstinputlisting{output11a.txt}
+
+\vspace{1cm}
+
+Program: Normal Distribution using scipy package
+\lstinputlisting[language=Python]{snormscipya.py}
+Output:
+\lstinputlisting{output12a.txt}
+
+%figure_1
+\begin{figure}[ht!]
+\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1a.pdf}
+\centering
+\end{figure}
+
+\item[b)] To the left of $Z = 1.73$
+\begin{equation*}
+P(Z < 1.73) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{1.73} e^{-z^{2}/2} dz = 0.95818
+\end{equation*}
+
+\vspace{1cm}
+
+Program:
+\lstinputlisting[language=Python]{integration1a.py}
+Output:
+\lstinputlisting{output11a.txt}
+
+\vspace{1cm}
+
+Program: Normal Distribution using scipy package
+\lstinputlisting[language=Python]{snormscipya.py}
+Output:
+\lstinputlisting{output12a.txt}
+
+%figure_2
+\begin{figure}[ht!]
+\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1b.pdf}
+\centering
+\end{figure}
+
+\item[c)] To the right of $Z = -0.66$
+\begin{equation*}
+P(Z > -0.66) = \frac{1}{\sqrt{2\pi}} \int_{-0.66}^{\infty} e^{-z^{2}/2} dz = 0.74537
+\end{equation*}
+
+\vspace{1cm}
+
+Program:
+\lstinputlisting[language=Python]{integration1a.py}
+Output:
+\lstinputlisting{output11a.txt}
+
+\vspace{1cm}
+
+Program: Normal Distribution using scipy package
+\lstinputlisting[language=Python]{snormscipya.py}
+Output:
+\lstinputlisting{output12a.txt}
+
+%figure_3
+\begin{figure}[ht!]
+\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1c.pdf}
+\centering
+\end{figure}
+
+\item[d)] To the left of $Z = -1.88$
+\begin{equation*}
+P(Z < -1.88) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{-1.88} e^{-z^{2}/2} dz = 0.03005
+\end{equation*}
+
+\vspace{1cm}
+
+Program:
+\lstinputlisting[language=Python]{integration1a.py}
+Output:
+\lstinputlisting{output11a.txt}
+
+\vspace{1cm}
+
+Program: Normal Distribution using scipy package
+\lstinputlisting[language=Python]{snormscipya.py}
+Output:
+\lstinputlisting{output12a.txt}
+
+%figure_3
+\begin{figure}[ht!]
+\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1c.pdf}
+\centering
+\end{figure}
+
+%figure_4
+\begin{figure}[ht!]
+\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1d.pdf}
+\centering
+\end{figure}
+
+\item[e)] Between $Z = -0.90$ and $Z = -1.85$
+\begin{equation*}
+P(-1.85 < Z < -0.90) = \frac{1}{\sqrt{2\pi}} \int_{-1.85}^{-0.90} e^{-z^{2}/2} dz 
+\end{equation*}
+
+\vspace{1cm}
+
+Program:
+\lstinputlisting[language=Python]{integration1a.py}
+Output:
+\lstinputlisting{output11a.txt}
+
+\vspace{1cm}
+
+Program: Normal Distribution using scipy package
+\lstinputlisting[language=Python]{snormscipya.py}
+Output:
+\lstinputlisting{output12a.txt}
+
+%figure_3
+\begin{figure}[ht!]
+\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1c.pdf}
+\centering
+\end{figure}
+
+%figure_5
+\begin{figure}[ht!]
+\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1e.pdf}
+\centering
+\end{figure}
+
+\item[f)] Between $Z = -1.45$ and $Z = 1.45$
+\begin{equation*}
+P(-1.45 < Z < 1.45) = \frac{1}{\sqrt{2\pi}} \int_{-1.45}^{1.45} e^{-z^{2}/2} dz
+\end{equation*}
+
+\vspace{1cm}
+
+Program:
+\lstinputlisting[language=Python]{integration1a.py}
+Output:
+\lstinputlisting{output11a.txt}
+
+\vspace{1cm}
+
+Program: Normal Distribution using scipy package
+\lstinputlisting[language=Python]{snormscipya.py}
+Output:
+\lstinputlisting{output12a.txt}
+
+%figure_3
+\begin{figure}[ht!]
+\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1c.pdf}
+\centering
+\end{figure}
+
+%figure_6
+\begin{figure}[ht!]
+\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1f.pdf}
+\centering
+\end{figure}
+
+\item[g)] Between $Z = -0.90$ and $Z = 1.58$
+\begin{equation*}
+P(-0.90 < Z < 1.58) = \frac{1}{\sqrt{2\pi}} \int_{-0.90}^{1.58} e^{-z^{2}/2} dz		
+\end{equation*}
+
+\vspace{1cm}
+
+Program:
+\lstinputlisting[language=Python]{integration1a.py}
+Output:
+\lstinputlisting{output11a.txt}
+
+\vspace{1cm}
+
+Program: Normal Distribution using scipy package
+\lstinputlisting[language=Python]{snormscipya.py}
+Output:
+\lstinputlisting{output12a.txt}
+
+%figure_3
+\begin{figure}[ht!]
+\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1c.pdf}
+\centering
+\end{figure}
+
+%figure_7
+\begin{figure}[ht!]
+\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1g.pdf}
+\centering
+\end{figure}
 \end{enumerate}
 
 \item[2.] The life of a certain kind of electronic device has a mean of $300$ hours and a
-standard deviation fo $25$ hours. Assuming that the distribution of life times which are
+standard deviation of $25$ hours. Assuming that the distribution of life times which are
 measured to the nearest hours can be approximated closely with a normal curve.
 
 \begin{enumerate}
