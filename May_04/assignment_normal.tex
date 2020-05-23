@@ -59,12 +59,40 @@ $dz = dx/\sigma$, yielding
 P(x) dx = \frac{1}{\sqrt{2\pi}} e^{-z^{2}/2} dz
 \end{equation*}
 
+The normal distribution function $\Phi(z)$ gives the probability that a standard normal
+variate assumes a value in the interval $[0,z]$,
+\begin{equation*}
+\Phi(z) \equiv \frac{1}{\sqrt{2\pi}} \int_{0}^{z} e^{-x^{2}/2} dx
+\end{equation*}
+
+The normal distribution is the limiting case of a discrete binomial distribution
+$P_{p}(n|N)$ as the sample size $N$ becomes large, in which case $P_{p}(n|N)$ is normal with
+mean $\mu = N p$ and variance $\sigma^{2} = N p(1-p)$. \\
+
+The distribution $P(x)$ is properly normalized since 
+\begin{equation*}
+\int_{-\infty}^{\infty} P(x) dx = 1
+\end{equation*}
+
+The cumulative distribution function, which gives the probability that a variate will assume
+a value $\leq x$, is then the integral of the normal distribution,
+\begin{equation*}
+\begin{split}
+D(x) & \equiv \int_{-\infty}^{x} P(x^{'}) dx^{'} \\
+		& = \frac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{x} e^{-(x^{'}-\mu)^{2}/(2\sigma^{2})} dx^{'}
+\end{split}
+\end{equation*}
+
 Normal distributions have many convenient properties, so random variates with unknown
 distributions are often assumed to be normal. It is often a good approximation due to the
 central limit theorem. This theorem states that the mean of any set of variates with any 
-distribution having a finite mean and variance tends to the normal distribution. Many common
-attributes such as test scores, height, etc., follow roughly normal distributions, with few
-members at the high and low ends and many in the middle.
+distribution having a finite mean and variance tends to the normal distribution. \\
+
+%figure
+\begin{figure}[ht!]
+\includegraphics[width=12cm,height=6cm,keepaspectratio]{stdnorm.pdf}
+\centering
+\end{figure}
 
 \pagebreak
 
@@ -103,16 +131,16 @@ P(Z < 1.73) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{1.73} e^{-z^{2}/2} dz = 0.95
 \vspace{1cm}
 
 Program:
-\lstinputlisting[language=Python]{integration1a.py}
+\lstinputlisting[language=Python]{integration1b.py}
 Output:
-\lstinputlisting{output11a.txt}
+\lstinputlisting{output11b.txt}
 
 \vspace{1cm}
 
 Program: Normal Distribution using scipy package
-\lstinputlisting[language=Python]{snormscipya.py}
+\lstinputlisting[language=Python]{snormscipyb.py}
 Output:
-\lstinputlisting{output12a.txt}
+\lstinputlisting{output12b.txt}
 
 %figure_2
 \begin{figure}[ht!]
@@ -128,16 +156,16 @@ P(Z > -0.66) = \frac{1}{\sqrt{2\pi}} \int_{-0.66}^{\infty} e^{-z^{2}/2} dz = 0.7
 \vspace{1cm}
 
 Program:
-\lstinputlisting[language=Python]{integration1a.py}
+\lstinputlisting[language=Python]{integration1c.py}
 Output:
-\lstinputlisting{output11a.txt}
+\lstinputlisting{output11c.txt}
 
 \vspace{1cm}
 
 Program: Normal Distribution using scipy package
-\lstinputlisting[language=Python]{snormscipya.py}
+\lstinputlisting[language=Python]{snormscipyc.py}
 Output:
-\lstinputlisting{output12a.txt}
+\lstinputlisting{output12c.txt}
 
 %figure_3
 \begin{figure}[ht!]
@@ -153,22 +181,16 @@ P(Z < -1.88) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{-1.88} e^{-z^{2}/2} dz = 0.
 \vspace{1cm}
 
 Program:
-\lstinputlisting[language=Python]{integration1a.py}
+\lstinputlisting[language=Python]{integration1d.py}
 Output:
-\lstinputlisting{output11a.txt}
+\lstinputlisting{output11d.txt}
 
 \vspace{1cm}
 
 Program: Normal Distribution using scipy package
-\lstinputlisting[language=Python]{snormscipya.py}
+\lstinputlisting[language=Python]{snormscipyd.py}
 Output:
-\lstinputlisting{output12a.txt}
-
-%figure_3
-\begin{figure}[ht!]
-\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1c.pdf}
-\centering
-\end{figure}
+\lstinputlisting{output12d.txt}
 
 %figure_4
 \begin{figure}[ht!]
@@ -178,28 +200,22 @@ Output:
 
 \item[e)] Between $Z = -0.90$ and $Z = -1.85$
 \begin{equation*}
-P(-1.85 < Z < -0.90) = \frac{1}{\sqrt{2\pi}} \int_{-1.85}^{-0.90} e^{-z^{2}/2} dz 
+P(-1.85 < Z < -0.90) = \frac{1}{\sqrt{2\pi}} \int_{-1.85}^{-0.90} e^{-z^{2}/2} dz = 0.15190 
 \end{equation*}
 
-\vspace{1cm}
+\vspace{0.5cm}
 
 Program:
-\lstinputlisting[language=Python]{integration1a.py}
+\lstinputlisting[language=Python]{integration1e.py}
 Output:
-\lstinputlisting{output11a.txt}
+\lstinputlisting{output11e.txt}
 
 \vspace{1cm}
 
 Program: Normal Distribution using scipy package
-\lstinputlisting[language=Python]{snormscipya.py}
+\lstinputlisting[language=Python]{snormscipye.py}
 Output:
-\lstinputlisting{output12a.txt}
-
-%figure_3
-\begin{figure}[ht!]
-\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1c.pdf}
-\centering
-\end{figure}
+\lstinputlisting{output12e.txt}
 
 %figure_5
 \begin{figure}[ht!]
@@ -209,28 +225,22 @@ Output:
 
 \item[f)] Between $Z = -1.45$ and $Z = 1.45$
 \begin{equation*}
-P(-1.45 < Z < 1.45) = \frac{1}{\sqrt{2\pi}} \int_{-1.45}^{1.45} e^{-z^{2}/2} dz
+P(-1.45 < Z < 1.45) = \frac{1}{\sqrt{2\pi}} \int_{-1.45}^{1.45} e^{-z^{2}/2} dz = 0.85294
 \end{equation*}
 
-\vspace{1cm}
+\vspace{0.5cm}
 
 Program:
-\lstinputlisting[language=Python]{integration1a.py}
+\lstinputlisting[language=Python]{integration1f.py}
 Output:
-\lstinputlisting{output11a.txt}
+\lstinputlisting{output11f.txt}
 
 \vspace{1cm}
 
 Program: Normal Distribution using scipy package
-\lstinputlisting[language=Python]{snormscipya.py}
+\lstinputlisting[language=Python]{snormscipyf.py}
 Output:
-\lstinputlisting{output12a.txt}
-
-%figure_3
-\begin{figure}[ht!]
-\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1c.pdf}
-\centering
-\end{figure}
+\lstinputlisting{output12f.txt}
 
 %figure_6
 \begin{figure}[ht!]
@@ -240,28 +250,22 @@ Output:
 
 \item[g)] Between $Z = -0.90$ and $Z = 1.58$
 \begin{equation*}
-P(-0.90 < Z < 1.58) = \frac{1}{\sqrt{2\pi}} \int_{-0.90}^{1.58} e^{-z^{2}/2} dz		
+P(-0.90 < Z < 1.58) = \frac{1}{\sqrt{2\pi}} \int_{-0.90}^{1.58} e^{-z^{2}/2} dz = 0.75889
 \end{equation*}
 
-\vspace{1cm}
+\vspace{0.5cm}
 
 Program:
-\lstinputlisting[language=Python]{integration1a.py}
+\lstinputlisting[language=Python]{integration1g.py}
 Output:
-\lstinputlisting{output11a.txt}
+\lstinputlisting{output11g.txt}
 
 \vspace{1cm}
 
 Program: Normal Distribution using scipy package
-\lstinputlisting[language=Python]{snormscipya.py}
+\lstinputlisting[language=Python]{snormscipyg.py}
 Output:
-\lstinputlisting{output12a.txt}
-
-%figure_3
-\begin{figure}[ht!]
-\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1c.pdf}
-\centering
-\end{figure}
+\lstinputlisting{output12g.txt}
 
 %figure_7
 \begin{figure}[ht!]
@@ -277,8 +281,46 @@ measured to the nearest hours can be approximated closely with a normal curve.
 \begin{enumerate}
 
 \item[a)] Find the probability that any one of these devices will have a lifetime of more
-than $350$ hours.
+than $350$ hours. \\ \\
+given, $\mu = 300$ and $\sigma = 25$
+
+\begin{equation*}
+\begin{split}
+P(X > 350) &= \frac{1}{\sigma\sqrt{2\pi}} \int_{350}^{\infty} e^{-(x-\mu)^2/(2\sigma^{2})} dx \\
+		   &= \frac{1}{25\sqrt{2\pi}} \int_{350}^{\infty} e^{-(x-300)^2/(2 \times 25^{2})} dx \\
+		   &= 0.02275
+\end{split}
+\end{equation*}
+
+Program:
+\lstinputlisting[language=Python]{integration2a.py}
+Output:
+\lstinputlisting{output21a.txt}
+
+Program: Normal Distribution using scipy package
+\lstinputlisting[language=Python]{normscipy2a.py}
+Output:
+\lstinputlisting{output22a.txt}
+
 \item[b)] What percentage will have life time from $220$ to $260$ hours?
+
+\begin{equation*}
+\begin{split}
+P(220 < X < 260) &= \frac{1}{\sigma\sqrt{2\pi}} \int_{220}^{260} e^{-(x-\mu)^2/(2\sigma^{2})} dx \\
+		&= \frac{1}{25\sqrt{2\pi}} \int_{220}^{260} e^{-(x-300)^2/(2 \times 25^{2})} dx \\
+		&= 0.05411
+\end{split}
+\end{equation*}
+
+Program:
+\lstinputlisting[language=Python]{integration2b.py}
+Output:
+\lstinputlisting{output21b.txt}
+
+Program: Normal Distribution using scipy package
+\lstinputlisting[language=Python]{normscipy2b.py}
+Output:
+\lstinputlisting{output22b.txt}
 
 \end{enumerate}
 
@@ -288,10 +330,62 @@ distributed, find
 
 \begin{enumerate}
 
-\item[a)] What proportion of accounts is over Rs.$150$?
+\item[a)] What proportion of accounts is over Rs.$150$? \\ \\
+given, $\mu = 120$ and $\sigma = 40$
+
+\begin{equation*}
+\begin{split}
+P(X > 150) &= \frac{1}{\sigma\sqrt{2\pi}} \int_{150}^{\infty} e^{-(x-\mu)^2/(2\sigma^{2})} dx \\
+		   &= \frac{1}{40\sqrt{2\pi}} \int_{150}^{\infty} e^{-(x-120)^2/(2 \times 40^{2})} dx \\
+		   &= 0.22663
+\end{split}
+\end{equation*}
+
+Program:
+\lstinputlisting[language=Python]{integration3a.py}
+Output:
+\lstinputlisting{output31a.txt}
+
+Program: Normal Distribution using scipy package
+\lstinputlisting[language=Python]{normscipy3a.py}
+Output:
+\lstinputlisting{output32a.txt}
+
 \item[b)] What proportion of accounts is between Rs.$100$ and Rs.$150$?
+
+\begin{equation*}
+P(100 < X < 150) = \frac{1}{\sigma\sqrt{2\pi}} \int_{100}^{150} e^{-(x-\mu)^2/(2\sigma^{2})} dx 
+		= \frac{1}{40\sqrt{2\pi}} \int_{100}^{150} e^{-(x-120)^2/(2 \times 40^{2})} dx 
+		= 0.46484
+\end{equation*}
+
+Program:
+\lstinputlisting[language=Python]{integration3b.py}
+Output:
+\lstinputlisting{output31b.txt}
+
+Program: Normal Distribution using scipy package
+\lstinputlisting[language=Python]{normscipy3b.py}
+Output:
+\lstinputlisting{output32b.txt}
+
 \item[c)] What proportion of accounts is between Rs.$60$ and Rs.$90$?
 
+\begin{equation*}
+P(60 < X < 90) = \frac{1}{\sigma\sqrt{2\pi}} \int_{60}^{90} e^{-(x-\mu)^2/(2\sigma^{2})} dx 
+		= \frac{1}{40\sqrt{2\pi}} \int_{60}^{90} e^{-(x-120)^2/(2 \times 40^{2})} dx 
+		= 0.15982
+\end{equation*}
+
+Program:
+\lstinputlisting[language=Python]{integration3c.py}
+Output:
+\lstinputlisting{output31c.txt}
+
+Program: Normal Distribution using scipy package
+\lstinputlisting[language=Python]{normscipy3c.py}
+Output:
+\lstinputlisting{output32c.txt}
 \end{enumerate}
 
 \end{enumerate}
