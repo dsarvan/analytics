@@ -7,12 +7,12 @@ plt.style.use('seaborn-darkgrid')
 def similar_variance(n1,s1_mean,n2,s2_mean):
     dof = n1+n2-2
     sp = np.sqrt(((n1-1)*s1_stdv**2+(n2-1)*s2_stdv**2)/(dof))
-    return (s1_mean-s2_mean)/(sp * np.sqrt(1/n1 + 1/n2)), dof
+    return (s1_mean-s2_mean)/(sp * np.sqrt(1/n1 + 1/n2)), dof, sp
 
 def non_similar_variance(n1,s1_mean,n2,s2_mean):
     sd = np.sqrt(s1_stdv**2/n1 + s2_stdv**2/n2)
     dof = (sd**4)/(((s1_std**2/n1)**2/(n1-1)) + ((s2_std**2/n2)**2/(n2-1)))
-    return (s1_mean-s2_mean)/sd, dof
+    return (s1_mean-s2_mean)/sd, dof, sd
 
 def ttest_and_variance(s1_stdv, s2_stdv):
     if 0.5 < s1_stdv/s2_stdv < 2:
@@ -50,7 +50,7 @@ print("\t Standard Deviation = {:.5f}".format(s2_stdv))
 print("\t Standard Error of the Mean = {:.5f}".format(std_err2))
 
 # calculation of T-statistics and degrees of freedom
-tstatistics, dof = ttest_and_variance(s1_stdv, s2_stdv)
+tstatistics, dof, sp = ttest_and_variance(s1_stdv, s2_stdv)
 print("\nT statistics: {:.5f}".format(tstatistics))
 
 # calculation of Critical values
@@ -71,9 +71,13 @@ print("\np-value: {:.5f}".format(pvalue))
 if pvalue < los: print("Reject the Null hypothesis.")
 else: print("Fail to reject the Null hypothesis.")
 
-## confidence interval
-#cnf_int = s_mean + std_err * np.array([tcritical_l, tcritical_u])
-#print("Confidence Interval: {}".format(cnf_int))
+# standard error
+std_error = sp * np.sqrt(1/n1 + 1/n2)
+print("\nStandard Error: {:.5f}".format(std_error))
+
+# confidence interval
+cnf_int = (s1_mean - s2_mean) + std_error * np.array([tcritical_l, tcritical_u])
+print("Confidence Interval: {}".format(cnf_int))
 
 # plot script
 x1=np.linspace(-10,tcritical_l,1000); y1=t.pdf(x1,df=dof)
