@@ -16,9 +16,13 @@ n1 = len(sample1); n2 = len(sample2)
 s1_mean = np.mean(sample1); s1_stdv = np.std(sample1)
 s2_mean = np.mean(sample2); s2_stdv = np.std(sample2)
 
-# calculation of degrees of freedom
-if 0.5 < s1_stdv/s2_stdv < 2: dof = n1+n2-2
-else: dof = (sd**4)/(((s1_std**2/n1)**2/(n1-1)) + ((s2_std**2/n2)**2/(n2-1)))
+# calculation of degrees of freedom and pooled variance
+if 0.5 < s1_stdv/s2_stdv < 2: 
+    dof = n1+n2-2
+    sp = np.sqrt(((n1-1)*s1_stdv**2+(n2-1)*s2_stdv**2)/(dof))
+else: 
+    sp = np.sqrt(s1_stdv**2/n1 + s2_stdv**2/n2)
+    dof = (sp**4)/(((s1_std**2/n1)**2/(n1-1)) + ((s2_std**2/n2)**2/(n2-1)))
 
 # level of significance, confidence level
 los = 0.05; cnl = 1 - los
@@ -57,9 +61,13 @@ print("\np-value: {:.5f}".format(pvalue))
 if pvalue < los: print("Reject the Null hypothesis.")
 else: print("Fail to reject the Null hypothesis.")
 
-## confidence interval
-#cnf_int = s_mean + std_err * np.array([tcritical_l, tcritical_u])
-#print("Confidence Interval: {}".format(cnf_int))
+# standard error
+std_error = sp * np.sqrt(1/n1 + 1/n2)
+print("\nStandard Error: {:.5f}".format(std_error))
+
+# confidence interval
+cnf_int = (s1_mean - s2_mean) + std_error * np.array([tcritical_l, tcritical_u])
+print("Confidence Interval: {}".format(cnf_int))
 
 # plot script
 x1=np.linspace(-10,tcritical_l,1000); y1=t.pdf(x1,df=dof)
