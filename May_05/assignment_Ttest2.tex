@@ -1,0 +1,70 @@
+\documentclass[a4paper,10pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=2cm, left=1cm, right=1.5cm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{times}
+
+\graphicspath{ {/home/saran/Analytics/May_04/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{Assignment T-test} \\
+Date: 05/05/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\vspace{10px}
+
+\begin{enumerate}
+
+\item[1.] Two sets of ten students selected at random from a college were taken. One set was
+given memory test as they were and the other was given the memory test after two weeks of
+training and the scores are given below. \\
+\begin{tabular}{lrrrrrrrrrr}
+Set A: & 10 & 8 & 7 & 9 & 8 & 10 & 9 & 6 & 7 & 8 \\ 
+Set B: & 12 & 8 & 8 & 10 & 8 & 11 & 9 & 8 & 9 & 9 \\
+\end{tabular} \\
+Do you think there is a significant effect due to training?
+
+\item[2.] A group of 5 patients treated with medicine A weighs (in kg) 42, 29, 48, 60 and 41
+; a second group of 7 patients from the same hospital treated with medicine B weighs (in kg)
+38, 42, 56, 64, 68, 69 and 62. Do you agree with the claim that medicine B increases weight
+significantly. \\
+
+\item[3.] Samples of two types of electric bulbs were tested for length of life and the
+following data were obtained \\
+\begin{tabular}{lrr}
+		& Type I & Type II \\
+No. of Samples: & 8 & 7 \\
+Mean (hours):   & 1134 & 1024 \\
+SD (hours):     & 35 & 40 \\
+\end{tabular} \\
+Test at 5 percent level, whether the difference in sample mean is significant.
+
+\end{enumerate}
+\end{document}
