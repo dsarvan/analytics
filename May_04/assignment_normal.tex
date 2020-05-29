@@ -345,9 +345,11 @@ Output:
 \item[b)] What proportion of accounts is between Rs.$100$ and Rs.$150$?
 
 \begin{equation*}
-P(100 < X < 150) = \frac{1}{\sigma\sqrt{2\pi}} \int_{100}^{150} e^{-(x-\mu)^2/(2\sigma^{2})} dx 
-		= \frac{1}{40\sqrt{2\pi}} \int_{100}^{150} e^{-(x-120)^2/(2 \times 40^{2})} dx 
-		= 0.46484
+\begin{split}
+P(100 < X < 150) &= \frac{1}{\sigma\sqrt{2\pi}} \int_{100}^{150} e^{-(x-\mu)^2/(2\sigma^{2})} dx \\
+		&= \frac{1}{40\sqrt{2\pi}} \int_{100}^{150} e^{-(x-120)^2/(2 \times 40^{2})} dx \\
+		&= 0.46484
+\end{split}
 \end{equation*}
 
 Program:
@@ -365,9 +367,11 @@ Output:
 \item[c)] What proportion of accounts is between Rs.$60$ and Rs.$90$?
 
 \begin{equation*}
-P(60 < X < 90) = \frac{1}{\sigma\sqrt{2\pi}} \int_{60}^{90} e^{-(x-\mu)^2/(2\sigma^{2})} dx 
-		= \frac{1}{40\sqrt{2\pi}} \int_{60}^{90} e^{-(x-120)^2/(2 \times 40^{2})} dx 
-		= 0.15982
+\begin{split}
+P(60 < X < 90) &= \frac{1}{\sigma\sqrt{2\pi}} \int_{60}^{90} e^{-(x-\mu)^2/(2\sigma^{2})} dx \\
+		&= \frac{1}{40\sqrt{2\pi}} \int_{60}^{90} e^{-(x-120)^2/(2 \times 40^{2})} dx \\
+		&= 0.15982
+\end{split}
 \end{equation*}
 
 Program:
