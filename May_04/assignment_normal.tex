@@ -1,8 +1,8 @@
-\documentclass[a4paper,10pt,openright]{report}
+\documentclass[a4paper,11pt,openright]{report}
 \setlength{\parindent}{0pt} % set noindent for entire file
 
 \usepackage[utf8]{inputenc}
-\usepackage[a4paper, left=10mm, right=10mm, top=20mm]{geometry}
+\usepackage[a4paper,top=20mm,bottom=25mm,left=10mm,right=15mm]{geometry}
 \usepackage{xcolor,graphicx}
 \usepackage{amsmath}
 \usepackage{setspace}
@@ -11,7 +11,6 @@
 \usepackage{enumitem}
 \usepackage{listings}
 \usepackage{times}
-%\usepackage{lmodern}
 
 \graphicspath{ {/home/saran/Analytics/May_04/} }
 
@@ -79,7 +78,7 @@ a value $\leq x$, is then the integral of the normal distribution,
 \begin{equation*}
 \begin{split}
 D(x) & \equiv \int_{-\infty}^{x} P(x^{'}) dx^{'} \\
-		& = \frac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{x} e^{-(x^{'}-\mu)^{2}/(2\sigma^{2})} dx^{'}
+& = \frac{1}{\sigma\sqrt{2\pi}} \int_{-\infty}^{x} e^{-(x^{'}-\mu)^{2}/(2\sigma^{2})} dx^{'}
 \end{split}
 \end{equation*}
 
@@ -87,12 +86,6 @@ Normal distributions have many convenient properties, so random variates with un
 distributions are often assumed to be normal. It is often a good approximation due to the
 central limit theorem. This theorem states that the mean of any set of variates with any 
 distribution having a finite mean and variance tends to the normal distribution. \\
-
-%figure
-\begin{figure}[ht!]
-\includegraphics[width=12cm,height=6cm,keepaspectratio]{stdnorm.pdf}
-\centering
-\end{figure}
 
 \pagebreak
 
@@ -103,14 +96,10 @@ distribution having a finite mean and variance tends to the normal distribution.
 P(Z > 2.70) = \frac{1}{\sqrt{2\pi}} \int_{2.70}^{\infty} e^{-z^{2}/2} dz = 0.00347
 \end{equation*}
 
-\vspace{1cm}
-
 Program:
 \lstinputlisting[language=Python]{integration1a.py}
 Output:
 \lstinputlisting{output11a.txt}
-
-\vspace{1cm}
 
 Program:
 \lstinputlisting[language=Python]{snormscipya.py}
@@ -119,23 +108,21 @@ Output:
 
 %figure_1
 \begin{figure}[ht!]
-\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1a.pdf}
+\includegraphics[width=14cm,height=7cm,keepaspectratio]{norm1a.pdf}
 \centering
 \end{figure}
+
+\pagebreak
 
 \item[b)] To the left of $Z = 1.73$
 \begin{equation*}
 P(Z < 1.73) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{1.73} e^{-z^{2}/2} dz = 0.95818
 \end{equation*}
 
-\vspace{1cm}
-
 Program:
 \lstinputlisting[language=Python]{integration1b.py}
 Output:
 \lstinputlisting{output11b.txt}
-
-\vspace{1cm}
 
 Program:
 \lstinputlisting[language=Python]{snormscipyb.py}
@@ -144,23 +131,21 @@ Output:
 
 %figure_2
 \begin{figure}[ht!]
-\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1b.pdf}
+\includegraphics[width=14cm,height=7cm,keepaspectratio]{norm1b.pdf}
 \centering
 \end{figure}
+
+\pagebreak
 
 \item[c)] To the right of $Z = -0.66$
 \begin{equation*}
 P(Z > -0.66) = \frac{1}{\sqrt{2\pi}} \int_{-0.66}^{\infty} e^{-z^{2}/2} dz = 0.74537
 \end{equation*}
 
-\vspace{1cm}
-
 Program:
 \lstinputlisting[language=Python]{integration1c.py}
 Output:
 \lstinputlisting{output11c.txt}
-
-\vspace{1cm}
 
 Program:
 \lstinputlisting[language=Python]{snormscipyc.py}
@@ -169,23 +154,21 @@ Output:
 
 %figure_3
 \begin{figure}[ht!]
-\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1c.pdf}
+\includegraphics[width=14cm,height=7cm,keepaspectratio]{norm1c.pdf}
 \centering
 \end{figure}
+
+\pagebreak
 
 \item[d)] To the left of $Z = -1.88$
 \begin{equation*}
 P(Z < -1.88) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{-1.88} e^{-z^{2}/2} dz = 0.03005
 \end{equation*}
 
-\vspace{1cm}
-
 Program:
 \lstinputlisting[language=Python]{integration1d.py}
 Output:
 \lstinputlisting{output11d.txt}
-
-\vspace{1cm}
 
 Program:
 \lstinputlisting[language=Python]{snormscipyd.py}
@@ -194,23 +177,21 @@ Output:
 
 %figure_4
 \begin{figure}[ht!]
-\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1d.pdf}
+\includegraphics[width=14cm,height=7cm,keepaspectratio]{norm1d.pdf}
 \centering
 \end{figure}
+
+\pagebreak
 
 \item[e)] Between $Z = -0.90$ and $Z = -1.85$
 \begin{equation*}
 P(-1.85 < Z < -0.90) = \frac{1}{\sqrt{2\pi}} \int_{-1.85}^{-0.90} e^{-z^{2}/2} dz = 0.15190 
 \end{equation*}
 
-\vspace{0.5cm}
-
 Program:
 \lstinputlisting[language=Python]{integration1e.py}
 Output:
 \lstinputlisting{output11e.txt}
-
-\vspace{1cm}
 
 Program:
 \lstinputlisting[language=Python]{snormscipye.py}
@@ -219,23 +200,21 @@ Output:
 
 %figure_5
 \begin{figure}[ht!]
-\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1e.pdf}
+\includegraphics[width=14cm,height=7cm,keepaspectratio]{norm1e.pdf}
 \centering
 \end{figure}
+
+\pagebreak
 
 \item[f)] Between $Z = -1.45$ and $Z = 1.45$
 \begin{equation*}
 P(-1.45 < Z < 1.45) = \frac{1}{\sqrt{2\pi}} \int_{-1.45}^{1.45} e^{-z^{2}/2} dz = 0.85294
 \end{equation*}
 
-\vspace{0.5cm}
-
 Program:
 \lstinputlisting[language=Python]{integration1f.py}
 Output:
 \lstinputlisting{output11f.txt}
-
-\vspace{1cm}
 
 Program:
 \lstinputlisting[language=Python]{snormscipyf.py}
@@ -244,23 +223,21 @@ Output:
 
 %figure_6
 \begin{figure}[ht!]
-\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1f.pdf}
+\includegraphics[width=14cm,height=7cm,keepaspectratio]{norm1f.pdf}
 \centering
 \end{figure}
+
+\pagebreak
 
 \item[g)] Between $Z = -0.90$ and $Z = 1.58$
 \begin{equation*}
 P(-0.90 < Z < 1.58) = \frac{1}{\sqrt{2\pi}} \int_{-0.90}^{1.58} e^{-z^{2}/2} dz = 0.75889
 \end{equation*}
 
-\vspace{0.5cm}
-
 Program:
 \lstinputlisting[language=Python]{integration1g.py}
 Output:
 \lstinputlisting{output11g.txt}
-
-\vspace{1cm}
 
 Program:
 \lstinputlisting[language=Python]{snormscipyg.py}
@@ -269,14 +246,18 @@ Output:
 
 %figure_7
 \begin{figure}[ht!]
-\includegraphics[width=12cm,height=6cm,keepaspectratio]{norm1g.pdf}
+\includegraphics[width=14cm,height=7cm,keepaspectratio]{norm1g.pdf}
 \centering
 \end{figure}
 \end{enumerate}
 
+\pagebreak
+
 \item[2.] The life of a certain kind of electronic device has a mean of $300$ hours and a
 standard deviation of $25$ hours. Assuming that the distribution of life times which are
 measured to the nearest hours can be approximated closely with a normal curve.
+
+\vspace{1cm}
 
 \begin{enumerate}
 
@@ -302,6 +283,8 @@ Program:
 Output:
 \lstinputlisting{output22a.txt}
 
+\vspace{1cm}
+
 \item[b)] What percentage will have life time from $220$ to $260$ hours?
 
 \begin{equation*}
@@ -311,6 +294,8 @@ P(220 < X < 260) &= \frac{1}{\sigma\sqrt{2\pi}} \int_{220}^{260} e^{-(x-\mu)^2/(
 		&= 0.05411
 \end{split}
 \end{equation*}
+
+\pagebreak
 
 Program:
 \lstinputlisting[language=Python]{integration2b.py}
@@ -324,9 +309,13 @@ Output:
 
 \end{enumerate}
 
+\vspace{1cm}
+
 \item[3.] The customer accounts of a certain departmental store have an average balance of
 Rs.$120$ and standard deviation of Rs.$40$ Assuming that the account balances are normally
 distributed, find
+
+\vspace{1cm}
 
 \begin{enumerate}
 
@@ -351,6 +340,8 @@ Program:
 Output:
 \lstinputlisting{output32a.txt}
 
+\vspace{1cm}
+
 \item[b)] What proportion of accounts is between Rs.$100$ and Rs.$150$?
 
 \begin{equation*}
@@ -368,6 +359,8 @@ Program:
 \lstinputlisting[language=Python]{normscipy3b.py}
 Output:
 \lstinputlisting{output32b.txt}
+
+\pagebreak
 
 \item[c)] What proportion of accounts is between Rs.$60$ and Rs.$90$?
 
