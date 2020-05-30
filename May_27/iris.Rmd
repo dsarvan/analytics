@@ -1,0 +1,49 @@
+---
+title: "iris dataset"
+output: html_notebook
+---
+
+##### read iris dataset as dataframe
+```{r}
+df = iris
+```
+
+##### number of rows
+```{r}
+nrow(df)
+```
+
+##### number of columns
+```{r}
+ncol(df)
+```
+
+##### dimensions of iris dataframe
+```{r}
+dim(df)
+```
+
+##### NA's in iris dataframe
+```{r}
+which(is.na(df))
+```
+
+##### print row names in dataframe
+```{r}
+colnames(df)
+```
+
+##### initial rows of data in iris dataset
+```{r}
+head(df)
+```
+
+##### final rows of data in iris dataset
+```{r}
+tail(df)
+```
+
+##### write dataframe to a file
+```{r}
+write.csv(x=df, file="iris.csv")
+```
