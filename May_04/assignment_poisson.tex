@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt,openright]{report}
+\documentclass[a4paper,11pt,openright]{report}
 \setlength{\parindent}{0pt} % set noindent for entire file
 
 \usepackage[utf8]{inputenc}
@@ -68,8 +68,12 @@ P(X \leq 5)  = \sum_{k=0}^{5} \frac{\lambda^{k} e^{-\lambda}}{k!}
 \end{equation*}
 
 Program:
-\lstinputlisting[language=Python]{pdistribution.py}
+\lstinputlisting[language=Python]{pcumulative.py}
+Output:
+\lstinputlisting{outputp0.txt}
 
+Program: Scipy Package
+\lstinputlisting[language=Python]{pdistribution.py}
 Output:
 \lstinputlisting{outputp2.txt}
 
@@ -81,10 +85,14 @@ the number of drivers with \\
 
 \begin{enumerate}
 
+\vspace{1cm}
+
 \item[a)] No accidents in a year 
 \begin{equation*}
 P(X = 0) = \frac{3^{0} e^{-3}}{0!} = 0.0498
 \end{equation*}
+
+\vspace{1cm}
 
 \item[b)] More than $3$ accidents in a year 
 \begin{equation*}
@@ -99,21 +107,21 @@ P(X = 0) = \frac{3^{0} e^{-3}}{0!} = 0.0498
 
 \end{enumerate}
 
-\pagebreak
+\vspace{1cm}
 
 Program:
 \lstinputlisting[language=Python]{pdist.py}
-
 Output:
 \lstinputlisting{outputp1.txt}
 
-\pagebreak
+\vspace{1cm}
 
 Program: Scipy package
 \lstinputlisting[language=Python]{taxi.py}
-
 Output:
 \lstinputlisting{outputp3.txt}
+
+\pagebreak
 
 \item[3.] From the records of $10$ Indian Army corps kept over $20$ years the following data
 were obtained showing the number of deaths caused by the horse. Calculate the theoretical
@@ -151,17 +159,22 @@ Calculated Frequency, $N \cdot P(k)$ : & 108.7 & 66.3 & 20.2 & 4.1 & 0.6 \\
 \hline
 \end{tabular}
 
+\vspace{1.5cm}
+
 Program:
 \lstinputlisting[language=Python]{pfrequency.py}
-
 Output:
 \lstinputlisting{outputp4.txt}
 
+\pagebreak
+
 Program: Scipy package
 \lstinputlisting[language=Python]{calculated.py}
+Output:
+\lstinputlisting{outputp5.txt}
 
 \begin{figure}[ht!]
-\includegraphics[width=18cm,height=9cm,keepaspectratio]{frequency.pdf}
+\includegraphics[width=20cm,height=10cm,keepaspectratio]{frequency.pdf}
 \centering
 \end{figure}
 
