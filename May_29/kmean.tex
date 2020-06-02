@@ -1,0 +1,63 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=2cm, left=1cm, right=1.5cm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{times}
+
+\graphicspath{ {/home/saran/Analytics/May_04/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{K-Mean cluster} \\
+Date: 29/05/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\vspace{10px}
+
+Program:
+\lstinputlisting[language=Python]{kmean.py}
+
+\pagebreak
+
+Output:
+\lstinputlisting{kkoutput.txt}
+
+\pagebreak
+
+Assignment Problem:
+
+Program:
+\lstinputlisting[language=Python]{lmean.py}
+
+\pagebreak
+
+Output:
+\lstinputlisting{lkoutput.txt}
+
+\end{document}
