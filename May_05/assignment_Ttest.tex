@@ -1,8 +1,8 @@
-\documentclass[a4paper,10pt,openright]{report}
+\documentclass[a4paper,11pt,openright]{report}
 \setlength{\parindent}{0pt} % set noindent for entire file
 
 \usepackage[utf8]{inputenc}
-\usepackage[a4paper, top=2cm, left=1cm, right=1.5cm]{geometry}
+\usepackage[a4paper,top=20mm,left=10mm,right=10mm]{geometry}
 \usepackage{xcolor,graphicx}
 \usepackage{amsmath}
 \usepackage{setspace}
@@ -82,31 +82,32 @@ t = \frac{\bar x - \mu}{s/\sqrt{n}}
   = -2.0
 \end{equation*}	
 
-\vspace{0.5cm}
+\end{enumerate}
+
+\vspace{1cm}
 
 Program:
 \lstinputlisting[language=Python]{tscript.py}
+
+\vspace{1cm}
 
 Output:
 \lstinputlisting{toutput1a.txt}
 
 %figure_1
 \begin{figure}[ht!]
-\includegraphics[width=14cm,height=7cm,keepaspectratio]{tscript1a.pdf}
+\includegraphics[width=16cm,height=8cm,keepaspectratio]{tscript1a.pdf}
 \centering
 \end{figure}
 
-\pagebreak
-
+\vspace{2cm} 
 \lstinputlisting{toutput1b.txt}
 
 %figure_2
 \begin{figure}[ht!]
-\includegraphics[width=14cm,height=7cm,keepaspectratio]{tscript1b.pdf}
+\includegraphics[width=16cm,height=8cm,keepaspectratio]{tscript1b.pdf}
 \centering
 \end{figure}
-
-\end{enumerate}
 
 \item[2.] A filling machine is expected to fill 5 Kg of powder into bags. A sample of 10 
 bags gave the weighs 4.7, 4.9, 5.0, 5.1, 5.4, 5.2, 4.6, 5.1, 4.6 and 4.7 Test whether the
@@ -141,21 +142,30 @@ T-statistics:
 t = \frac{\bar x - \mu}{s/\sqrt{n}} = \frac{4.93 - 5}{0.275076/\sqrt{10}} = -0.80472
 \end{equation*}
 
-\vspace{1.5cm}
+Standard Error:
+\begin{equation*}
+S.E = \frac{s}{\sqrt{n}} = \frac{0.275076}{\sqrt{10}} = 0.08699
+\end{equation*}
+
+\vspace{2cm}
 
 Program:
 \lstinputlisting[language=Python]{tscript2.py}
 
-\pagebreak
+\vspace{1cm}
 
 Output:
 \lstinputlisting{toutput2.txt}
 
 %figure_3
 \begin{figure}[ht!]
-\includegraphics[width=14cm,height=7cm,keepaspectratio]{tscript2.pdf}
+\includegraphics[width=16cm,height=8cm,keepaspectratio]{tscript2.pdf}
 \centering
 \end{figure}
+
+\pagebreak
+
+\vspace{2cm}
 
 \item[3.] Two sets of ten students selected at random from a college were taken. One set was
 given memory test as they were and the other was given the memory test after two weeks of
@@ -173,8 +183,8 @@ Set A: \\
 \hspace*{10mm} Mean:
 \begin{equation*}
 \bar x_{1} = \frac{\sum\limits_{i=1}^{n1} x_{1i}}{n1}
-	    	= \frac{10 + 8 + 7 + 9 + 8 + 10 + 9 + 6 + 7 + 8}{10}
-	    	= 8.2
+    	= \frac{10 + 8 + 7 + 9 + 8 + 10 + 9 + 6 + 7 + 8}{10}
+    	= 8.2
 \end{equation*}
 
 \hspace*{10mm} Variance:
@@ -186,16 +196,16 @@ s_{1}^{2} = \frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}
 \hspace*{10mm} Standard Deviation:
 \begin{equation*}
 s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}}
-		= \sqrt{\frac{\sum\limits_{i=1}^{10} (x_{1i} - 8.2)^{2}}{10 -1}}
-		= \sqrt{1.73333} = 1.31656
+	= \sqrt{\frac{\sum\limits_{i=1}^{10} (x_{1i} - 8.2)^{2}}{10 -1}}
+	= \sqrt{1.73333} = 1.31656
 \end{equation*}
 
 Set B: \\
 \hspace*{10mm} Mean:
 \begin{equation*}
 \bar x_{2} = \frac{\sum\limits_{i=1}^{n2} x_{2i}}{n2}
-	    	= \frac{12 + 8 + 8 + 10 + 8 + 11 + 9 + 8 + 9 + 9}{10}
-	    	= 9.2
+	= \frac{12 + 8 + 8 + 10 + 8 + 11 + 9 + 8 + 9 + 9}{10}
+	= 9.2
 \end{equation*}
 
 \hspace*{10mm} Variance:
@@ -206,9 +216,9 @@ s_{2}^{2} = \frac{\sum\limits_{i=1}^{n2} (x_{2i} - \bar {x_{2}})^{2}}{n2 - 1}
 
 \hspace*{10mm} Standard Deviation:
 \begin{equation*}
-		s_{2} = \sqrt{\frac{\sum\limits_{i=1}^{n2} (x_{2i} - \bar x_{2})^{2}}{n2 - 1}}
-		= \sqrt{\frac{\sum\limits_{i=1}^{10} (x_{2i} - 9.2)^{2}}{10 -1}}
-		= \sqrt{1.95556} = 1.39841
+s_{2} = \sqrt{\frac{\sum\limits_{i=1}^{n2} (x_{2i} - \bar x_{2})^{2}}{n2 - 1}}
+= \sqrt{\frac{\sum\limits_{i=1}^{10} (x_{2i} - 9.2)^{2}}{10 -1}}
+= \sqrt{1.95556} = 1.39841
 \end{equation*}
 
 Calculation of $s1/s2$:
@@ -254,25 +264,33 @@ S.E = sp \sqrt{1/n1 + 1/n2} = 1.35810 \times \sqrt{1/10 + 1/10} = 0.60736
 
 Program:
 \lstinputlisting[language=Python]{tscript3.py}
+
+\vspace{2cm}
+
 Output:
 \lstinputlisting{toutput31.txt}
 
 %figure_4
 \begin{figure}[ht!]
-\includegraphics[width=14cm,height=7cm,keepaspectratio]{tscript3.pdf}
+\includegraphics[width=16cm,height=8cm,keepaspectratio]{tscript3.pdf}
 \centering
 \end{figure}
 
 \pagebreak
 
+\vspace{3cm}
+
 Program: T-test with in-built scipy.stats.ttest
 \lstinputlisting[language=Python]{ttest2.py}
+
+\vspace{2cm}
+
 Output:
 \lstinputlisting{toutput32.txt}
 
 %figure_4
 \begin{figure}[ht!]
-\includegraphics[width=14cm,height=7cm,keepaspectratio]{ttest2.pdf}
+\includegraphics[width=16cm,height=8cm,keepaspectratio]{ttest2.pdf}
 \centering
 \end{figure}
 
