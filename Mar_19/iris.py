@@ -9,4 +9,4 @@ import seaborn as sns
 df = sns.load_dataset("iris")
 
 sns.pairplot(df,hue='species')
-plt.show()
+plt.savefig("irisplot.pdf"); plt.show()
