@@ -72,6 +72,9 @@ Do you think there is a significant effect due to training? \\
 
 \textbf{Solution:}
 
+\textbf{Null hypothesis:} $H_{0}: \mu_{1} = \mu_{2}$, No significant effect due to training \\
+\textbf{Alternative hypothesis:} $H_{1}: \mu_{1} \neq \mu_{2}$, Significant effect due to training \\
+
 \textbf{Set A:} \\ 
 \hspace*{10mm} Mean:
 \begin{equation*}
@@ -159,7 +162,10 @@ $\alpha = 0.05$ is $2.101$ \\
 Standard Error:
 \begin{equation*}
 S.E = s_{p} \sqrt{1/n1 + 1/n2} = 1.35810 \times \sqrt{1/10 + 1/10} = 0.60736
-\end{equation*}
+\end{equation*} \\
+
+\textbf{Conclusion:} $T < T_{0.05}$, we fail to reject the Null hypothesis. That is there is
+no significant effect in the scores of the memeory test due to training.
 
 \vspace{3cm}
 
@@ -200,10 +206,12 @@ A second group of 7 patients from the same hospital treated with medicine B weig
 56, 64, 68, 69 and 62 kg. Do you agree with the claim that medicine B increases weight
 significantly. \\
 
-Null hypothesis: $H_{0}: \mu 1 = \mu 2$ \\
-Alternative hypothesis: $H_{1}: \mu 1 \neq \mu 2$ \\
+\textbf{Solution:}
 
-Medicine A: \\
+\textbf{Null hypothesis:} $H_{0}: \mu 1 = \mu 2$, No significant increase in weight \\
+\textbf{Alternative hypothesis:} $H_{1}: \mu 1 \neq \mu 2$, Significant increase in weight \\
+
+\textbf{Medicine A:} \\
 \hspace*{10mm} Mean:
 \begin{equation*}
 \bar x_{1} = \frac{\sum\limits_{i=1}^{n1} x_{1i}}{n1}
@@ -223,7 +231,7 @@ s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}}
 	= \sqrt{127.5} = 11.29159
 \end{equation*}
 
-Medicine B: \\
+\textbf{Medicine B:} \\
 \hspace*{10mm} Mean:
 \begin{equation*}
 \bar x_{1} = \frac{\sum\limits_{i=1}^{n1} x_{1i}}{n1}
@@ -269,15 +277,26 @@ s_{p} = \sqrt{\frac{(5-1) \times 11.29159^{2} + (7-1) \times 12.42310^{2}}{5+7-2
       = 11.98332
 \end{equation*}
 
-Calculation of T statistic:
+T statistic:
 \begin{equation*}
 T = \frac{44.0 - 57.0}{11.98332 \times \sqrt{1/5 + 1/7}} = -1.85272
 \end{equation*}
 
-Calculation of Standard Error:
+degrees of freedom:
+\begin{equation*}
+d.o.f = n_{1} + n_{2} -2 = 5 + 7 - 2 = 10
+\end{equation*}
+
+The critical value for $T$ (from T-distribution table) with degrees of freedom $= 10$ and
+$\alpha = 0.05$ is $2.228$ \\
+
+Standard Error:
 \begin{equation*}
 S.E = s_{p} \sqrt{1/n1 + 1/n2} = 11.98332 \times \sqrt{1/5 + 1/7} = 7.01671
 \end{equation*}
+
+\textbf{Conclusion:} $T < T_{0.05}$, we fail to reject the Null hypothesis. That is there is
+no significant increase in weight due to medicine B when compared with medicine A.
 
 Program:
 \lstinputlisting[language=Python]{tscript3.py}
@@ -311,18 +330,22 @@ SD (hours):     & 35 & 40 \\
 \end{tabular} \\
 Test at 5 percent level, whether the difference in sample mean is significant. \\
 
-Null hypothesis: $H_{0}: \mu 1 = \mu 2$ \\
-Alternative hypothesis: $H_{1}: \mu 1 \neq \mu 2$ \\
+\textbf{Solution:}
 
-Type I: \\
+\textbf{Null hypothesis:} $H_{0}: \mu 1 = \mu 2$, No significant difference in sample mean
+\\
+\textbf{Alternative hypothesis:} $H_{1}: \mu 1 \neq \mu 2$, Significant difference in sample
+mean \\
+
+\textbf{Type I:} \\
 \hspace*{10mm} Mean = 1134 \\
 \hspace*{10mm} Variance = 1225 \\
-\hspace*{10mm} Standard Deviation = 35
+\hspace*{10mm} Standard Deviation = 35 \\
 
-Type II: \\
+\textbf{Type II:} \\
 \hspace*{10mm} Mean = 1024 \\
 \hspace*{10mm} Variance = 1600 \\
-\hspace*{10mm} Standard Deviation = 40
+\hspace*{10mm} Standard Deviation = 40 \\
 
 Calculation of $s1/s2$:
 \begin{equation*}
@@ -353,15 +376,48 @@ s_{p} = \sqrt{\frac{(8-1) \times 35^{2} + (7-1) \times 40^{2}}{8+7-2}}
       = 37.39087
 \end{equation*}
 
-Calculation of T statistic:
+T statistic:
 \begin{equation*}
 T = \frac{1134 - 1024}{37.39087 \times \sqrt{1/8 + 1/7}} = 5.68428
 \end{equation*}
 
-Calculation of Standard Error:
+degrees of freedom:
+\begin{equation*}
+d.o.f = n_{1} + n_{2} - 2 = 8 + 7 - 2 = 13
+\end{equation*}
+
+The critical value for T (from T-distribution table) with degrees of freedom $= 13$ and 
+$\alpha = 0.05$ is $2.160$ \\
+
+Standard Error:
 \begin{equation*}
 S.E = s_{p} \sqrt{1/n1 + 1/n2} = 37.39087 \times \sqrt{1/8 + 1/7} = 19.35161
 \end{equation*}
+
+\textbf{Conclusion:} $T > T_{0.05}$, we reject the Null hypothesis. That is there is 
+significant difference in sample mean.
+
+Program:
+\lstinputlisting[language=Python]{t2script3.py}
+Output:
+\lstinputlisting{toutput51.txt}
+
+%figure_5
+\begin{figure}[ht!]
+\includegraphics[width=16cm,height=8cm,keepaspectratio]{t2script3.pdf}
+\centering
+\end{figure}
+
+Program: T-test with in-built scipy.stats.ttest
+\lstinputlisting[language=Python]{ttest2.py}
+Output:
+\lstinputlisting{t2output3.txt}
+
+%figure_6
+\begin{figure}[ht!]
+\includegraphics[width=16cm,height=8cm,keepaspectratio]{t2script3.pdf}
+\centering
+\end{figure}
 
 \end{enumerate}
 \end{document}
