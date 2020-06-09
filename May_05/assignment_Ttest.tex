@@ -2,7 +2,7 @@
 \setlength{\parindent}{0pt} % set noindent for entire file
 
 \usepackage[utf8]{inputenc}
-\usepackage[a4paper,top=20mm,left=10mm,right=10mm]{geometry}
+\usepackage[a4paper,top=20mm,bottom=25mm,left=10mm,right=10mm]{geometry}
 \usepackage{xcolor,graphicx}
 \usepackage{amsmath}
 \usepackage{setspace}
@@ -40,20 +40,26 @@ Date: 05/05/2020 \hspace{2mm} Name: D.Saravanan
 
 \vspace{10px}
 
-TTest test the null hypothesis $H_{0}$ against the alternative hypothesis $H_{1}$. \\
+T-test test the null hypothesis $H_{0}$ against the alternative hypothesis $H_{1}$. \\
 
-For univariate samples, TTest performs a Student $t$ test. The test statistic is assumed to
-follow a StudentTDistribution [df]. \\ 
+For univariate samples, T-test performs a Student $t$ test. The test statistic is assumed to
+follow a Student T-Distribution $[df]$. \\ 
+
+For multivariate samples, T-test performs Hotelling's $T^{2}$ test. The test statistic is
+assumed to follow a Hotelling T-Square Distribution $[p,df]$ where $p$ is the dimension of
+data. \\
 
 The degrees of freedom df, used to specify the distribution of the test statistic, depend on
 the sample size, number of samples, and in the case of two univariate samples, the results 
 of a test for equal variances. \\ 
 
-For the TTest, a cutoff $\alpha$ is chosen such that $H_{0}$ is rejected only if $p < \alpha
-$. The value of $\alpha$ used for the "TestConclusion" and "ShortTestConclusion" properties 
-is controlled by the SignificanceLevel option. This value $\alpha$ is also used in diagnostic
-tests of assumptions, including tests for normality, equal variance, and symmetry. By 
-default, $\alpha$ is set to $0.05$. 
+For the T-test, a cutoff $\alpha$ is chosen such that $H_{0}$ is rejected only if $p < 
+\alpha$. The value of $\alpha$ used for the "Test Conclusion" and "Short Test Conclusion"
+properties is controlled by the Significance Level option. This value $\alpha$ is also used
+in diagnostic tests of assumptions, including tests for normality, equal variance, and
+symmetry. By default, $\alpha$ is set to $0.05$. \\
+
+\vspace{1cm}
 
 \begin{enumerate}
 
@@ -62,8 +68,10 @@ machine can maintain this but with a standard deviation of 0.5 kg. Samples of 25
 from the production line. If a sample means are (i) 16.35 kg, (ii) 15.8 kg. Can we be 95 per
 cent sure that the sample has come from a population of 16 kg tins? \\
 
-Null hypothesis: $H_{0}: \mu = 16$ \\
-Alternative hypothesis: $H_{1}: \mu \neq 16$ 
+\textbf{Solution:}
+
+\textbf{Null hypothesis:} $H_{0}: \mu = 16$ \\
+\textbf{Alternative hypothesis:} $H_{1}: \mu \neq 16$ 
 
 \begin{enumerate}
 \item[(i)] $\bar x = 16.35$, $s = 0.5$ and $n = 25$ 
