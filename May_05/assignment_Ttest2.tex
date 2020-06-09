@@ -2,7 +2,7 @@
 \setlength{\parindent}{0pt} % set noindent for entire file
 
 \usepackage[utf8]{inputenc}
-\usepackage[a4paper,top=20mm,left=10mm,right=10mm]{geometry}
+\usepackage[a4paper,top=20mm,bottom=25mm,left=10mm,right=10mm]{geometry}
 \usepackage{xcolor,graphicx}
 \usepackage{amsmath}
 \usepackage{setspace}
@@ -58,6 +58,8 @@ For the T-test, a cutoff $\alpha$ is chosen such that $H_{0}$ is rejected only i
 properties is controlled by the Significance Level option. This value $\alpha$ is also used
 in diagnostic tests of assumptions, including tests for normality, equal variance, and
 symmetry. By default, $\alpha$ is set to $0.05$. \\
+
+\vspace{1cm}
 
 \begin{enumerate}
 
@@ -164,15 +166,15 @@ Standard Error:
 S.E = s_{p} \sqrt{1/n1 + 1/n2} = 1.35810 \times \sqrt{1/10 + 1/10} = 0.60736
 \end{equation*} \\
 
-\textbf{Conclusion:} $T < T_{0.05}$, we fail to reject the Null hypothesis. That is there is
+\textbf{Conclusion:} $|T| < T_{0.05}$, we fail to reject the Null hypothesis. That is there is
 no significant effect in the scores of the memeory test due to training.
 
-\vspace{3cm}
+\pagebreak
 
 Program:
 \lstinputlisting[language=Python]{tscript3.py}
 
-\vspace{2cm}
+\vspace{1cm}
 
 Output:
 \lstinputlisting{toutput31.txt}
@@ -188,7 +190,7 @@ Output:
 Program: T-test with in-built scipy.stats.ttest
 \lstinputlisting[language=Python]{ttest2.py}
 
-\vspace{2cm}
+\vspace{1cm}
 
 Output:
 \lstinputlisting{toutput32.txt}
@@ -230,6 +232,8 @@ s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}}
 	= \sqrt{\frac{\sum\limits_{i=1}^{5} (x_{1i} - 44.0)^{2}}{5 -1}}
 	= \sqrt{127.5} = 11.29159
 \end{equation*}
+
+\vspace{1cm}
 
 \textbf{Medicine B:} \\
 \hspace*{10mm} Mean:
@@ -295,11 +299,16 @@ Standard Error:
 S.E = s_{p} \sqrt{1/n1 + 1/n2} = 11.98332 \times \sqrt{1/5 + 1/7} = 7.01671
 \end{equation*}
 
-\textbf{Conclusion:} $T < T_{0.05}$, we fail to reject the Null hypothesis. That is there is
+\textbf{Conclusion:} $|T| < T_{0.05}$, we fail to reject the Null hypothesis. That is there is
 no significant increase in weight due to medicine B when compared with medicine A.
+
+\pagebreak
 
 Program:
 \lstinputlisting[language=Python]{tscript3.py}
+
+\vspace{1cm}
+
 Output:
 \lstinputlisting{toutput41.txt}
 
@@ -309,8 +318,13 @@ Output:
 \centering
 \end{figure}
 
+\pagebreak
+
 Program: T-test with in-built scipy.stats.ttest
 \lstinputlisting[language=Python]{ttest2.py}
+
+\vspace{0.5cm}
+
 Output:
 \lstinputlisting{toutput42.txt}
 
@@ -319,6 +333,8 @@ Output:
 \includegraphics[width=16cm,height=8cm,keepaspectratio]{tscript42.pdf}
 \centering
 \end{figure}
+
+\vspace{1cm}
 
 \item[3.] Samples of two types of electric bulbs were tested for length of life and the
 following data were obtained \\
@@ -394,11 +410,16 @@ Standard Error:
 S.E = s_{p} \sqrt{1/n1 + 1/n2} = 37.39087 \times \sqrt{1/8 + 1/7} = 19.35161
 \end{equation*}
 
-\textbf{Conclusion:} $T > T_{0.05}$, we reject the Null hypothesis. That is there is 
+\textbf{Conclusion:} $|T| > T_{0.05}$, we reject the Null hypothesis. That is there is 
 significant difference in sample mean.
+
+\vspace{2cm}
 
 Program:
 \lstinputlisting[language=Python]{t2script3.py}
+
+\vspace{1cm}
+
 Output:
 \lstinputlisting{toutput51.txt}
 
@@ -408,16 +429,22 @@ Output:
 \centering
 \end{figure}
 
-Program: T-test with in-built scipy.stats.ttest
-\lstinputlisting[language=Python]{ttest2.py}
-Output:
-\lstinputlisting{t2output3.txt}
 
-%figure_6
-\begin{figure}[ht!]
-\includegraphics[width=16cm,height=8cm,keepaspectratio]{t2script3.pdf}
-\centering
-\end{figure}
+%Program: T-test with in-built scipy.stats.ttest
+%\lstinputlisting[language=Python]{ttest23.py}
+%
+%\vspace{1.5cm}
+%
+%Output:
+%\lstinputlisting{t2output3.txt}
+%
+%\vspace{0.2cm}
+%
+%%figure_6
+%\begin{figure}[ht!]
+%\includegraphics[width=16cm,height=8cm,keepaspectratio]{t2script3.pdf}
+%\centering
+%\end{figure}
 
 \end{enumerate}
 \end{document}
