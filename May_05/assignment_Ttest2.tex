@@ -34,26 +34,26 @@
 \pagestyle{plain}
 
 \begin{center}
-\textbf{Assignment T-test} \\
+\textbf{Assignment t-test} \\
 Date: 05/05/2020 \hspace{2mm} Name: D.Saravanan
 \end{center}
 
 \vspace{10px}
 
-T-test test the null hypothesis $H_{0}$ against the alternative hypothesis $H_{1}$. \\
+t-test test the null hypothesis $H_{0}$ against the alternative hypothesis $H_{1}$. \\
 
-For univariate samples, T-test performs a Student $t$ test. The test statistic is assumed to
-follow a Student T-Distribution $[df]$. \\ 
+For univariate samples, t-test performs a Student $t$ test. The test statistic is assumed to
+follow a Student t-Distribution $[df]$. \\ 
 
-For multivariate samples, T-test performs Hotelling's $T^{2}$ test. The test statistic is
-assumed to follow a Hotelling T-Square Distribution $[p,df]$ where $p$ is the dimension of
+For multivariate samples, t-test performs Hotelling's $t^{2}$ test. The test statistic is
+assumed to follow a Hotelling t-square distribution $[p,df]$ where $p$ is the dimension of
 data. \\
 
 The degrees of freedom df, used to specify the distribution of the test statistic, depend on
 the sample size, number of samples, and in the case of two univariate samples, the results 
 of a test for equal variances. \\ 
 
-For the T-test, a cutoff $\alpha$ is chosen such that $H_{0}$ is rejected only if $p < 
+For the t-test, a cutoff $\alpha$ is chosen such that $H_{0}$ is rejected only if $p < 
 \alpha$. The value of $\alpha$ used for the "Test Conclusion" and "Short Test Conclusion"
 properties is controlled by the Significance Level option. This value $\alpha$ is also used
 in diagnostic tests of assumptions, including tests for normality, equal variance, and
@@ -126,7 +126,7 @@ Calculation of $s1/s2$:
 
 Test statistic: 
 \begin{equation*}
-T = \frac{\bar x_{1} - \bar x_{2}}{\sqrt{s_{1}^{2}/n1 + s_{2}^{2}/n2}}
+t = \frac{\bar x_{1} - \bar x_{2}}{\sqrt{s_{1}^{2}/n1 + s_{2}^{2}/n2}}
 \end{equation*}
 
 where $n1$ and $n2$ are the sample sizes, $\bar x_{1}$ and $\bar x_{2}$ are the sample
@@ -134,7 +134,7 @@ means, and $s_{1}^{2}$ and $s_{2}^{2}$ are the sample variances.
 
 If equal variances are assumed $(0.5 < s1/s2 < 2)$, then the formula reduces to:
 \begin{equation*}
-T = \frac{\bar x_{1} - \bar x_{2}}{s_{p} \sqrt{1/n1 + 1/n2}}
+t = \frac{\bar x_{1} - \bar x_{2}}{s_{p} \sqrt{1/n1 + 1/n2}}
 \end{equation*}
 
 where
@@ -148,9 +148,9 @@ s_{p} = \sqrt{\frac{(10-1) \times 1.31656^{2} + (10-1) \times 1.39841^{2}}{10+10
       = 1.35810
 \end{equation*}
 
-T statistic:
+t-statistic:
 \begin{equation*}
-T = \frac{8.2 - 9.2}{1.35810 \times \sqrt{1/10 + 1/10}} = -1.64646
+t = \frac{8.2 - 9.2}{1.35810 \times \sqrt{1/10 + 1/10}} = -1.64646
 \end{equation*}
 
 degrees of freedom:
@@ -158,7 +158,7 @@ degrees of freedom:
 d.o.f = n_{1} + n_{2} - 2 = 10 + 10 - 2 = 18
 \end{equation*}
 
-The critical value for $T$ (from T-distribution table) with degrees of freedom $= 18$ and 
+The critical value for $t$ (from $t$-distribution table) with degrees of freedom $= 18$ and 
 $\alpha = 0.05$ is $2.101$ \\
 
 Standard Error:
@@ -166,7 +166,7 @@ Standard Error:
 S.E = s_{p} \sqrt{1/n1 + 1/n2} = 1.35810 \times \sqrt{1/10 + 1/10} = 0.60736
 \end{equation*} \\
 
-\textbf{Conclusion:} $|T| < T_{0.05}$, we fail to reject the Null hypothesis. That is there is
+\textbf{Conclusion:} $|t| < t_{0.05}$, we fail to reject the Null hypothesis. That is there is
 no significant effect in the scores of the memeory test due to training.
 
 \pagebreak
@@ -187,7 +187,7 @@ Output:
 
 \vspace{2cm}
 
-Program: T-test with in-built scipy.stats.ttest
+Program: t-test with in-built scipy.stats.ttest
 \lstinputlisting[language=Python]{ttest2.py}
 
 \vspace{1cm}
@@ -262,12 +262,12 @@ Calculation of $s1/s2$:
 
 Test statistic:
 \begin{equation*}
-T = \frac{\bar x_{1} - \bar x_{2}}{\sqrt{s_{1}^{2}/n1 + s_{2}^{2}/n2}}
+t = \frac{\bar x_{1} - \bar x_{2}}{\sqrt{s_{1}^{2}/n1 + s_{2}^{2}/n2}}
 \end{equation*}
 
 If equal variances are assumed $(0.5 < s1/s2 < 2)$, then the formula reduces to:
 \begin{equation*}
-T = \frac{\bar x_{1} - \bar x_{2}}{s_{p} \sqrt{1/n1 + 1/n2}}
+t = \frac{\bar x_{1} - \bar x_{2}}{s_{p} \sqrt{1/n1 + 1/n2}}
 \end{equation*}
 
 where
@@ -281,9 +281,9 @@ s_{p} = \sqrt{\frac{(5-1) \times 11.29159^{2} + (7-1) \times 12.42310^{2}}{5+7-2
       = 11.98332
 \end{equation*}
 
-T statistic:
+t-statistic:
 \begin{equation*}
-T = \frac{44.0 - 57.0}{11.98332 \times \sqrt{1/5 + 1/7}} = -1.85272
+t = \frac{44.0 - 57.0}{11.98332 \times \sqrt{1/5 + 1/7}} = -1.85272
 \end{equation*}
 
 degrees of freedom:
@@ -291,7 +291,7 @@ degrees of freedom:
 d.o.f = n_{1} + n_{2} -2 = 5 + 7 - 2 = 10
 \end{equation*}
 
-The critical value for $T$ (from T-distribution table) with degrees of freedom $= 10$ and
+The critical value for $t$ (from $t$-distribution table) with degrees of freedom $= 10$ and
 $\alpha = 0.05$ is $2.228$ \\
 
 Standard Error:
@@ -299,13 +299,13 @@ Standard Error:
 S.E = s_{p} \sqrt{1/n1 + 1/n2} = 11.98332 \times \sqrt{1/5 + 1/7} = 7.01671
 \end{equation*}
 
-\textbf{Conclusion:} $|T| < T_{0.05}$, we fail to reject the Null hypothesis. That is there is
+\textbf{Conclusion:} $|t| < t_{0.05}$, we fail to reject the Null hypothesis. That is there is
 no significant increase in weight due to medicine B when compared with medicine A.
 
 \pagebreak
 
 Program:
-\lstinputlisting[language=Python]{tscript3.py}
+\lstinputlisting[language=Python]{tscript32.py}
 
 \vspace{1cm}
 
@@ -320,8 +320,8 @@ Output:
 
 \pagebreak
 
-Program: T-test with in-built scipy.stats.ttest
-\lstinputlisting[language=Python]{ttest2.py}
+Program: t-test with in-built scipy.stats.ttest
+\lstinputlisting[language=Python]{ttest22.py}
 
 \vspace{0.5cm}
 
@@ -370,7 +370,7 @@ Calculation of $s1/s2$:
 
 Test statistic: 
 \begin{equation*}
-T = \frac{\bar x_{1} - \bar x_{2}}{\sqrt{s_{1}^{2}/n1 + s_{2}^{2}/n2}}
+t = \frac{\bar x_{1} - \bar x_{2}}{\sqrt{s_{1}^{2}/n1 + s_{2}^{2}/n2}}
 \end{equation*}
 
 where $n1$ and $n2$ are the sample sizes, $\bar x_{1}$ and $\bar x_{2}$ are the sample
@@ -378,7 +378,7 @@ means, and $s_{1}^{2}$ and $s_{2}^{2}$ are the sample variances.
 
 If equal variances are assumed $(0.5 < s1/s2 < 2)$, then the formula reduces to:
 \begin{equation*}
-T = \frac{\bar x_{1} - \bar x_{2}}{s_{p} \sqrt{1/n1 + 1/n2}}
+t = \frac{\bar x_{1} - \bar x_{2}}{s_{p} \sqrt{1/n1 + 1/n2}}
 \end{equation*}
 
 where
@@ -392,9 +392,9 @@ s_{p} = \sqrt{\frac{(8-1) \times 35^{2} + (7-1) \times 40^{2}}{8+7-2}}
       = 37.39087
 \end{equation*}
 
-T statistic:
+t-statistic:
 \begin{equation*}
-T = \frac{1134 - 1024}{37.39087 \times \sqrt{1/8 + 1/7}} = 5.68428
+t = \frac{1134 - 1024}{37.39087 \times \sqrt{1/8 + 1/7}} = 5.68428
 \end{equation*}
 
 degrees of freedom:
@@ -402,7 +402,7 @@ degrees of freedom:
 d.o.f = n_{1} + n_{2} - 2 = 8 + 7 - 2 = 13
 \end{equation*}
 
-The critical value for T (from T-distribution table) with degrees of freedom $= 13$ and 
+The critical value for $t$ (from $t$-distribution table) with degrees of freedom $= 13$ and 
 $\alpha = 0.05$ is $2.160$ \\
 
 Standard Error:
@@ -410,7 +410,7 @@ Standard Error:
 S.E = s_{p} \sqrt{1/n1 + 1/n2} = 37.39087 \times \sqrt{1/8 + 1/7} = 19.35161
 \end{equation*}
 
-\textbf{Conclusion:} $|T| > T_{0.05}$, we reject the Null hypothesis. That is there is 
+\textbf{Conclusion:} $|t| > t_{0.05}$, we reject the Null hypothesis. That is there is 
 significant difference in sample mean.
 
 \vspace{2cm}
@@ -430,7 +430,7 @@ Output:
 \end{figure}
 
 
-%Program: T-test with in-built scipy.stats.ttest
+%Program: t-test with in-built scipy.stats.ttest
 %\lstinputlisting[language=Python]{ttest23.py}
 %
 %\vspace{1.5cm}
