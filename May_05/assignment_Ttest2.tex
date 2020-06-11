@@ -10,6 +10,7 @@
 \usepackage{etoolbox}
 \usepackage{enumitem}
 \usepackage{listings}
+\usepackage{textcmds}
 \usepackage{times}
 
 \graphicspath{ {/home/saran/Analytics/May_05/} }
@@ -49,15 +50,15 @@ For multivariate samples, t-test performs Hotelling's $t^{2}$ test. The test sta
 assumed to follow a Hotelling t-square distribution $[p,df]$ where $p$ is the dimension of
 data. \\
 
-The degrees of freedom df, used to specify the distribution of the test statistic, depend on
-the sample size, number of samples, and in the case of two univariate samples, the results 
-of a test for equal variances. \\ 
+The degrees of freedom $df$, used to specify the distribution of the test statistic, depend 
+on the sample size, number of samples, and in the case of two univariate samples, the 
+results of a test for equal variances. \\ 
 
 For the t-test, a cutoff $\alpha$ is chosen such that $H_{0}$ is rejected only if $p < 
-\alpha$. The value of $\alpha$ used for the "Test Conclusion" and "Short Test Conclusion"
-properties is controlled by the Significance Level option. This value $\alpha$ is also used
-in diagnostic tests of assumptions, including tests for normality, equal variance, and
-symmetry. By default, $\alpha$ is set to $0.05$. \\
+\alpha$. The value of $\alpha$ used for the \qq{Test Conclusion} and \qq{Short Test 
+Conclusion} properties is controlled by the Significance Level option. This value $\alpha$ 
+is also used in diagnostic tests of assumptions, including tests for normality, equal 
+variance, and symmetry. By default, $\alpha$ is set to $0.05$. \\
 
 \vspace{1cm}
 
@@ -74,8 +75,10 @@ Do you think there is a significant effect due to training? \\
 
 \textbf{Solution:}
 
-\textbf{Null hypothesis:} $H_{0}: \mu_{1} = \mu_{2}$, No significant effect due to training \\
-\textbf{Alternative hypothesis:} $H_{1}: \mu_{1} \neq \mu_{2}$, Significant effect due to training \\
+\textbf{Null hypothesis:} $H_{0}: \mu_{1} = \mu_{2}$, \hspace{2px} No significant effect
+due to training \\
+\textbf{Alternative hypothesis:} $H_{1}: \mu_{1} \neq \mu_{2}$, \hspace{2px} Significant
+effect due to training \\
 
 \textbf{Set A:} \\ 
 \hspace*{10mm} Mean:
@@ -166,8 +169,8 @@ Standard Error:
 S.E = s_{p} \sqrt{1/n1 + 1/n2} = 1.35810 \times \sqrt{1/10 + 1/10} = 0.60736
 \end{equation*} \\
 
-\textbf{Conclusion:} $|t| < t_{0.05}$, we fail to reject the Null hypothesis. That is there is
-no significant effect in the scores of the memeory test due to training.
+\textbf{Conclusion:} $|t| < t_{0.05}$, we fail to reject the Null hypothesis. That is there
+is no significant effect in the scores of the memeory test due to training.
 
 \pagebreak
 
@@ -210,8 +213,10 @@ significantly. \\
 
 \textbf{Solution:}
 
-\textbf{Null hypothesis:} $H_{0}: \mu 1 = \mu 2$, No significant increase in weight \\
-\textbf{Alternative hypothesis:} $H_{1}: \mu 1 \neq \mu 2$, Significant increase in weight \\
+\textbf{Null hypothesis:} $H_{0}: \mu 1 = \mu 2$, \hspace{2px} No significant increase in
+weight \\
+\textbf{Alternative hypothesis:} $H_{1}: \mu 1 \neq \mu 2$, \hspace{2px} Significant
+increase in weight \\
 
 \textbf{Medicine A:} \\
 \hspace*{10mm} Mean:
@@ -348,10 +353,10 @@ Test at 5 percent level, whether the difference in sample mean is significant. \
 
 \textbf{Solution:}
 
-\textbf{Null hypothesis:} $H_{0}: \mu 1 = \mu 2$, No significant difference in sample mean
-\\
-\textbf{Alternative hypothesis:} $H_{1}: \mu 1 \neq \mu 2$, Significant difference in sample
-mean \\
+\textbf{Null hypothesis:} $H_{0}: \mu 1 = \mu 2$, \hspace{2px} No significant difference in
+sample mean \\
+\textbf{Alternative hypothesis:} $H_{1}: \mu 1 \neq \mu 2$, \hspace{2px} Significant
+difference in sample mean \\
 
 \textbf{Type I:} \\
 \hspace*{10mm} Mean = 1134 \\
