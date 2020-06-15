@@ -49,7 +49,7 @@ standard deviation 3.30 cm. \\
 
 \textbf{Solution:}
 
-Given that $n = 400$, $\bar x = 171.38$ cm, $\mu = 171.17$ cm, $\sigma = 3.30$ cm \\ 
+Given that $n = 400$, $\bar x = 171.38$ cm, $\mu = 171.17$ cm, $\sigma = 3.30$ cm
 
 Sample proportion:
 \begin{equation*}
@@ -57,7 +57,7 @@ p = \frac{\bar x}{n} = \frac{171.38}{400} = 0.42845
 \end{equation*}
 
 \textbf{Null hypothesis:} $H_{0}: \mu = 171.17$ \\
-\textbf{Alternative hypothesis:} $H_{1}: \mu \neq 171.17$ \hspace{5px} (two tailed test)
+\textbf{Alternative hypothesis:} $H_{1}: \mu \neq 171.17$ \hspace{5px} (two tailed test) \\
 
 $z$-statistic:
 \begin{equation*}
@@ -71,49 +71,71 @@ At $5\%$ significance level the tabulated value for $z_{\alpha}$ is $1.96$
 \textbf{Conclusion:} $|z| < z_{\alpha}$, we accept the Null hypothesis. That is there is no
 significant difference between the sample mean and the population mean. \\
 
-$95\%$ fiducial limits (Confidence Interval): \\
-The confidence interval for the population mean is given by 
+\textbf{Standard Error:}
+\begin{equation*}
+S.E = \frac{\sigma}{\sqrt{n}} = \frac{3.30}{\sqrt{400}} = 0.165
+\end{equation*}
 
+\textbf{Confidence Interval:} $95\%$ fiducial limits \\
+The confidence interval for the population mean is given by 
 \begin{equation*}
 \begin{split}
 &\bar x \pm z_{\alpha} \frac{\sigma}{\sqrt{n}} \\
-&171.38 \pm 1.96 \frac{3.30}{\sqrt{400}} = 171.38 \pm 0.3234
+&171.38 \pm 1.96 \frac{3.30}{\sqrt{400}} = 171.38 \pm 0.3234 \\
+&171.0566 < \mu < 171.7034
 \end{split}
 \end{equation*}
 
-Program:
-\lstinputlisting[language=Python]{tscript.py}
+#Program:
+#\lstinputlisting[language=Python]{zscript.py}
+#Output:
+#\lstinputlisting{zoutput1.txt}
 
-Output:
-\lstinputlisting{toutput1a.txt}
-
-%figure_1
-\begin{figure}[ht!]
-\includegraphics[width=14cm,height=7cm,keepaspectratio]{tscript1a.pdf}
-\centering
-\end{figure}
 
 \item[2.] A sample of 900 items has mean 3.4 and standard deviation 2.61 Can the sample be
-regarded as drawn from a population with mean 3.25 at 1 percent level of significane. \\
+regarded as drawn from a population with mean 3.25 at 1 percent level of significance. \\
 
 \textbf{Solution:}
+
+Given that $n = 900$, $\bar x = 3.4$, $s = 2.61$, $\mu = 3.25$
+
+Sample propotion: 
+\begin{equation*}
+p = \frac{\bar x}{n} = \frac{3.4}{900} = 0.00378
+\end{equation*}
 
 \textbf{Null hypothesis:} $H_{0}: \mu = 3.25$ \\
 \textbf{Alternative hypothesis:} $H_{1}: \mu \neq 3.25$ \hspace{5px} (two tailed test) \\
 
-Program:
-\lstinputlisting[language=Python]{tscript2.py}
+$z$-statistic:
+\begin{equation*}
+z = \frac{\bar x -\mu}{s/\sqrt{n}} = \frac{3.4 - 3.25}{2.61/\sqrt{900}} = 1.72414
+\end{equation*}
 
-\pagebreak
+At $1\%$ significance level the tabulated value for $z_{\alpha}$ is $2.576$
 
-Output:
-\lstinputlisting{toutput2.txt}
+\textbf{Conclusion:} $|z| < z_{\alpha}$, we accept the Null hypothesis. The sample can be
+regarded as drawn from a population with mean $3.25$ at $1$ percent level of significance.\\
 
-%figure_3
-\begin{figure}[ht!]
-\includegraphics[width=14cm,height=7cm,keepaspectratio]{tscript2.pdf}
-\centering
-\end{figure}
+\textbf{Standard Error:}
+\begin{equation*}
+S.E = \frac{s}{\sqrt{n}} = \frac{2.61}{\sqrt{900}} = 0.087
+\end{equation*}
+
+\textbf{Confidence Interval:} $99\%$ fiducial limits \\
+The confidence interval for the population mean is given by
+\begin{equation*}
+\begin{split}
+&\bar x \pm z_{\alpha} \frac{s}{\sqrt{n}} \\
+&3.4 \pm 2.576 \frac{2.61}{\sqrt{900}} = 3.4 \pm 0.2241 \\
+&3.1759 < \mu < 3.6241
+\end{split}
+\end{equation*}
+
+#Program:
+#\lstinputlisting[language=Python]{zscript.py}
+#Output:
+#\lstinputlisting{zoutput1.txt}
 
 \end{enumerate}
 \end{document}
