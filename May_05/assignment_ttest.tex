@@ -2,8 +2,9 @@
 \setlength{\parindent}{0pt} % set noindent for entire file
 
 \usepackage[utf8]{inputenc}
-\usepackage[a4paper,top=20mm,bottom=25mm,left=10mm,right=10mm]{geometry}
+\usepackage[a4paper,top=20mm,left=10mm,right=10mm]{geometry}
 \usepackage{xcolor,graphicx}
+\usepackage{changepage}
 \usepackage{amsmath}
 \usepackage{setspace}
 \usepackage{sectsty}
@@ -41,6 +42,8 @@ Date: 05/05/2020 \hspace{2mm} Name: D.Saravanan
 
 \vspace{10px}
 
+\begin{adjustwidth}{15mm}{15mm}
+
 t-test test the null hypothesis $H_{0}$ against the alternative hypothesis $H_{1}$. \\
 
 For univariate samples, t-test performs a Student $t$ test. The test statistic is assumed to
@@ -60,12 +63,16 @@ Conclusion} properties is controlled by the Significance Level option. This valu
 is also used in diagnostic tests of assumptions, including tests for normality, equal 
 variance, and symmetry. By default, $\alpha$ is set to $0.05$. \\
 
+\end{adjustwidth}
+
+\pagebreak
+
 \begin{enumerate}
 
 \item[1.] Certain refined edible oil is packed in tins holding 16 kg each. The filling
 machine can maintain this but with a standard deviation of 0.5 kg. Samples of 25 are taken
-from the production line. If a sample means are (i) 16.35 kg, (ii) 15.8 kg. Can we be 95 per
-cent sure that the sample has come from a population of 16 kg tins? \\
+from the production line. If a sample means are (i) 16.35 kg and \newline (ii) 15.8 kg. Can 
+we be 95 percent sure that the sample has come from a population of 16 kg tins? \\
 
 \textbf{Solution:}
 
@@ -90,24 +97,26 @@ d.o.f = n - 1 = 25 - 1 = 24
 The critical value for $t$ (from $t$-distribution table) with degrees of freedom $= 24$ and
 $\alpha = 0.05$ is $2.064$ \\
 
+\textbf{Conclusion:} $|t| > t_{0.05/2}$, we reject the Null hypothesis. That is the sample
+mean is differ from the intended weight and hence does not come from a population with mean
+$16$ kg tins. \\
+
 Standard Error:
 \begin{equation*}
 S.E = \frac{s}{\sqrt{n}} = \frac{0.5}{\sqrt{25}} = 0.1
 \end{equation*}
 
-\textbf{Confidence Interval:} $95\%$ fiducial limits \\
-The confidence interval for the is given by
+Confidence Interval: $95\%$ fiducial limits \\
+The confidence interval for the small sample mean is given by
 \begin{equation*}
 \begin{split}
-&\bar x \pm z_{\alpha/2} \frac{s}{\sqrt{n}} \\
+&\bar x \pm t_{0.05/2} \frac{s}{\sqrt{n}} \\
 &16.35 \pm 2.064 \frac{0.5}{\sqrt{25}} = 16.35 \pm 0.2064 \\
-&16.14 < \bar x < 16.56
+&16.14 < \mu < 16.56
 \end{split}
 \end{equation*}
 
-\textbf{Conclusion:} $|t| > t_{0.05/2}$, we reject the Null hypothesis. That is the sample
-mean is differ from the intended weight and hence does not come from a population with mean
-$16$ kg tins. \\
+\vspace{0.5cm}
 
 \item[(ii)] given, $\bar x = 15.8$, $s = 0.5$ and $n = 25$ \\
 
@@ -126,21 +135,31 @@ d.o.f = n - 1 = 25 - 1 = 24
 The critical value for $t$ (from $t$-distribution table) with degrees of freedom $= 24$ and
 $\alpha = 0.05$ is $2.064$ \\
 
+\textbf{Conclusion:} $|t| < t_{0.05/2}$, we fail to reject the Null hypothesis. That is the
+sample mean is not differ from the intended weight and hence come from a population of $16$ 
+kg tins. \\
+
 Standard Error:
 \begin{equation*}
 S.E = \frac{s}{\sqrt{n}} = \frac{0.5}{\sqrt{25}} = 0.1
 \end{equation*} 
 
-\textbf{Conclusion:} $|t| < t_{0.05}$, we fail to reject the Null hypothesis. That is the
-sample mean is not differ from the intended weight and hence come from a population of $16$ 
-kg tins.
+Confidence Interval: $95\%$ fiducial limits \\
+The confidence interval for the small sample mean is given by
+\begin{equation*}
+\begin{split}
+&\bar x \pm t_{0.05/2} \frac{s}{\sqrt{n}} \\
+&15.8 \pm 2.064 \frac{0.5}{\sqrt{25}} = 15.8 \pm 0.2064 \\
+&15.59 < \mu < 16.01
+\end{split}
+\end{equation*}
 
 \end{enumerate}
 
-\vspace{0.5cm}
+\vspace{1cm}
 
 Program:
-\lstinputlisting[language=Python]{tscript.py}
+\lstinputlisting[language=Python]{tscript1.py}
 
 \vspace{0.5cm}
 
@@ -149,18 +168,21 @@ Output:
 
 %figure_1
 \begin{figure}[ht!]
-\includegraphics[width=16cm,height=8cm,keepaspectratio]{tscript1a.pdf}
+\includegraphics[width=16cm,height=8cm,keepaspectratio]{tplot1a.pdf}
 \centering
 \end{figure}
 
-\vspace{0.5cm} 
+\vspace{0.5cm}
+
 \lstinputlisting{toutput1b.txt}
 
 %figure_2
 \begin{figure}[ht!]
-\includegraphics[width=16cm,height=8cm,keepaspectratio]{tscript1b.pdf}
+\includegraphics[width=16cm,height=8cm,keepaspectratio]{tplot1b.pdf}
 \centering
 \end{figure}
+
+\vspace{1cm}
 
 \item[2.] A filling machine is expected to fill 5 Kg of powder into bags. A sample of 10 
 bags gave the weighs 4.7, 4.9, 5.0, 5.1, 5.4, 5.2, 4.6, 5.1, 4.6 and 4.7 Test whether the
@@ -189,12 +211,12 @@ Sample standard deviation:
 \begin{equation*}
 s = \sqrt{\frac{\sum\limits_{i=1}^{n} (x_{i} - \bar x)^{2}}{n - 1}}
 = \sqrt{\frac{\sum\limits_{i=1}^{10} (x_{i} - 4.93)^{2}}{10 - 1}}
-= \sqrt{0.07567} = 0.275076
+= \sqrt{0.07567} = 0.27508
 \end{equation*}
 
 t-statistic:
 \begin{equation*}
-t = \frac{\bar x - \mu}{s/\sqrt{n}} = \frac{4.93 - 5}{0.275076/\sqrt{10}} = -0.80472
+t = \frac{\bar x - \mu}{s/\sqrt{n}} = \frac{4.93 - 5}{0.27508/\sqrt{10}} = -0.80471
 \end{equation*}
 
 degrees of freedom:
@@ -205,29 +227,43 @@ d.o.f = n - 1 = 10 - 1 = 9
 The critical value for $t$ for a two-tailed test at $5\%$ level of significane with $10 - 1 
 = 9$ degrees of freedom is $2.262$ \\
 
+\textbf{Conclusion:} $|t| < t_{0.05/2}$, we fail to reject the Null hypothesis. That is the
+sample data are consistent with the assumption of mean $5$ kg in the population. \\
+
 Standard Error:
 \begin{equation*}
-S.E = \frac{s}{\sqrt{n}} = \frac{0.275076}{\sqrt{10}} = 0.08699
+S.E = \frac{s}{\sqrt{n}} = \frac{0.27508}{\sqrt{10}} = 0.08699
 \end{equation*}
 
-\textbf{Conclusion:} $|t| < t_{0.05}$, we fail to reject the Null hypothesis. That is the
-sample data are consistent with the assumption of mean $5$ kg in the population.
+Confidence Interval: $95\%$ fiducial limits \\
+The confidence interval for the small sample mean is given by
+\begin{equation*}
+\begin{split}
+&\bar x \pm t_{0.05/2} \frac{s}{\sqrt{n}} \\
+&4.93 \pm 2.262 \frac{0.27508}{\sqrt{10}} = 4.93 \pm 0.1968 \\
+&4.73 < \mu < 5.13
+\end{split}
+\end{equation*}
 
-\vspace{0.5cm}
+\vspace{2cm}
 
 Program:
 \lstinputlisting[language=Python]{tscript2.py}
 
-\vspace{0.5cm}
+\vspace{2cm}
 
 Output:
 \lstinputlisting{toutput2.txt}
 
+\vspace{0.5cm}
+
 %figure_3
 \begin{figure}[ht!]
-\includegraphics[width=16cm,height=8cm,keepaspectratio]{tscript2.pdf}
+\includegraphics[width=16cm,height=8cm,keepaspectratio]{tplot2.pdf}
 \centering
 \end{figure}
+
+\pagebreak
 
 \item[3.] Two sets of ten students selected at random from a college were taken. One set was
 given memory test as they were and the other was given the memory test after two weeks of
@@ -248,20 +284,20 @@ effect due to training \\
 \textbf{Set A:} \\ 
 \hspace*{10mm} Mean:
 \begin{equation*}
-\bar x_{1} = \frac{\sum\limits_{i=1}^{n1} x_{1i}}{n1}
+\bar x_{1} = \frac{\sum\limits_{i=1}^{n1} x_{1i}}{n_{1}}
     	= \frac{10 + 8 + 7 + 9 + 8 + 10 + 9 + 6 + 7 + 8}{10}
     	= 8.2
 \end{equation*}
 
 \hspace*{10mm} Variance:
 \begin{equation*}
-s_{1}^{2} = \frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}
+s_{1}^{2} = \frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n_{1} - 1}
 		= \frac{\sum\limits_{i=1}^{10} (x_{1i} - 8.2)^{2}}{10 -1} = 1.73333
 \end{equation*}
 
 \hspace*{10mm} Standard Deviation:
 \begin{equation*}
-s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}}
+s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n_{1} - 1}}
 	= \sqrt{\frac{\sum\limits_{i=1}^{10} (x_{1i} - 8.2)^{2}}{10 -1}}
 	= \sqrt{1.73333} = 1.31656
 \end{equation*}
@@ -269,46 +305,49 @@ s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}}
 \textbf{Set B:} \\
 \hspace*{10mm} Mean:
 \begin{equation*}
-\bar x_{2} = \frac{\sum\limits_{i=1}^{n2} x_{2i}}{n2}
+\bar x_{2} = \frac{\sum\limits_{i=1}^{n2} x_{2i}}{n_{2}}
 	= \frac{12 + 8 + 8 + 10 + 8 + 11 + 9 + 8 + 9 + 9}{10}
 	= 9.2
 \end{equation*}
 
 \hspace*{10mm} Variance:
 \begin{equation*}
-s_{2}^{2} = \frac{\sum\limits_{i=1}^{n2} (x_{2i} - \bar {x_{2}})^{2}}{n2 - 1}
+s_{2}^{2} = \frac{\sum\limits_{i=1}^{n2} (x_{2i} - \bar {x_{2}})^{2}}{n_{2} - 1}
 = \frac{\sum\limits_{i=1}^{10} (x_{2i} - 9.2)^{2}}{10 -1} = 1.95556
 \end{equation*}
 
 \hspace*{10mm} Standard Deviation:
 \begin{equation*}
-s_{2} = \sqrt{\frac{\sum\limits_{i=1}^{n2} (x_{2i} - \bar x_{2})^{2}}{n2 - 1}}
+s_{2} = \sqrt{\frac{\sum\limits_{i=1}^{n2} (x_{2i} - \bar x_{2})^{2}}{n_{2} - 1}}
 = \sqrt{\frac{\sum\limits_{i=1}^{10} (x_{2i} - 9.2)^{2}}{10 -1}}
 = \sqrt{1.95556} = 1.39841
 \end{equation*}
 
-Calculation of $s1/s2$:
+Calculation of $s_{1}/s_{2}$:
+
 \begin{equation*}
 \frac{s_{1}}{s_{2}} = \frac{1.31656}{1.39841} = 0.94147
 \end{equation*}
 
 Test statistic: 
 \begin{equation*}
-t = \frac{\bar x_{1} - \bar x_{2}}{\sqrt{s_{1}^{2}/n1 + s_{2}^{2}/n2}}
+t = \frac{\bar x_{1} - \bar x_{2}}{\sqrt{s_{1}^{2}/n_{1} + s_{2}^{2}/n_{2}}}
 \end{equation*}
 
-where $n1$ and $n2$ are the sample sizes, $\bar x_{1}$ and $\bar x_{2}$ are the sample
+where $n_{1}$ and $n_{2}$ are the sample sizes, $\bar x_{1}$ and $\bar x_{2}$ are the sample
 means, and $s_{1}^{2}$ and $s_{2}^{2}$ are the sample variances. 
 
-If equal variances are assumed $(0.5 < s1/s2 < 2)$, then the formula reduces to:
+If equal variances are assumed $(0.5 < s_{1}/s_{2} < 2)$, then the formula reduces to:
 \begin{equation*}
-t = \frac{\bar x_{1} - \bar x_{2}}{s_{p} \sqrt{1/n1 + 1/n2}}
+t = \frac{\bar x_{1} - \bar x_{2}}{s_{p} \sqrt{1/n_{1} + 1/n_{2}}}
 \end{equation*}
 
 where
 \begin{equation*}
-s_{p}^{2} = \frac{(n1-1)s_{1}^{2} + (n2-1)s_{2}^{2}}{n1+n2-2}
+s_{p}^{2} = \frac{(n_{1}-1)s_{1}^{2} + (n_{2}-1)s_{2}^{2}}{n_{1}+n_{2}-2}
 \end{equation*}
+
+\vspace{0.5cm}
 
 Calculation of $s_{p}$:
 \begin{equation*}
@@ -316,9 +355,11 @@ s_{p} = \sqrt{\frac{(10-1) \times 1.31656^{2} + (10-1) \times 1.39841^{2}}{10+10
       = 1.35810
 \end{equation*}
 
+\vspace{0.5cm}
+
 t-statistic:
 \begin{equation*}
-t = \frac{8.2 - 9.2}{1.35810 \times \sqrt{1/10 + 1/10}} = -1.64646
+t = \frac{8.2 - 9.2}{1.35810 \times \sqrt{1/10 + 1/10}} = -1.64647
 \end{equation*}
 
 degrees of freedom:
@@ -329,20 +370,31 @@ d.o.f = n_{1} + n_{2} - 2 = 10 + 10 - 2 = 18
 The critical value for $t$ (from $t$-distribution table) with degrees of freedom $= 18$ and 
 $\alpha = 0.05$ is $2.101$ \\
 
+\textbf{Conclusion:} $|t| < t_{0.05/2}$, we fail to reject the Null hypothesis. That is 
+there is no significant effect in the scores of the memeory test due to training. \\
+ 
 Standard Error:
 \begin{equation*}
-S.E = sp \sqrt{1/n1 + 1/n2} = 1.35810 \times \sqrt{1/10 + 1/10} = 0.60736
+S.E = sp \sqrt{1/n_{1} + 1/n_{2}} = 1.35810 \times \sqrt{1/10 + 1/10} = 0.60736
 \end{equation*}
 
-\textbf{Conclusion:} $|t| < t_{0.05}$, we fail to reject the Null hypothesis. That is there
-is no significant effect in the scores of the memeory test due to training.
+Confidence Interval: $95\%$ fiducial limits \\
+The confidence interval is given by
+\begin{equation*}
+\begin{split}
+&(\bar x_{1} - \bar x_{2}) \pm t_{0.05/2} \sqrt{\frac{(n_{1} - 1)s_{1}^{2} + (n_{2} - 1)s_{2}^{2}}{n_{1} + n_{2} -2}} \sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}} \\
+&(8.2 - 9.2) \pm 2.101 \sqrt{\frac{(10 - 1)(1.31656)^{2} + (10 - 1)(1.39841)^{2}}{10 + 10 - 2}} \sqrt{\frac{1}{10} + \frac{1}{10}} \\
+&(-1.0) \pm 2.101 \sqrt{\frac{33.19993}{18}} 0.44721 \\
+&-2.27606 < \mu < 0.27606
+\end{split}
+\end{equation*}
 
-\vspace{0.5cm}
+\vspace{1cm}
 
 Program:
 \lstinputlisting[language=Python]{tscript3.py}
 
-\vspace{0.5cm}
+\vspace{1cm}
 
 Output:
 \lstinputlisting{toutput31.txt}
@@ -353,7 +405,7 @@ Output:
 \centering
 \end{figure}
 
-\pagebreak
+\vspace{1cm}
 
 Program: t-test with in-built scipy.stats.ttest
 \lstinputlisting[language=Python]{ttest2.py}
