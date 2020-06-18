@@ -1,0 +1,96 @@
+---
+pagetitle: Titanic-Machine Learning from Disaster
+author: D.Saravanan
+date: 17/06/2020
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+use_python("/home/saran/.envn/dsci/bin/python3", required=TRUE)
+knitr::knit_engines$set(python=reticulate::eng_python)
+```
+#### Titanic: Machine Learning from Disaster
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+#!/usr/bin/env python3
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set_style('darkgrid')
+```
+##### read train.csv in df1 
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df1 = pd.read_csv("train.csv")
+df1.info()
+```
+##### read test.csv in df2
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df2 = pd.read_csv("test.csv")
+df2.info()
+```
+##### Concatenate dataframes df1 and df2 in df
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df = pd.concat([df1, df2], axis=0)
+df.info()
+df.count() - df.isnull().sum()
+df = df.drop('Cabin', axis=1)
+```
+##### Correlation Matrix
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df.corr()
+plt.figure(dpi=90)
+sns.heatmap(df.corr(), annot=True)
+plt.show()
+```
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df.isnull().sum()
+```
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df.Fare.median()
+df.Fare.fillna(df.Fare.median(), inplace=True)
+```
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df.Embarked.mode()
+df.Embarked.fillna(df.Embarked.mode()[0], inplace=True)
+
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+plt.figure(dpi=90)
+sns.boxplot(x=df.Pclass, y=df.Age)
+plt.show()
+sns.boxplot(x=df.Sex, y=df.Age)
+plt.show()
+sns.boxplot(x=df.SibSp, y=df.Age)
+plt.show()
+sns.boxplot(x=df.Parch, y=df.Age)
+plt.show()
+sns.boxplot(x=df.Embarked, y=df.Age)
+plt.show()
+```
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df.groupby(['Pclass', 'Sex', 'SibSp', 'Parch', 'Embarked']).median()
+df['Age'] = df['Age'].fillna(df.groupby(['Pclass','Sex','SibSp','Parch','Embarked'])['Age'].transform('median'))
+df.isnull().sum()
+df['Age'] = df['Age'].fillna(df.groupby(['Pclass','SibSp','Parch','Embarked'])['Age'].transform('median'))
+df.isnull().sum()
+df['Age'] = df['Age'].fillna(df.groupby(['Pclass','SibSp','Parch'])['Age'].transform('median'))
+df.isnull().sum()
+df['Age'] = df['Age'].fillna(df.groupby('Pclass')['Age'].transform('median'))
+df.isnull().sum()
+```
+
+##### Convert string categorical variable to a numeric variable
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+def gender(x):
+	if x == 'male': return 1
+	else: return 0
+
+df['Sex'] = df['Sex'].apply(gender)
+
+def port(x):
+	if x == 'C': return 1
+	elif x == 'Q': return 2
+	else: return 3
+
+df['Embarked'] = df['Embarked'].apply(port)
+```
