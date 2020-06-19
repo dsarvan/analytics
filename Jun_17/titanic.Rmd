@@ -19,7 +19,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 sns.set_style('darkgrid')
 ```
-##### read train.csv in df1 
+##### read train.csv in df 
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
 df1 = pd.read_csv("train.csv")
 df1.info()
@@ -29,7 +29,7 @@ df1.info()
 df2 = pd.read_csv("test.csv")
 df2.info()
 ```
-##### Concatenate dataframes df1 and df2 in df
+##### Concatenate dataframes df and df2 in df
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
 df = pd.concat([df1, df2], axis=0)
 df.info()
@@ -53,20 +53,56 @@ df.Fare.fillna(df.Fare.median(), inplace=True)
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
 df.Embarked.mode()
 df.Embarked.fillna(df.Embarked.mode()[0], inplace=True)
-
+```
+##### to check relation between Age with Pclass, Sex, SibSp, Parch, Embarked
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
 plt.figure(dpi=90)
-sns.boxplot(x=df.Pclass, y=df.Age)
+sns.boxplot(y=df.Age, palette='Set2')
 plt.show()
-sns.boxplot(x=df.Sex, y=df.Age)
+sns.boxplot(y=df.Fare, palette='Set2')
 plt.show()
-sns.boxplot(x=df.SibSp, y=df.Age)
+sns.boxplot(x=df.Pclass, y=df.Age, palette='Set2')
 plt.show()
-sns.boxplot(x=df.Parch, y=df.Age)
+sns.boxplot(x=df.Sex, y=df.Age, palette='Set2')
 plt.show()
-sns.boxplot(x=df.Embarked, y=df.Age)
+sns.boxplot(x=df.SibSp, y=df.Age, palette='Set2')
+plt.show()
+sns.boxplot(x=df.Parch, y=df.Age, palette='Set2')
+plt.show()
+sns.boxplot(x=df.Embarked, y=df.Age, palette='Set2')
+plt.show()
+
+sns.boxplot(x=df.Pclass, y=df.Fare, palette='Set2')
+plt.show()
+sns.boxplot(x=df.Sex, y=df.Fare, palette='Set2')
+plt.show()
+sns.boxplot(x=df.SibSp, y=df.Fare, palette='Set2')
+plt.show()
+sns.boxplot(x=df.Parch, y=df.Fare, palette='Set2')
+plt.show()
+sns.boxplot(x=df.Embarked, y=df.Fare, palette='Set2')
 plt.show()
 ```
+
+
+##### calculation of IQR
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+q1 = df['Age'].quantile(0.25)
+q2 = df['Age'].quantile(0.50)
+q3 = df['Age'].quantile(0.75)
+
+print(q3-q1)
+
+
+#print((df['Age'] < (q1-1.5*(q3-q1))) | (df['Age'] > (q3+1.5*(q3-q1))))
+
+if ((df['Age'] < (q1-1.5*(q3-q1))) | (df['Age'] > (q3+1.5*(q3-q1)))):
+	df['Age'] = df['Age'].fillna
+
+```
+
+
+
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
 df.groupby(['Pclass', 'Sex', 'SibSp', 'Parch', 'Embarked']).median()
 df['Age'] = df['Age'].fillna(df.groupby(['Pclass','Sex','SibSp','Parch','Embarked'])['Age'].transform('median'))
@@ -93,4 +129,41 @@ def port(x):
 	else: return 3
 
 df['Embarked'] = df['Embarked'].apply(port)
+```
+
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df = df.drop(['PassengerId','Name','Ticket'], axis=1)
+df_train = df[pd.notnull(df['Survived'])]
+df_test = df[pd.isnull(df['Survived'])]
+df_test = df_test.drop('Survived', axis=1)
+```
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+X = df_train.drop('Survived', axis=1)
+y = df_train['Survived'].apply(np.int64)
+```
+
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=1)
+print(X_train.shape, y_train.shape)
+```
+
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(max_iter=200)
+model.fit(X_train, y_train)
+yhat = model.predict(X_test)
+```
+
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+from sklearn.metrics import confusion_matrix, mean_absolute_error
+confusion_matrix(y_test, yhat)
+model.score(X_test,y_test)
+```
+
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+survived = model.predict(df_test)
+dframe = pd.DataFrame({"PassengerId": df2.PassengerId, "Survived": survived})
+dframe.head()
+dframe.to_csv('submission.csv', index=None, header=True)
 ```
