@@ -34,6 +34,19 @@ df2.info()
 df = pd.concat([df1, df2], axis=0)
 df.info()
 ```
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+Name = df.Name
+name = []
+for string in Name:
+	name.append(string.split(',')[1])
+
+Name = []
+for string in name:
+	Name.append(string.split('.')[0])
+
+df.Name = Name
+df.Name.unique()
+```
 ##### difference between non-null and null values in df
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
 df.count() - df.isnull().sum()
@@ -55,143 +68,36 @@ df.isnull().sum()
 df.Fare.median()
 df.Fare.fillna(df.Fare.median(), inplace=True)
 ```
-##### replace null values in Embarked with mode
+##### replace null values in Embarked with mode (C = Cherbourg, Q = Queenstown, S = Southampton)
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df.Embarked.unique()
 df.Embarked.mode()
 df.Embarked.fillna(df.Embarked.mode()[0], inplace=True)
 ```
 
-```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-from scipy.stats import skew, kurtosis
-skew(df.Age)
-kurtosis(df.Age)
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##### to check relation between Age with Pclass, Sex, SibSp, Parch, Embarked
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-plt.figure(dpi=90)
-sns.boxplot(y=df.Age, palette='Set2')
-plt.show()
+#plt.figure(dpi=90)
+#sns.boxplot(x=df.Pclass, y=df.Age, palette='Set2')
+#plt.show()
+#sns.boxplot(x=df.Sex, y=df.Age, palette='Set2')
+#plt.show()
+#sns.boxplot(x=df.SibSp, y=df.Age, palette='Set2')
+#plt.show()
+#sns.boxplot(x=df.Parch, y=df.Age, palette='Set2')
+#plt.show()
+#sns.boxplot(x=df.Embarked, y=df.Age, palette='Set2')
+#plt.show()
 ```
-
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-from IPython.display import display
-df.Name.str.contains('Master').sum()
-display(df[(df.Age.isnull()) & (df.Name.str.contains('Master'))])
-```
-
-##### to check relation between Age with Pclass, Sex, SibSp, Parch, Embarked
-```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-plt.figure(dpi=90)
-sns.boxplot(x=df.Pclass, y=df.Age, palette='Set2')
-plt.show()
-sns.boxplot(x=df.Sex, y=df.Age, palette='Set2')
-plt.show()
-sns.boxplot(x=df.SibSp, y=df.Age, palette='Set2')
-plt.show()
-sns.boxplot(x=df.Parch, y=df.Age, palette='Set2')
-plt.show()
-sns.boxplot(x=df.Embarked, y=df.Age, palette='Set2')
-plt.show()
-```
-##### calculation of IQR
-```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-q1 = df['Age'].quantile(0.25)
-q2 = df['Age'].quantile(0.50)
-q3 = df['Age'].quantile(0.75)
-iqr = q3-q1
-
-display(df['Age'][(df['Age'] < (q1-1.5*iqr)) | (df['Age'] > (q3+1.5*iqr))])
-	
-df['Age'] = df['Age'].mask((df['Age'] < (q1-1.5*iqr)) | (df['Age'] > (q3+1.5*iqr)))
-print(((df['Age'] < (q1-1.5*iqr)) | (df['Age'] > (q3+1.5*iqr))).sum())
+df.groupby(['Pclass','Name','SibSp','Parch','Embarked']).median()
+df['Age'] = df['Age'].fillna(df.groupby(['Pclass','Name','SibSp','Parch','Embarked'])['Age'].transform('median'))
 df.isnull().sum()
-```
-```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-df.groupby(['Pclass', 'Sex', 'SibSp', 'Parch', 'Embarked']).median()
-df['Age'] = df['Age'].fillna(df.groupby(['Pclass','Sex','SibSp','Parch','Embarked'])['Age'].transform('median'))
-df.isnull().sum()
-df['Age'] = df['Age'].fillna(df.groupby(['Pclass','SibSp','Parch','Embarked'])['Age'].transform('median'))
-df.isnull().sum()
-df['Age'] = df['Age'].fillna(df.groupby(['Pclass','SibSp','Parch'])['Age'].transform('median'))
+df['Age'] = df['Age'].fillna(df.groupby(['Pclass','Name','SibSp','Parch'])['Age'].transform('median'))
 df.isnull().sum()
 df['Age'] = df['Age'].fillna(df.groupby('Pclass')['Age'].transform('median'))
 df.isnull().sum()
 ```
-
-
-```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-from scipy.stats import skew, kurtosis
-skew(df.Age)
-kurtosis(df.Age)
-
-from scipy.stats import norm
-
-df.Age.mean()
-df.Age.std()
-
-norm.cdf(df.Age.mean() + df.Age.std(), df.Age.mean(), df.Age.std()) - norm.cdf(df.Age.mean() - df.Age.std(), df.Age.mean(), df.Age.std())
-norm.cdf(df.Age.mean() + 2*df.Age.std(), df.Age.mean(), df.Age.std()) - norm.cdf(df.Age.mean() - 2*df.Age.std(), df.Age.mean(), df.Age.std())
-norm.cdf(df.Age.mean() + 3*df.Age.std(), df.Age.mean(), df.Age.std()) - norm.cdf(df.Age.mean() - 3*df.Age.std(), df.Age.mean(), df.Age.std())
-
-plt.figure(dpi=90)
-sns.distplot(df.Age)
-plt.show()
-```
-
-
-
-```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-q1 = df['Fare'].quantile(0.25)
-q2 = df['Fare'].quantile(0.50)
-q3 = df['Fare'].quantile(0.75)
-iqr = q3-q1
-	
-df['Fare'] = df['Fare'].mask((df['Fare'] < (q1-1.5*iqr)) | (df['Fare'] > (q3+1.5*iqr)))
-print(((df['Fare'] < (q1-1.5*iqr)) | (df['Fare'] > (q3+1.5*iqr))).sum())
-df.isnull().sum()
-```
-
-
-
-```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-df.groupby(['Pclass', 'Sex', 'SibSp', 'Parch', 'Embarked']).median()
-df['Fare'] = df['Fare'].fillna(df.groupby(['Pclass','Sex','SibSp','Parch','Embarked'])['Fare'].transform('median'))
-df.isnull().sum()
-df['Fare'] = df['Fare'].fillna(df.groupby(['Pclass','SibSp','Parch','Embarked'])['Fare'].transform('median'))
-df.isnull().sum()
-df['Fare'] = df['Fare'].fillna(df.groupby(['Pclass','SibSp','Parch'])['Fare'].transform('median'))
-df.isnull().sum()
-df['Fare'] = df['Fare'].fillna(df.groupby('Pclass')['Fare'].transform('median'))
-df.isnull().sum()
-```
-
-
-
 
 ##### Convert string categorical variable to a numeric variable
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
@@ -204,13 +110,72 @@ df['Sex'] = df['Sex'].apply(gender)
 def port(x):
 	if x == 'C': return 1
 	elif x == 'Q': return 2
-	else: return 3
+	else: return 0
 
 df['Embarked'] = df['Embarked'].apply(port)
+
+def name(x):
+	count = 0
+	for title in (df.Name.unique()):
+		if x == title: return count 
+		count = count + 1
+
+df['Name'] = df['Name'].apply(name)
 ```
 
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-df = df.drop(['PassengerId','Name','Ticket'], axis=1)
+df.Age.min()
+df.Age.max()
+df.Fare.min()
+df.Fare.max()
+
+
+plt.figure(dpi=90)
+sns.scatterplot(df['Pclass'], df['Fare'])
+plt.show()
+```
+
+
+
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df['Pclass'].head(20)
+
+#from IPython.display import display
+#fare1 = df['Fare'].groupby(df['Pclass'] == 1)
+#for n in fare1:
+#	print(n)
+```
+
+
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+q1 = df['Fare'].quantile(0.25)
+q2 = df['Fare'].quantile(0.50)
+q3 = df['Fare'].quantile(0.75)
+
+iqr = q3-q1
+
+df['Fare'] = df['Fare'].mask((df['Fare'] < (q1-1.5*iqr)) | (df['Fare'] > (q3+1.5*iqr)))
+print(((df['Fare'] < (q1-1.5*iqr)) | (df['Fare'] > (q3+1.5*iqr))).sum())
+df.isnull().sum()
+
+df.groupby(['Pclass', 'Sex', 'SibSp', 'Parch', 'Embarked']).median()
+df['Fare'] = df['Fare'].fillna(df.groupby(['Pclass','Embarked'])['Fare'].transform('median'))
+df.isnull().sum()
+df['Fare'] = df['Fare'].fillna(df.groupby('Embarked')['Fare'].transform('median'))
+df.isnull().sum()
+
+plt.figure(dpi=90)
+sns.scatterplot(df['Pclass'], df['Fare'])
+plt.show()
+```
+
+
+
+
+
+
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df = df.drop(['PassengerId','Ticket'], axis=1)
 df_train = df[pd.notnull(df['Survived'])]
 df_test = df[pd.isnull(df['Survived'])]
 df_test = df_test.drop('Survived', axis=1)
@@ -219,26 +184,22 @@ df_test = df_test.drop('Survived', axis=1)
 X = df_train.drop('Survived', axis=1)
 y = df_train['Survived'].apply(np.int64)
 ```
-
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=1)
 print(X_train.shape, y_train.shape)
 ```
-
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
 from sklearn.linear_model import LogisticRegression
 model = LogisticRegression(max_iter=200)
 model.fit(X_train, y_train)
 yhat = model.predict(X_test)
 ```
-
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
 from sklearn.metrics import confusion_matrix, mean_absolute_error
 confusion_matrix(y_test, yhat)
 model.score(X_test,y_test)
 ```
-
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
 survived = model.predict(df_test)
 dframe = pd.DataFrame({"PassengerId": df2.PassengerId, "Survived": survived})
