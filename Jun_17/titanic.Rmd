@@ -138,12 +138,60 @@ plt.show()
 
 
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-df['Pclass'].head(20)
+fare1 = df['Fare'][df['Pclass'] == 1]
+fare2 = df['Fare'][df['Pclass'] == 2]
+fare3 = df['Fare'][df['Pclass'] == 3]
 
-#from IPython.display import display
-#fare1 = df['Fare'].groupby(df['Pclass'] == 1)
-#for n in fare1:
-#	print(n)
+plt.figure(dpi=90)
+sns.boxplot(y=fare1)
+plt.show()
+sns.boxplot(y=fare2)
+plt.show()
+sns.boxplot(y=fare3)
+plt.show()
+
+a1 = fare1.quantile(0.25)
+a3 = fare1.quantile(0.75)
+iqra = a3-a1
+
+print(((fare1 < (a1-1.5*iqra)) | (fare1 > (a3+1.5*iqra))).sum())
+fare1 = fare1.mask((fare1 < (a1-1.5*iqra)) | (fare1 > (a3+1.5*iqra)))
+
+a1 = fare1.quantile(0.25)
+a3 = fare1.quantile(0.75)
+iqra = a3-a1
+
+print(((fare1 < (a1-1.5*iqra)) | (fare1 > (a3+1.5*iqra))).sum())
+fare1 = fare1.mask((fare1 < (a1-1.5*iqra)) | (fare1 > (a3+1.5*iqra)))
+
+a1 = fare1.quantile(0.25)
+a3 = fare1.quantile(0.75)
+iqra = a3-a1
+
+print(((fare1 < (a1-1.5*iqra)) | (fare1 > (a3+1.5*iqra))).sum())
+fare1 = fare1.mask((fare1 < (a1-1.5*iqra)) | (fare1 > (a3+1.5*iqra)))
+
+a1 = fare1.quantile(0.25)
+a3 = fare1.quantile(0.75)
+iqra = a3-a1
+
+print(((fare1 < (a1-1.5*iqra)) | (fare1 > (a3+1.5*iqra))).sum())
+
+sns.boxplot(y=fare1)
+plt.show()
+
+
+b1 = fare2.quantile(0.25)
+b3 = fare2.quantile(0.75)
+iqrb = b3-b1
+
+print(((fare2 < (b1-1.5*iqrb)) | (fare2 > (b3+1.5*iqrb))).sum())
+
+c1 = fare3.quantile(0.25)
+c3 = fare3.quantile(0.75)
+iqrc = c3-c1
+
+print(((fare3 < (c1-1.5*iqrc)) | (fare3 > (c3+1.5*iqrc))).sum())
 ```
 
 
