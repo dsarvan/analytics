@@ -1,0 +1,60 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,top=20mm,bottom=25mm,left=10mm,right=10mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{textcmds}
+\usepackage{times}
+
+\graphicspath{ {/home/saran/Analytics/Jun_25/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{Assignment Methods} \\
+Date: 25/06/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\vspace{10px}
+
+\begin{enumerate}
+
+\item[1.] Write a Java program to generate OTP of user defined length for n users using 
+Methods.
+
+\vspace{0.5cm}
+
+Program:
+\lstinputlisting[language=Java]{password.java}
+
+\vspace{0.5cm}
+
+Output:
+\lstinputlisting{output.txt}
+
+\end{enumerate}
+\end{document}
