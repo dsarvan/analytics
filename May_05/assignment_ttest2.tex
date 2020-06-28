@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper,top=20mm,bottom=25mm,left=10mm,right=10mm]{geometry}
 \usepackage{xcolor,graphicx}
+\usepackage{changepage}
 \usepackage{amsmath}
 \usepackage{setspace}
 \usepackage{sectsty}
@@ -41,6 +42,8 @@ Date: 05/05/2020 \hspace{2mm} Name: D.Saravanan
 
 \vspace{10px}
 
+\begin{adjustwidth}{12mm}{12mm}
+
 t-test test the null hypothesis $H_{0}$ against the alternative hypothesis $H_{1}$. \\
 
 For univariate samples, t-test performs a Student $t$ test. The test statistic is assumed to
@@ -60,7 +63,7 @@ Conclusion} properties is controlled by the Significance Level option. This valu
 is also used in diagnostic tests of assumptions, including tests for normality, equal 
 variance, and symmetry. By default, $\alpha$ is set to $0.05$. \\
 
-\vspace{1cm}
+\end{adjustwidth}
 
 \begin{enumerate}
 
@@ -75,75 +78,80 @@ Do you think there is a significant effect due to training? \\
 
 \textbf{Solution:}
 
-\textbf{Null hypothesis:} $H_{0}: \mu_{1} = \mu_{2}$, \hspace{2px} No significant effect
-due to training \\
+\textbf{Null hypothesis:} $H_{0}: \mu_{1} = \mu_{2}$, \hspace{2px} No significant effect due
+to training \\
 \textbf{Alternative hypothesis:} $H_{1}: \mu_{1} \neq \mu_{2}$, \hspace{2px} Significant
 effect due to training \\
 
 \textbf{Set A:} \\ 
 \hspace*{10mm} Mean:
 \begin{equation*}
-\bar x_{1} = \frac{\sum\limits_{i=1}^{n1} x_{1i}}{n1}
+\bar x_{1} = \frac{\sum\limits_{i=1}^{n1} x_{1i}}{n_{1}}
     	= \frac{10 + 8 + 7 + 9 + 8 + 10 + 9 + 6 + 7 + 8}{10}
     	= 8.2
 \end{equation*}
 
 \hspace*{10mm} Variance:
 \begin{equation*}
-s_{1}^{2} = \frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}
+s_{1}^{2} = \frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n_{1} - 1}
 		= \frac{\sum\limits_{i=1}^{10} (x_{1i} - 8.2)^{2}}{10 -1} = 1.73333
 \end{equation*}
 
 \hspace*{10mm} Standard Deviation:
 \begin{equation*}
-s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}}
+s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n_{1} - 1}}
 	= \sqrt{\frac{\sum\limits_{i=1}^{10} (x_{1i} - 8.2)^{2}}{10 -1}}
 	= \sqrt{1.73333} = 1.31656
 \end{equation*}
 
+\pagebreak
+
 \textbf{Set B:} \\
 \hspace*{10mm} Mean:
 \begin{equation*}
-\bar x_{2} = \frac{\sum\limits_{i=1}^{n2} x_{2i}}{n2}
+\bar x_{2} = \frac{\sum\limits_{i=1}^{n2} x_{2i}}{n_{2}}
 	= \frac{12 + 8 + 8 + 10 + 8 + 11 + 9 + 8 + 9 + 9}{10}
 	= 9.2
 \end{equation*}
 
 \hspace*{10mm} Variance:
 \begin{equation*}
-s_{2}^{2} = \frac{\sum\limits_{i=1}^{n2} (x_{2i} - \bar {x_{2}})^{2}}{n2 - 1}
+s_{2}^{2} = \frac{\sum\limits_{i=1}^{n2} (x_{2i} - \bar {x_{2}})^{2}}{n_{2} - 1}
 = \frac{\sum\limits_{i=1}^{10} (x_{2i} - 9.2)^{2}}{10 -1} = 1.95556
 \end{equation*}
 
 \hspace*{10mm} Standard Deviation:
 \begin{equation*}
-s_{2} = \sqrt{\frac{\sum\limits_{i=1}^{n2} (x_{2i} - \bar x_{2})^{2}}{n2 - 1}}
+s_{2} = \sqrt{\frac{\sum\limits_{i=1}^{n2} (x_{2i} - \bar x_{2})^{2}}{n_{2} - 1}}
 = \sqrt{\frac{\sum\limits_{i=1}^{10} (x_{2i} - 9.2)^{2}}{10 -1}}
 = \sqrt{1.95556} = 1.39841
-\end{equation*} \\
+\end{equation*}
 
-Calculation of $s1/s2$:
+Calculation of $s_{1}/s_{2}$:
+
 \begin{equation*}
 \frac{s_{1}}{s_{2}} = \frac{1.31656}{1.39841} = 0.94147
 \end{equation*}
 
 Test statistic: 
 \begin{equation*}
-t = \frac{\bar x_{1} - \bar x_{2}}{\sqrt{s_{1}^{2}/n1 + s_{2}^{2}/n2}}
+t = \frac{\bar x_{1} - \bar x_{2}}{\sqrt{s_{1}^{2}/n_{1} + s_{2}^{2}/n_{2}}}
 \end{equation*}
 
-where $n1$ and $n2$ are the sample sizes, $\bar x_{1}$ and $\bar x_{2}$ are the sample
+where $n_{1}$ and $n_{2}$ are the sample sizes, $\bar x_{1}$ and $\bar x_{2}$ are the sample
 means, and $s_{1}^{2}$ and $s_{2}^{2}$ are the sample variances. 
 
-If equal variances are assumed $(0.5 < s1/s2 < 2)$, then the formula reduces to:
+If equal variances are assumed $(0.5 < s_{1}/s_{2} < 2)$, then the formula reduces to:
 \begin{equation*}
-t = \frac{\bar x_{1} - \bar x_{2}}{s_{p} \sqrt{1/n1 + 1/n2}}
+t = \frac{\bar x_{1} - \bar x_{2}}{s_{p} \sqrt{1/n_{1} + 1/n_{2}}}
 \end{equation*}
 
 where
 \begin{equation*}
-s_{p}^{2} = \frac{(n1-1)s_{1}^{2} + (n2-1)s_{2}^{2}}{n1+n2-2}
+s_{p}^{2} = \frac{(n_{1}-1)s_{1}^{2} + (n_{2}-1)s_{2}^{2}}{n_{1}+n_{2}-2}
 \end{equation*}
+
+\vspace{0.5cm}
 
 Calculation of $s_{p}$:
 \begin{equation*}
@@ -151,9 +159,11 @@ s_{p} = \sqrt{\frac{(10-1) \times 1.31656^{2} + (10-1) \times 1.39841^{2}}{10+10
       = 1.35810
 \end{equation*}
 
+\vspace{0.5cm}
+
 t-statistic:
 \begin{equation*}
-t = \frac{8.2 - 9.2}{1.35810 \times \sqrt{1/10 + 1/10}} = -1.64646
+t = \frac{8.2 - 9.2}{1.35810 \times \sqrt{1/10 + 1/10}} = -1.64647
 \end{equation*}
 
 degrees of freedom:
@@ -164,20 +174,31 @@ d.o.f = n_{1} + n_{2} - 2 = 10 + 10 - 2 = 18
 The critical value for $t$ (from $t$-distribution table) with degrees of freedom $= 18$ and 
 $\alpha = 0.05$ is $2.101$ \\
 
+\textbf{Conclusion:} $|t| < t_{0.05/2}$, we fail to reject the Null hypothesis. That is 
+there is no significant effect in the scores of the memeory test due to training. \\
+ 
 Standard Error:
 \begin{equation*}
-S.E = s_{p} \sqrt{1/n1 + 1/n2} = 1.35810 \times \sqrt{1/10 + 1/10} = 0.60736
-\end{equation*} \\
+S.E = sp \sqrt{1/n_{1} + 1/n_{2}} = 1.35810 \times \sqrt{1/10 + 1/10} = 0.60736
+\end{equation*}
 
-\textbf{Conclusion:} $|t| < t_{0.05}$, we fail to reject the Null hypothesis. That is there
-is no significant effect in the scores of the memeory test due to training.
+Confidence Interval: $95\%$ fiducial limits \\
+The confidence interval is given by
+\begin{equation*}
+\begin{split}
+&(\bar x_{1} - \bar x_{2}) \pm t_{0.05/2} \sqrt{\frac{(n_{1} - 1)s_{1}^{2} + (n_{2} - 1)s_{2}^{2}}{n_{1} + n_{2} -2}} \sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}} \\
+&(8.2 - 9.2) \pm 2.101 \sqrt{\frac{(10 - 1)(1.31656)^{2} + (10 - 1)(1.39841)^{2}}{10 + 10 - 2}} \sqrt{\frac{1}{10} + \frac{1}{10}} \\
+&(-1.0) \pm 2.101 \sqrt{\frac{33.19993}{18}} 0.44721 \\
+&-2.27606 < \mu < 0.27606
+\end{split}
+\end{equation*}
 
-\pagebreak
+\vspace{1cm}
 
 Program:
 \lstinputlisting[language=Python]{tscript3.py}
 
-\vspace{1cm}
+\vspace{0.5cm}
 
 Output:
 \lstinputlisting{toutput31.txt}
@@ -188,12 +209,12 @@ Output:
 \centering
 \end{figure}
 
-\vspace{2cm}
+\vspace{1cm}
 
 Program: t-test with in-built scipy.stats.ttest
 \lstinputlisting[language=Python]{ttest2.py}
 
-\vspace{1cm}
+\vspace{0.5cm}
 
 Output:
 \lstinputlisting{toutput32.txt}
@@ -221,19 +242,19 @@ increase in weight \\
 \textbf{Medicine A:} \\
 \hspace*{10mm} Mean:
 \begin{equation*}
-\bar x_{1} = \frac{\sum\limits_{i=1}^{n1} x_{1i}}{n1}
+\bar x_{1} = \frac{\sum\limits_{i=1}^{n1} x_{1i}}{n_{1}}
 		= \frac{42 + 29 + 48 + 60 + 41}{5} = 44.0
 \end{equation*}
 
 \hspace*{10mm} Variance:
 \begin{equation*}
-s_{1}^{2} = \frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}
+s_{1}^{2} = \frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n_{1} - 1}
 	= \frac{\sum\limits_{i=1}^{5} (x_{1i} - 44.0)^{2}}{5 - 1} = 127.5
 \end{equation*}
 
 \hspace*{10mm} Standard Deviation:
 \begin{equation*}
-s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}}
+s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n_{1} - 1}}
 	= \sqrt{\frac{\sum\limits_{i=1}^{5} (x_{1i} - 44.0)^{2}}{5 -1}}
 	= \sqrt{127.5} = 11.29159
 \end{equation*}
@@ -243,41 +264,41 @@ s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}}
 \textbf{Medicine B:} \\
 \hspace*{10mm} Mean:
 \begin{equation*}
-\bar x_{1} = \frac{\sum\limits_{i=1}^{n1} x_{1i}}{n1}
+\bar x_{1} = \frac{\sum\limits_{i=1}^{n1} x_{1i}}{n_{1}}
 		= \frac{38 + 42 + 56 + 64 + 68 + 69 + 62}{7} = 57.0
 \end{equation*}
 
 \hspace*{10mm} Variance:
 \begin{equation*}
-s_{1}^{2} = \frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}
+s_{1}^{2} = \frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n_{1} - 1}
 	= \frac{\sum\limits_{i=1}^{7} (x_{1i} - 57.0)^{2}}{7 - 1} = 154.3
 \end{equation*}
 
 \hspace*{10mm} Standard Deviation:
 \begin{equation*}
-s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n1 - 1}}
+s_{1} = \sqrt{\frac{\sum\limits_{i=1}^{n1} (x_{1i} - \bar {x_{1}})^{2}}{n_{1} - 1}}
 	= \sqrt{\frac{\sum\limits_{i=1}^{7} (x_{1i} - 57.0)^{2}}{7 -1}}
 	= \sqrt{154.3} = 12.42310
 \end{equation*}
 
-Calculation of $s1/s2$:
+Calculation of $s_{1}/s_{2}$:
 \begin{equation*}
 \frac{s_{1}}{s_{2}} = \frac{11.29159}{12.42310} = 0.90892
 \end{equation*}
 
 Test statistic:
 \begin{equation*}
-t = \frac{\bar x_{1} - \bar x_{2}}{\sqrt{s_{1}^{2}/n1 + s_{2}^{2}/n2}}
+t = \frac{\bar x_{1} - \bar x_{2}}{\sqrt{s_{1}^{2}/n_{1} + s_{2}^{2}/n_{2}}}
 \end{equation*}
 
-If equal variances are assumed $(0.5 < s1/s2 < 2)$, then the formula reduces to:
+If equal variances are assumed $(0.5 < s_{1}/s_{2} < 2)$, then the formula reduces to:
 \begin{equation*}
-t = \frac{\bar x_{1} - \bar x_{2}}{s_{p} \sqrt{1/n1 + 1/n2}}
+t = \frac{\bar x_{1} - \bar x_{2}}{s_{p} \sqrt{1/n_{1} + 1/n_{2}}}
 \end{equation*}
 
 where
 \begin{equation*}
-s_{p}^{2} = \frac{(n1-1)s_{1}^{2} + (n2-1)s_{2}^{2}}{n1+n2-2}
+s_{p}^{2} = \frac{(n_{1}-1)s_{1}^{2} + (n_{2}-1)s_{2}^{2}}{n_{1}+n_{2}-2}
 \end{equation*}
 
 Calculation of $s_{p}$:
@@ -299,15 +320,27 @@ d.o.f = n_{1} + n_{2} -2 = 5 + 7 - 2 = 10
 The critical value for $t$ (from $t$-distribution table) with degrees of freedom $= 10$ and
 $\alpha = 0.05$ is $2.228$ \\
 
+\textbf{Conclusion:} $|t| < t_{0.05/2}$, we fail to reject the Null hypothesis. That is
+there is no significant increase in weight due to medicine B when compared with medicine
+A.\\
+
 Standard Error:
 \begin{equation*}
-S.E = s_{p} \sqrt{1/n1 + 1/n2} = 11.98332 \times \sqrt{1/5 + 1/7} = 7.01671
+S.E = s_{p} \sqrt{1/n_{1} + 1/n_{2}} = 11.98332 \times \sqrt{1/5 + 1/7} = 7.01671
 \end{equation*}
 
-\textbf{Conclusion:} $|t| < t_{0.05}$, we fail to reject the Null hypothesis. That is there is
-no significant increase in weight due to medicine B when compared with medicine A.
+Confidence Interval: $95\%$ fiducial limits \\
+The confidence interval is given by
+\begin{equation*}
+\begin{split}
+&(\bar x_{1} - \bar x_{2}) \pm t_{0.05/2} \sqrt{\frac{(n_{1} - 1)s_{1}^{2} + (n_{2} - 1)s_{2}^{2}}{n_{1} + n_{2} -2}} \sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}} \\
+&(44.0 - 57.0) \pm 2.228 \sqrt{\frac{(5 - 1)(11.29159)^{2} + (7 - 1)(12.42310)^{2}}{5 + 7 - 2}} \sqrt{\frac{1}{5} + \frac{1}{7}} \\
+&(-13.0) \pm 2.228 \sqrt{\frac{1436.00050}{10}} 0.58554 \\
+&-28.63324 < \mu < 2.63324
+\end{split}
+\end{equation*}
 
-\pagebreak
+\vspace{1cm}
 
 Program:
 \lstinputlisting[language=Python]{tscript32.py}
@@ -323,7 +356,7 @@ Output:
 \centering
 \end{figure}
 
-\pagebreak
+\vspace{1.5cm}
 
 Program: t-test with in-built scipy.stats.ttest
 \lstinputlisting[language=Python]{ttest22.py}
@@ -355,8 +388,7 @@ Test at 5 percent level, whether the difference in sample mean is significant. \
 
 \textbf{Null hypothesis:} $H_{0}: \mu 1 = \mu 2$, \hspace{2px} No significant difference in
 sample mean \\
-\textbf{Alternative hypothesis:} $H_{1}: \mu 1 \neq \mu 2$, \hspace{2px} Significant
-difference in sample mean \\
+\textbf{Alternative hypothesis:} $H_{1}: \mu 1 > \mu 2$, \hspace{2px} (Right tailed test) \\
 
 \textbf{Type I:} \\
 \hspace*{10mm} Mean = 1134 \\
@@ -408,22 +440,33 @@ d.o.f = n_{1} + n_{2} - 2 = 8 + 7 - 2 = 13
 \end{equation*}
 
 The critical value for $t$ (from $t$-distribution table) with degrees of freedom $= 13$ and 
-$\alpha = 0.05$ is $2.160$ \\
+$\alpha = 0.05$ is $1.771$ \\
+
+\textbf{Conclusion:} $|t| > t_{0.05}$, we reject the Null hypothesis. That is there is 
+significant difference in sample mean. \\
 
 Standard Error:
 \begin{equation*}
 S.E = s_{p} \sqrt{1/n1 + 1/n2} = 37.39087 \times \sqrt{1/8 + 1/7} = 19.35161
+\end{equation*} \\
+
+Confidence Interval: $95\%$ fiducial limits \\ 
+The confidence interval for the small smaple mean is given by
+\begin{equation*}
+\begin{split}
+&(\bar x_{1} - \bar x_{2}) \pm t_{0.05} \sqrt{\frac{(n_{1} - 1)s_{1}^{2} + (n_{2} - 1)s_{2}^{2}}{n_{1} + n_{2} -2}} \sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}} \\
+&(1134 - 1024) \pm 1.771 \sqrt{\frac{(8 - 1)(35)^{2} + (7 - 1)(40)^{2}}{8 + 7 - 2}} \sqrt{\frac{1}{8} + \frac{1}{7}} \\
+&(110) \pm 1.771 \sqrt{\frac{18175}{13}} 0.51755 \\
+&75.72824 < \mu < 144.27176
+\end{split}
 \end{equation*}
 
-\textbf{Conclusion:} $|t| > t_{0.05}$, we reject the Null hypothesis. That is there is 
-significant difference in sample mean.
-
-\vspace{2cm}
+\vspace{1.5cm}
 
 Program:
 \lstinputlisting[language=Python]{t2script3.py}
 
-\vspace{1cm}
+\vspace{1.5cm}
 
 Output:
 \lstinputlisting{toutput51.txt}
