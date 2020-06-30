@@ -1,12 +1,11 @@
 import java.util.Scanner;
-
-
-
-
+import arithmetic.operator;
 
 public class program {
 
-	static void selection() {
+	static String selection() {
+
+		Scanner select = new Scanner(System.in);
 
 		System.out.println("\nSelect Mathematical Operation:");
 
@@ -17,6 +16,11 @@ public class program {
 
 			System.out.println(text);
 		}
+
+		System.out.println("\nEnter operation:");
+		String option = select.nextLine();
+
+		return option;
 	}
 
 	public static void main(String args[]) {
@@ -24,22 +28,18 @@ public class program {
 		Scanner noperand = new Scanner(System.in);
 		Scanner value = new Scanner(System.in);
 
-		selection();
+		String option = selection();
 
-		System.out.println("\nEnter number of operand: ");
-		int N = noperand.nextInt();
+		int num[] = new int[2];
 
-		float num[] = new float[N];
+		for (int n = 1; n <= 2; n++) {
 
-		for (int n = 1; n <= N; n++) {
-
-			System.out.println("\nEnter value "+ n +":");
-			num[n-1] = value.nextFloat();
+			System.out.println("\nEnter integer value "+ n +":");
+			num[n-1] = value.nextInt();
 		}
 
-		for (int n = 1; n <= N; n++) {
+		operator math = new operator();
+		math.operation(2, option, num);
 
-			System.out.println("None");
-		}
 	}
 }
