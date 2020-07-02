@@ -1,0 +1,73 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,top=20mm,bottom=25mm,left=12mm,right=20mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{textcmds}
+\usepackage{times}
+
+\graphicspath{ {/home/saran/Analytics/Jun_30/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{Assignment Inheritance} \\
+Date: 30/06/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\vspace{10px}
+
+\begin{enumerate}
+
+\item[1.] Create a JAVA program applying inheritance with classes $A \leftarrow B \leftarrow
+C \leftarrow D \leftarrow E$. Each class should contain a method which will display text.
+From the main class display all the text by calling all the methods. 
+
+\vspace{1cm}
+
+Program: \textit{(without using keyword super)}
+
+\lstinputlisting[language=Java]{program.java}
+
+Output:
+
+\lstinputlisting{output1.txt}
+
+\vspace{1cm}
+
+Program: \textit{(using keyword super)}
+
+\lstinputlisting[language=Java]{Directory/program.java}
+
+\vspace{0.5cm}
+
+Output:
+
+\lstinputlisting{Directory/output2.txt}
+
+\end{enumerate}
+\end{document}
