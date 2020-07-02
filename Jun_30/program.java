@@ -2,8 +2,8 @@ class A {
 
 	static void printA() {
 
-		System.out.println("\nIndia is my country. \nAll Indians are my brothers and sisters.");
-	}
+		System.out.println("\nShe walks in beauty, like the night");
+ 	 }
 }
 
 class B extends A {
@@ -11,8 +11,8 @@ class B extends A {
 	public void printB() {
 
 		printA();
-		System.out.println("I love my country, and I am proud of its rich and varied heritage.");
-	}
+		System.out.println("  Of cloudless climes and starry skies;");
+ 	 }
 }
 
 class C extends B {
@@ -22,7 +22,7 @@ class C extends B {
 		C obj = new C();
 
 		obj.printB();
-		System.out.println("I shall always strive to be worthy of it.");
+		System.out.println("And all that's best of dark and bright");
 	}
 }
 
@@ -31,7 +31,7 @@ class D extends C {
 	public void printD() {
 
 		printC();
-		System.out.println("I shall give respect to my parents, teachers and all the elders, and treat everyone with courtesy.");
+		System.out.println("  Meet in her aspect and her eyes:");
 	}
 }
 
@@ -42,7 +42,7 @@ class E extends D {
 		E obj = new E();
 
 		obj.printD();
-		System.out.println("To my country and my people, I pledge my devotion.");
+		System.out.println("Thus mellowed to that tender light");
 	}
 }
 
@@ -51,6 +51,6 @@ public class program extends E {
 	public static void main(String args[]) {
 
 		printE();
-		System.out.println("In their well being and prosperity alone, lies my happiness.\n");
+		System.out.println("  Which heaven to gaudy day denies.\n");
 	}
 }
