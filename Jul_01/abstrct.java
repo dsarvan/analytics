@@ -4,7 +4,7 @@ abstract class base {
 
 	static void method2() {
 
-		System.out.println("There are three kinds of truths: data, data analyzed by a frequentist, andBayesian Network statistics.");
+		System.out.println("There are three kinds of truths: data, data analyzed by a frequentist, and Bayesian Network statistics.");
 	}
 
 	public void method3() {
