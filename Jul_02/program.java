@@ -24,7 +24,7 @@ public class program {
 
 		try {
 			if (name.length() < 3) {
-				throw new ArithmeticException("Name should not be less than 3 characters.");
+				throw new ArithmeticException("Name should be at least 3 characters.");
 			}
 		} catch (ArithmeticException e) { 
 			System.out.print(e);
@@ -50,7 +50,7 @@ public class program {
 
 		try {
 			if (age < 12) {
-		   		throw new ArithmeticException("To apply, you must be at least 12 years old.");
+		   		throw new ArithmeticException("To apply, you should be 12 years old.");
 			}
 		} catch (ArithmeticException e) {  
 			System.out.println(e); 
@@ -60,14 +60,16 @@ public class program {
 		return age;
 	}
 
-	static String Code() {
+	static int Code() {
 
 		Scanner ucode = new Scanner(System.in);
 		System.out.println("\nEnter Pincode:");
-		String code = ucode.nextLine();
+		int code = ucode.nextInt();
 
 		try {
-			if (code.length() != 6) { throw new ArithmeticException("Pincode should be a 6 digit number."); }
+			if (String.valueOf(code).length() != 6) { 
+				throw new ArithmeticException("Pincode should be a 6 digit number."); 
+			}
 		} catch (ArithmeticException e) {
 		   	System.out.println(e);
 			code = Code();
@@ -79,11 +81,9 @@ public class program {
 
 	public static void main(String args[]) {
 
-		Scanner ucode = new Scanner(System.in);
-
 		String name = Name();
 		int age = Age();
-		String code = Code();
+		int code = Code();
 
 		System.out.println("\nApplicant Information");
 		System.out.println("Name    : "+ name);
