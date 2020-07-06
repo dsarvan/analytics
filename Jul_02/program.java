@@ -38,7 +38,7 @@ public class program {
 
 		Scanner udate = new Scanner(System.in);
 
-		System.out.println("\nEnter D.O.B (yyyyMMdd):");
+		System.out.println("\nEnter D.O.B (yyyymmdd):");
 		int date = udate.nextInt();
 
 		LocalDateTime tdate = LocalDateTime.now();
@@ -85,11 +85,11 @@ public class program {
 		int age = Age();
 		String code = Code();
 
-		System.out.println("\nApplicant's Information");
+		System.out.println("\nApplicant Information");
 		System.out.println("Name    : "+ name);
 		System.out.println("Age     : "+ age);
 		System.out.println("Pincode : "+ code);
-		if (age < 12) { System.out.println("Application Rejected."); }
-		else { System.out.println("Application Accepted."); }
+		if (age < 12) { System.out.println("Status  : Application Rejected"); }
+		else { System.out.println("Status  : Application Accepted"); }
 	}
 }
