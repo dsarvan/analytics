@@ -1,0 +1,78 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,top=20mm,bottom=25mm,left=15mm,right=20mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{textcmds}
+\usepackage{times}
+
+\graphicspath{ {/home/saran/Analytics/May_05/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{Assignment Chi-Squared test} \\
+Date: 05/05/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\vspace{10px}
+
+\begin{enumerate}
+
+\item[1.] A random sample of employees of a large company was selected and the employees
+were asked to complete a questionnaire. One question asked was whether the employee was in
+favour of the introduction of flexible working hours. The following table classifies the
+employees by their response and their response and by their area of work. \\
+
+\begin{tabular}{lll}
+		      & Production & Non-Production \\
+In Favour     & $129$      & $171$ \\
+Not in Favour & $31$       & $69$ \\
+\end{tabular} \\
+
+Test whether there is evidence of a significant association between the response and the
+area of work.
+
+\textbf{Solution:}
+
+\textbf{Null hypothesis:} \\
+Two categorical variables are independent \\
+$H_{0}$: Response independent of the area of work \\
+
+\textbf{Alternative hypothesis:} \\
+Two categorical variables are dependent \\
+$H_{1}$: Response dependent of the area of work \\
+
+
+\item[2.] The theory predicts that the proportion of beans in four given groups should be
+$9:3:3:1$ in an examination with $1600$ beans, the numbers in the four groups were $882$, 
+$313$, $287$ and $118$. Does the experiment result support the theory ? \\ 
+
+\textbf{Solution:}
+
+\end{enumerate}
+\end{document}
