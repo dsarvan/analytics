@@ -1,0 +1,4 @@
+Hadoop:
+
+Hadoop is a project of Apache. It is open source implemntation of frameworks for reliable, 
+scalable, distributed computing  and storage.
