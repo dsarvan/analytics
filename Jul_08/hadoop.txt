@@ -20,3 +20,11 @@ scalable, distributed computing  and storage.
 Characteristics of Hadoop:
 opensource, distributed processing, fault tolerance, reliability, high availability,
 scalabiility, economic.
+
+Hadoop Ecosystem includes:
+Hadoop - common utilites
+HBase - A sacalable, distributed database for large tables
+HDFS - A distributed file system
+Hive - data summarization and ad hoc querying
+MapReduce - distributed processing on compute clusters
+Pig - A high-level data-flow language for parallel computation
