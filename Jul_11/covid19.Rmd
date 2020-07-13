@@ -1,0 +1,29 @@
+---
+pagetitle: Covid-19 
+author: D.Saravanan
+date: 11/07/2020
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+use_python("/home/saran/.envn/dsci/bin/python3", required=TRUE)
+knitr::knit_engines$set(python=reticulate::eng_python)
+```
+#### Analysis of Covid-19
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+#!/usr/bin/env python3
+import numpy as np
+import pandas as pd
+import pygal as pyg
+```
+```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
+df = pd.read_csv("time_series_covid19_confirmed_global.csv")
+df = df.drop(['Province/State', 'Lat', 'Long'], axis=1)
+df.columns
+
+bar = pyg.HorizontalBar()
+bar.title = 'Analysis of Covid-19'
+bar.add('df['Country/Region']')
+bar.render_to_file('covid19.svg')
+```
