@@ -1764,29 +1764,63 @@ import pygal as pyg</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiZGYgPSBwZC5yZWFkX2NzdihcInRpbWVfc2VyaWVzX2NvdmlkMTlfY29uZmlybWVkX2dsb2JhbC5jc3ZcIilcbmRmID0gZGYuZHJvcChbJ1Byb3ZpbmNlL1N0YXRlJywgJ0xhdCcsICdMb25nJ10sIGF4aXM9MSlcbmRmLmNvbHVtbnMifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiZGYgPSBwZC5yZWFkX2NzdihcInRpbWVfc2VyaWVzX2NvdmlkMTlfY29uZmlybWVkX2dsb2JhbC5jc3ZcIilcbmRmID0gZGYuZHJvcChbJ1Byb3ZpbmNlL1N0YXRlJywgJ0xhdCcsICdMb25nJ10sIGF4aXM9MSlcbmRmID0gZGYuZ3JvdXBieSgnQ291bnRyeS9SZWdpb24nKS5zdW0oKVxuZGYuaW5kZXgubmFtZSA9IE5vbmVcbmRmID0gZGYuVCJ9 -->
 <pre class="python"><code>df = pd.read_csv(&quot;time_series_covid19_confirmed_global.csv&quot;)
 df = df.drop(['Province/State', 'Lat', 'Long'], axis=1)
-df.columns</code></pre>
+df = df.groupby('Country/Region').sum()
+df.index.name = None
+df = df.T</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiSW5kZXgoWydDb3VudHJ5L1JlZ2lvbicsICcxLzIyLzIwJywgJzEvMjMvMjAnLCAnMS8yNC8yMCcsICcxLzI1LzIwJywgJzEvMjYvMjAnLFxuICAgICAgICcxLzI3LzIwJywgJzEvMjgvMjAnLCAnMS8yOS8yMCcsICcxLzMwLzIwJyxcbiAgICAgICAuLi5cbiAgICAgICAnNy8xLzIwJywgJzcvMi8yMCcsICc3LzMvMjAnLCAnNy80LzIwJywgJzcvNS8yMCcsICc3LzYvMjAnLCAnNy83LzIwJyxcbiAgICAgICAnNy84LzIwJywgJzcvOS8yMCcsICc3LzEwLzIwJ10sXG4gICAgICBkdHlwZT0nb2JqZWN0JywgbGVuZ3RoPTE3MilcbiJ9 -->
-<pre><code>Index(['Country/Region', '1/22/20', '1/23/20', '1/24/20', '1/25/20', '1/26/20',
-       '1/27/20', '1/28/20', '1/29/20', '1/30/20',
-       ...
-       '7/1/20', '7/2/20', '7/3/20', '7/4/20', '7/5/20', '7/6/20', '7/7/20',
-       '7/8/20', '7/9/20', '7/10/20'],
-      dtype='object', length=172)</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYmFyID0gcHlnLkhvcml6b250YWxCYXIoKVxuYmFyLnRpdGxlID0gJ0FuYWx5c2lzIG9mIENvdmlkLTE5J1xuI2Jhci5hZGQoJ2RmWydDb3VudHJpXG5cblxuIn0= -->
-<pre class="python"><code>bar = pyg.HorizontalBar()
-bar.title = 'Analysis of Covid-19'
-#bar.add('df['Countri
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiZGZzID0gZGYuc3VtKGF4aXM9MClcbmRmcyA9IGRmcy5zb3J0X3ZhbHVlcyhhc2NlbmRpbmc9RmFsc2UpLmhlYWQoMTApXG5mb3IgbmFtZSBpbiBkZnM6XG5cdHByaW50KG5hbWUpXG5cbiJ9 -->
+<pre class="python"><code>dfs = df.sum(axis=0)
+dfs = dfs.sort_values(ascending=False).head(10)
+for name in dfs:
+    print(name)
 </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMTYwMjMwNzczXG41MzQxNzUzNVxuMzIzMjk4MTBcbjIyOTI4MTEyXG4yMjU4OTIyMFxuMjE3MTQ0MTVcbjIxNTkxMzI1XG4xNzYwNzQ2M1xuMTc1ODM0NjRcbjE0Njc3OTUwXG4ifQ== -->
+<pre><code>160230773
+53417535
+32329810
+22928112
+22589220
+21714415
+21591325
+17607463
+17583464
+14677950</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoicGxvdCA9IHB5Zy5MaW5lKFxuXHR0aXRsZT1cIkNvdmlkLTE5IFZpc3VhbGl6YXRpb25cIixcblx0eV90aXRsZT1cIk51bWJlciBvZiBJbmZlY3RlZFwiLFxuXHR3aWR0aD0xMjAwLFxuXHR4X2xhYmxlX3JvdGF0aW9uPTI3MCxcbilcblxucGxvdC5hZGQoXCJDb3VudHJpZXNcIiwgZGZzKVxuXG4jcGxvdC5hZGQoXCJVbml0ZWQgU3RhdGVzXCIsIGRmLlVTKVxuI3Bsb3QuYWRkKFwiQnJhemlsXCIsIGRmLkJyYXppbClcbiNwbG90LmFkZChcIkNoaW5hXCIsIGRmLkNoaW5hKVxuI3Bsb3QuYWRkKFwiSW5kaWFcIiwgZGYuSW5kaWEpXG4jcGxvdC5hZGQoXCJNZXhpY29cIiwgZGYuTWV4aWNvKSJ9 -->
+<pre class="python"><code>plot = pyg.Line(
+    title=&quot;Covid-19 Visualization&quot;,
+    y_title=&quot;Number of Infected&quot;,
+    width=1200,
+    x_lable_rotation=270,
+)
+
+plot.add(&quot;Countries&quot;, dfs)
+
+#plot.add(&quot;United States&quot;, df.US)
+#plot.add(&quot;Brazil&quot;, df.Brazil)
+#plot.add(&quot;China&quot;, df.China)
+#plot.add(&quot;India&quot;, df.India)
+#plot.add(&quot;Mexico&quot;, df.Mexico)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiPHB5Z2FsLmdyYXBoLmxpbmUuTGluZSBvYmplY3QgYXQgMHg3ZmQ0MTJlYjAzYzg+XG4ifQ== -->
+<pre><code>&lt;pygal.graph.line.Line object at 0x7fd412eb03c8&gt;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoicGxvdC54X2xhYmVscyA9IGRmLmluZGV4XG5wbG90LnJlbmRlcl90b19maWxlKCdjb3ZpZDE5LnN2ZycpIn0= -->
+<pre class="python"><code>plot.x_labels = df.index
+plot.render_to_file('covid19.svg')</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnBhZ2V0aXRsZTogQ292aWQtMTkgCmF1dGhvcjogRC5TYXJhdmFuYW4KZGF0ZTogMTEvMDcvMjAyMApvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0KbGlicmFyeShyZXRpY3VsYXRlKQp1c2VfcHl0aG9uKCIvaG9tZS9zYXJhbi8uZW52bi9kc2NpL2Jpbi9weXRob24zIiwgcmVxdWlyZWQ9VFJVRSkKa25pdHI6OmtuaXRfZW5naW5lcyRzZXQocHl0aG9uPXJldGljdWxhdGU6OmVuZ19weXRob24pCmBgYAojIyMjIEFuYWx5c2lzIG9mIENvdmlkLTE5CmBgYHtweXRob24sIGVuZ2luZS5wYXRoPSIvaG9tZS9zYXJhbi8uZW52bi9kc2NpL2Jpbi9weXRob24zIn0KIyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwppbXBvcnQgbnVtcHkgYXMgbnAKaW1wb3J0IHBhbmRhcyBhcyBwZAppbXBvcnQgcHlnYWwgYXMgcHlnCmBgYApgYGB7cHl0aG9uLCBlbmdpbmUucGF0aD0iL2hvbWUvc2FyYW4vLmVudm4vZHNjaS9iaW4vcHl0aG9uMyJ9CmRmID0gcGQucmVhZF9jc3YoInRpbWVfc2VyaWVzX2NvdmlkMTlfY29uZmlybWVkX2dsb2JhbC5jc3YiKQpkZiA9IGRmLmRyb3AoWydQcm92aW5jZS9TdGF0ZScsICdMYXQnLCAnTG9uZyddLCBheGlzPTEpCmRmLmNvbHVtbnMKCmJhciA9IHB5Zy5Ib3Jpem9udGFsQmFyKCkKYmFyLnRpdGxlID0gJ0FuYWx5c2lzIG9mIENvdmlkLTE5JwojYmFyLmFkZCgnZGZbJ0NvdW50cmkKCgoKCmBgYAo=</div>
+<div id="rmd-source-code">LS0tCnBhZ2V0aXRsZTogQ292aWQtMTkgCmF1dGhvcjogRC5TYXJhdmFuYW4KZGF0ZTogMTEvMDcvMjAyMApvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0KbGlicmFyeShyZXRpY3VsYXRlKQp1c2VfcHl0aG9uKCIvaG9tZS9zYXJhbi8uZW52bi9kc2NpL2Jpbi9weXRob24zIiwgcmVxdWlyZWQ9VFJVRSkKa25pdHI6OmtuaXRfZW5naW5lcyRzZXQocHl0aG9uPXJldGljdWxhdGU6OmVuZ19weXRob24pCmBgYAojIyMjIEFuYWx5c2lzIG9mIENvdmlkLTE5CmBgYHtweXRob24sIGVuZ2luZS5wYXRoPSIvaG9tZS9zYXJhbi8uZW52bi9kc2NpL2Jpbi9weXRob24zIn0KIyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwppbXBvcnQgbnVtcHkgYXMgbnAKaW1wb3J0IHBhbmRhcyBhcyBwZAppbXBvcnQgcHlnYWwgYXMgcHlnCmBgYApgYGB7cHl0aG9uLCBlbmdpbmUucGF0aD0iL2hvbWUvc2FyYW4vLmVudm4vZHNjaS9iaW4vcHl0aG9uMyJ9CmRmID0gcGQucmVhZF9jc3YoInRpbWVfc2VyaWVzX2NvdmlkMTlfY29uZmlybWVkX2dsb2JhbC5jc3YiKQpkZiA9IGRmLmRyb3AoWydQcm92aW5jZS9TdGF0ZScsICdMYXQnLCAnTG9uZyddLCBheGlzPTEpCmRmID0gZGYuZ3JvdXBieSgnQ291bnRyeS9SZWdpb24nKS5zdW0oKQpkZi5pbmRleC5uYW1lID0gTm9uZQpkZiA9IGRmLlQKYGBgCmBgYHtweXRob24sIGVuZ2luZS5wYXRoPSIvaG9tZS9zYXJhbi8uZW52bi9kc2NpL2Jpbi9weXRob24zIn0KZGZzID0gZGYuc3VtKGF4aXM9MCkKZGZzID0gZGZzLnNvcnRfdmFsdWVzKGFzY2VuZGluZz1GYWxzZSkuaGVhZCgxMCkKZm9yIG5hbWUgaW4gZGZzOgoJcHJpbnQobmFtZSkKCgoKYGBgCmBgYHtweXRob24sIGVuZ2luZS5wYXRoPSIvaG9tZS9zYXJhbi8uZW52bi9kc2NpL2Jpbi9weXRob24zIn0KcGxvdCA9IHB5Zy5MaW5lKAoJdGl0bGU9IkNvdmlkLTE5IFZpc3VhbGl6YXRpb24iLAoJeV90aXRsZT0iTnVtYmVyIG9mIEluZmVjdGVkIiwKCXdpZHRoPTEyMDAsCgl4X2xhYmxlX3JvdGF0aW9uPTI3MCwKKQoKcGxvdC5hZGQoIkNvdW50cmllcyIsIGRmcykKCiNwbG90LmFkZCgiVW5pdGVkIFN0YXRlcyIsIGRmLlVTKQojcGxvdC5hZGQoIkJyYXppbCIsIGRmLkJyYXppbCkKI3Bsb3QuYWRkKCJDaGluYSIsIGRmLkNoaW5hKQojcGxvdC5hZGQoIkluZGlhIiwgZGYuSW5kaWEpCiNwbG90LmFkZCgiTWV4aWNvIiwgZGYuTWV4aWNvKQoKcGxvdC54X2xhYmVscyA9IGRmLmluZGV4CnBsb3QucmVuZGVyX3RvX2ZpbGUoJ2NvdmlkMTkuc3ZnJykKYGBgCg==</div>
 
 
 
