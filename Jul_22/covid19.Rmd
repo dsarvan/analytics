@@ -1,0 +1,34 @@
+---
+pagetitle: Covid-19
+author: D.Saravanan
+date: 21/07/2020
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+use_python('/home/saran/.envn/dsci/bin/python3', required=TRUE)
+knitr::knit_engines$set(python=reticulate::eng_python)
+```
+#### Analysis of Covid-19
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+#!/usr/bin/env/python3
+import pandas as pd
+import pandas_alive
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df = pd.read_csv('time_series_covid19_confirmed_global.csv')
+df = df.drop(['Province/State', 'Lat', 'Long'], axis=1)
+df = df.groupby('Country/Region').sum()
+df = df.T
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+#df = df.sum(axis=0)
+#df = df.sort_values(ascending=False).head(25)
+df = df[['US', 'Brazil', 'Russia', 'India', 'Spain', 'Italy', 'United Kingdom', 'France' 'Germany', 'Iran', 'Peru', 'Turkey', 'Chile', 'China', 'Mexico', 'Pakistan', 'Saudi Arabia', 'Canada', 'South Africa', 'Bangladesh', 'Belgium', 'Qatar', 'Colombia', 'Netherlands', 'Sweden']]
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.to_csv('covidata.csv', sep=',') 
+df = pd.read_csv("covidata.csv", index_col=0, parse_dates=[0], thousands=',')
+df.plot_animated(filename='covid19.gif', period_fmt='%D')
+```
