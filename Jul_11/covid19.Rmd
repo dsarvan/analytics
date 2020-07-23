@@ -1,5 +1,5 @@
 ---
-pagetitle: Covid-19 
+pagetitle: Covid-19
 author: D.Saravanan
 date: 11/07/2020
 output: html_notebook
@@ -12,7 +12,7 @@ knitr::knit_engines$set(python=reticulate::eng_python)
 ```
 #### Analysis of Covid-19
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-#!/usr/bin/env python3
+#!/usr/bin/env/python3
 import numpy as np
 import pandas as pd
 import pandas_alive
@@ -21,16 +21,15 @@ import pandas_alive
 df = pd.read_csv("time_series_covid19_confirmed_global.csv")
 df = df.drop(['Province/State', 'Lat', 'Long'], axis=1)
 df = df.groupby('Country/Region').sum()
-#df.index.name = None
-#df = df.T
+df = df.T
 ```
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-#dfs = df.sum(axis=0)
-#dfs = dfs.sort_values(ascending=False).head(10)
-#for name in dfs:
-#	print(name)
+#df = df.sum(axis=0)
+#df = df.sort_values(ascending=False).head(20)
+df = df[['US','Brazil','Russia','Spain','Italy','United Kingdom','India','Germany','France','Iran','Peru','Turkey','Chile','China','Mexico','Pakistan','Saudi Arabia','Canada','South Africa','Bangladesh']]
 ```
 ```{python, engine.path="/home/saran/.envn/dsci/bin/python3"}
-df = pandas_alive.load_dataset(df)
-df.plot_animated(filename='covid19.gif')
+df.to_csv('/home/saran/Analytics/Jul_11/covidata.csv', sep=',') 
+df = pd.read_csv("covidata.csv", index_col=0, parse_dates=[0], thousands=',')
+df.plot_animated(filename='covid19.gif', period_fmt="%D", title="Covid-19 confirmed cases")
 ```
