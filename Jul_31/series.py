@@ -15,5 +15,13 @@ def sin(x):
         sum += ((-1**n)/factorial(2*n+1))*(x**(2*n+1))
     return sum
 
+def cos(x):
+    sum = 0
+    for n in range(99):
+        sum += ((-1**n)/factorial(2*n))*(x**(2*n))
+    return sum
+
 print(sin(30))
 print(np.sin(30))
+print(cos(30))
+print(np.cos(30))
