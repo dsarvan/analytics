@@ -1,0 +1,18 @@
+---
+output: html_notebook
+---
+
+#### Assignment 20/02/2020
+
+#####  Create a directory with the name "nielit" and "Nielit".
+```{bash}
+mkdir nielit Nielit
+```
+##### Create a file in directory "nielit" with the permission of 777.
+```{bash}
+cd nielit
+touch file.txt
+ls -l file.txt
+chmod 777 file.txt
+ls -l file.txt
+```
