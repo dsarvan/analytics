@@ -1,11 +1,67 @@
 #!/usr/bin/bash
 
-ssh-keygen -b 4096
+# installing openjdk8
+# updating the packages list
+apt-get update
+# installing the dependencies necessary to add a new repository over HTTPS
+apt-get install apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common
+# import the repository's GPG key
+wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+# add the adoptopenjdk apt repository to the system
+add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+# update apt sources and install Java 8
+apt-get update && apt-get install adoptopenjdk-8-hotspot
+# JAVA_HOME environment variable
+echo "JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64" >> /etc/environment
+# for changes to take effect on your current shell
+source /etc/environment
 
+# ssh configuration
+ssh-keygen -b 4096
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 wget 
 tar -xzf
 mv * /usr/local/hadoop/ 
 
+# set environment variables
 echo "PATH=/usr/local/hadoop/bin:/usr/local/hadoop/sbin:$PATH" >> /home/$user/.profile
+echo "export HADOOP_HOME=/usr/local/hadoop
+export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin" >> /home/$user/.bashrc
+
+# configure the node
+echo -e "\t<property>
+\t\t<name>dfs.namenode.name.dir</name>
+\t\t<value>/usr/local/hadoop/data/nameNode</value>
+\t</property>
+\t<property>
+\t\t<name>dfs.datanode.data.dir</name>
+\t\t<value>/usr/local/hadoop/data/dataNode</value>
+\t</property>
+\t<property>
+\t\t<name>dfs.replication</name>
+\t\t<value>$replication</value>
+\t</property>" >> /usr/local/hadoop/etc/hadoop/hdfs.site.xml
+
+echo "\t<property>
+\t\t<name>dfs.default.name</name>
+\t\t<value>hdfs://node-master:9000</value>
+\t</property>" >> /usr/local/hadoop/etc/hadoop/core-site.xml
+
+echo "\t<property>
+\t\t<name>mapreduce.framework.name</name>
+\t\t<value>yarn</value>
+\t</property>
+\t<property>
+\t\t<name>yarn.app.mapreduce.am.env</name>
+\t\t<value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+\t</property>
+\t<property>
+\t\t<name>mapreduce.map.env</name>
+\t\t<value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+\t</property>
+\t<property>
+\t\t<name>mapreduce.reduce.env</name>
+\t\t<value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+\t</property>" >> /usr/local/hadoop/etc/hadoop/mapred-site.xml
