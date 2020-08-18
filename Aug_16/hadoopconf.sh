@@ -1,5 +1,14 @@
 #!/usr/bin/bash
 
+# user name
+user=`whoami`
+
+# ssh configuration
+apt-get update
+apt-get install sudo vim openssh-server ssh
+ssh-keygen -b 4096
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+
 # installing openjdk8
 # updating the packages list
 apt-get update
@@ -16,22 +25,26 @@ echo "JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64" >> /etc/environment
 # for changes to take effect on your current shell
 source /etc/environment
 
-# ssh configuration
-ssh-keygen -b 4096
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-
+# hadoop configuration
 wget 
 tar -xzf
 mv * /usr/local/hadoop/ 
 
 # set environment variables
 echo "PATH=/usr/local/hadoop/bin:/usr/local/hadoop/sbin:$PATH" >> /home/$user/.profile
-echo "export HADOOP_HOME=/usr/local/hadoop
-export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
+echo "export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
+export HADOOP_HOME=/usr/local/hadoop
+export HADOOP_INSTALL=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_YARN_HOME=$HADOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin" >> /home/$user/.bashrc
 
 # configure the node
-echo -e "\t<property>
+echo "\t<property>
 \t\t<name>dfs.namenode.name.dir</name>
 \t\t<value>/usr/local/hadoop/data/nameNode</value>
 \t</property>
@@ -42,6 +55,14 @@ echo -e "\t<property>
 \t<property>
 \t\t<name>dfs.replication</name>
 \t\t<value>$replication</value>
+\t</property>
+\t<property>
+\t\t<name>dfs.permission.enabled</name>
+\t\t<value>false</value>
+\t</property>
+\t<property>
+\t\t<name>dfs.namenode.acls.enabled</name>
+\t\t<value>true</value>
 \t</property>" >> /usr/local/hadoop/etc/hadoop/hdfs.site.xml
 
 echo "\t<property>
