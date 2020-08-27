@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-
 """
 File: guess.py
 Name: D.Saravanan
 Date: 16/08/2020
 Python script for number guessing game
 """
-
 import numpy as np
 
 option = 'yes'
