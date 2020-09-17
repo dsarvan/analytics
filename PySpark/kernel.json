@@ -1,0 +1,19 @@
+{
+  "display_name": "PySpark",
+  "language": "python",
+  "argv": [
+    "/home/raman/.envn/dsci/bin/python",
+    "-m",
+    "ipykernel",
+    "-f",
+    "{connection_file}"
+  ],
+  "env": {
+    "SPARK_HOME": "/usr/local/hadoop/spark",
+    "PYTHONPATH": "/usr/local/hadoop/spark/python/:/usr/local/hadoop/spark/python/lib/py4j-0.10.9-src.zip",
+    "PYSPARK_DRIVER_PYTHON": "/home/raman/.envn/dsci/bin/python",
+    "PYSPARK_PYTHON": "/home/raman/.envn/dsci/bin/python",
+    "PYSPARK_SUBMIT_ARGS": "--master local[2] pyspark-shell",
+    "PYTHONSTARTUP": "/usr/local/hadoop/spark/python/pyspark/shell.py"
+  }
+}
