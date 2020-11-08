@@ -1,0 +1,93 @@
+\documentclass[a4paper,11pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,top=20mm,bottom=25mm,left=12mm,right=20mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{textcmds}
+\usepackage{times}
+
+\graphicspath{ {/home/saran/Analytics/Oct_28/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{center}
+\textbf{Assignment: Goodness of Fit Test} \\
+Date: 05/11/2020 \hspace{2mm} Name: D.Saravanan
+\end{center}
+
+\vspace{10px}
+
+\begin{enumerate}
+
+\item[1.] Test an octahedral die whether it is unbiased or not with following data using
+goodness of fit test:
+
+\begin{tabular}{lllllllll}
+Score & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ \\
+Frequency & $7$ & $10$ & $11$ & $9$ & $12$ & $10$ & $14$ & $7$ \\
+\end{tabular} \\
+
+\textbf{Solution:}
+
+\textbf{Null hypothesis:} $H_{0}:$ Die is unbiased \\
+\textbf{Alternative hypothesis:} $H_{1}:$ Die is not unbiased \\
+
+\begin{center}
+\begin{tabular}{ccc}
+& $Observed$ & $Expected$ \\
+$Score$ & $frequency$ & $frequency$ \\
+\hline
+$1$ & $7$ & $10$ \\
+$2$ & $10$ & $10$ \\
+$3$ & $11$ & $10$ \\
+$4$ & $9$ & $10$ \\
+$5$ & $12$ & $10$ \\
+$6$ & $10$ & $10$ \\
+$7$ & $14$ & $10$ \\
+$8$ & $7$ & $10$ \\
+\end{tabular}
+\end{center}
+
+
+\begin{equation*}
+\chi^2 = sum \: of \frac{(Observed \: frequency - Expected \: frequency)^2}{Expected \: frequency}
+\end{equation*}
+
+\begin{equation*}
+\chi^2  = \sum_{k=1}^{n} \frac{(O_k - E_k)^2}{E_k}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+\chi^2 = \sum_{k=1}^{8} \frac{(O_k - E_k)^2}{E_k} & = \frac{(7 - 10)^2}{10} + \frac{(10 - 10)^2}{10} + \frac{(11 - 10)^2}{10} + \frac{(9 - 10)^2}{10} \\
+&\quad + \frac{(12 - 10)^2}{10} + \frac{(10 - 10)^2}{10} + \frac{(14 - 10)^2}{10} + \frac{(7 - 10)^2}{10} \\
+& = 4
+\end{split}
+\end{equation*}
+
+\end{enumerate}
+\end{document}
