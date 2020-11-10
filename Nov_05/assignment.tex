@@ -56,6 +56,9 @@ Frequency & $7$ & $10$ & $11$ & $9$ & $12$ & $10$ & $14$ & $7$ \\
 \textbf{Null hypothesis:} $H_{0}:$ Die is unbiased \\
 \textbf{Alternative hypothesis:} $H_{1}:$ Die is not unbiased \\
 
+If the die is fair, the probability of each face should be the same or $1/8$. From $80$ rolls, each
+face to have about $10$ appearances.
+
 \begin{center}
 \begin{tabular}{ccc}
 & $Observed$ & $Expected$ \\
@@ -72,7 +75,6 @@ $8$ & $7$ & $10$ \\
 \end{tabular}
 \end{center}
 
-
 \begin{equation*}
 \chi^2 = sum \: of \frac{(Observed \: frequency - Expected \: frequency)^2}{Expected \: frequency}
 \end{equation*}
@@ -88,6 +90,23 @@ $8$ & $7$ & $10$ \\
 & = 4
 \end{split}
 \end{equation*}
+
+$degrees \: of \: freedom = n - 1 = 8 - 1 = 7$
+
+Script:
+\lstinputlisting[language=R]{chisq.R}
+
+Output:
+\lstinputlisting{output1.txt}
+
+Script:
+\lstinputlisting[language=R]{goodness.R}
+
+Output:
+\lstinputlisting{output2.txt}
+
+The value of $\chi^2$ is $4$ and the degrees of freedom are $8 - 1 = 7$. The calculated $p$-value is $0.7798$ so we have no reason to reject the hypothesis 
+that the die is unbiased.
 
 \end{enumerate}
 \end{document}
