@@ -1,0 +1,28 @@
+---
+title: 
+output:
+    html_notebook: 
+        theme: default
+        highlight: haddock
+---
+
+#### Linear Regression in R
+
+```{r}
+height <- c(151, 174, 138, 186, 128, 136, 179, 163, 152, 131)
+weight <- c(63, 81, 56, 91, 47, 57, 76, 72, 62, 48)
+```
+```{r}
+relation <- lm(weight ~ height)
+print(relation)
+summary(relation)
+```
+```{r}
+print(sum(relation$residuals))
+```
+```{r}
+plot(height, weight, col='blue', abline(lm(weight ~ height)), xlab='height (cm)', ylab='weight (kg)')
+```
+```{r}
+plot(relation$residuals, pch=16, col='blue')
+```
