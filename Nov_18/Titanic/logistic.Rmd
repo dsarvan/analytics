@@ -1,0 +1,150 @@
+---
+pagetitle: Machine Learning Logistic Regression
+author: D.Saravanan
+date: 21/11/2020
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+library(reticulate)
+use_python('/home/saran/.envn/dsci/bin/python3', required=TRUE)
+knitr::knit_engines$set(python=reticulate::eng_python)
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+#!/usr/bin/env python3
+import numpy as np
+import pandas as pd
+import seaborn as sns
+sns.set_style('darkgrid')
+import matplotlib.pyplot as plt
+plt.style.use('seaborn-darkgrid')
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df1 = pd.read_csv('train.csv')
+df2 = pd.read_csv('test.csv')
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df = pd.concat([df1, df2], axis=0)
+df.columns
+df.index
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.head()
+df.tail()
+df.shape
+df.info()
+df.describe()
+df.isnull().sum()
+df.count() - df.isnull().sum()
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df = df.drop(['Cabin', 'Ticket'], axis=1)
+df.head()
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.groupby('Pclass').size()
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+Name = df.Name
+name = [string.split(',')[1] for string in Name]
+Name = [string.split('.')[0] for string in name]
+df.Name = Name
+df.Name.unique()
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.groupby('Name').size()
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.groupby('SibSp').size()
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.groupby('Sex').size()
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.groupby('Parch').size()
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.Fare.median()
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.Fare.fillna(df.Fare.median(), inplace=True)
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.Embarked.mode()
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.Embarked.fillna(df.Embarked.mode()[0], inplace=True)
+df.groupby('Embarked').size()
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+def gender(x):
+    if x == 'male': return 1
+    else: return 0
+
+df.Sex = df.Sex.apply(gender)
+df.groupby('Sex').size()
+```
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+def port(x):
+    if x == 'C': return 0
+    elif x == 'Q': return 1
+    else: return 2
+
+df.Embarked = df.Embarked.apply(port)
+df.groupby('Embarked').size()
+```
+Skewness
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.skew()
+```
+Histogram plot
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.hist()
+plt.tight_layout()
+plt.show()
+```
+Density plot
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+df.plot(kind='density', subplots=True, layout=(3,3), sharex=False)
+plt.tight_layout()
+plt.show()
+```
+
+```{python, engine.path='/home/saran/.envn/dsci/bin/python3'}
+sns.heatmap(df.corr(), annot=True)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
