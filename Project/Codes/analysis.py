@@ -16,3 +16,10 @@ nse.index.name = None
 for name in nse['Symbol']:
     data = get_history(symbol = name, start = date(2010,1,1), end = date(2019,12,31))
     data.to_csv('data_{}.csv'.format(name))
+
+# close stock price values
+close = pd.DataFrame()
+for name in nse['Symbol']:
+    data = pd.read_csv('data_{}.csv'.format(name), usecols=['Date','Close'])
+    close[['Date', name]] = data[['Date', 'Close']]
+    close.to_csv('closeprice.csv', index=False)
