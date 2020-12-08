@@ -6,7 +6,10 @@
 
 from datetime import date
 from nsepy import get_history
+import numpy as np
 import pandas as pd
+
+from scipy.stats import skew
 
 # listed companies in NSE
 nse = pd.read_csv('/home/saran/Analytics/Project/Data/MCAP_31032020_0.csv', index_col=0)
@@ -20,6 +23,23 @@ for name in nse['Symbol']:
 # close stock price values
 close = pd.DataFrame()
 for name in nse['Symbol']:
-    data = pd.read_csv('data_{}.csv'.format(name), usecols=['Date','Close'])
+    data = pd.read_csv('Dataset/data_{}.csv'.format(name), usecols=['Date','Close'])
     close[['Date', name]] = data[['Date', 'Close']]
     close.to_csv('closeprice.csv', index=False)
+
+data = pd.read_csv('closeprice.csv', index_col=0)
+data.index.name = None
+
+# remove columns with number of NaN greater than 1%
+data = data.loc[:, data.isnull().mean() < .01]
+
+# price change
+price = pd.DataFrame()
+dt = 1
+for name in data.columns:
+    price[name] = [np.log(data[name][t+dt]) - np.log(data[name][t]) for t in range(len(data)-dt)]
+
+# normalized return
+nprice = pd.DataFrame()
+for name in price.columns:
+    nprice[name] = [(price[name][t] - np.mean(price[name]))/np.std(price[name], ddof=1) for t in range(len(price))]
