@@ -7,6 +7,7 @@
 from datetime import date
 from nsepy import get_history
 import numpy as np
+import scipy.linalg as la
 import pandas as pd
 
 import matplotlib as mpl
@@ -34,7 +35,7 @@ data = pd.read_csv('closeprice.csv', index_col=0)
 data.index.name = None
 
 # remove columns with number of NaN greater than 1%
-data = data.loc[:, data.isnull().mean() < .01]
+data = data.loc[:, data.isnull().mean() < .003]
 
 # price change
 price = pd.DataFrame()
@@ -47,8 +48,23 @@ nprice = pd.DataFrame()
 for name in price.columns:
     nprice[name] = [(price[name][t] - np.mean(price[name]))/np.std(price[name], ddof=1) for t in range(len(price))]
 
+print(nprice.describe())
+
 # correlation matrix
 C = nprice.corr()
 
-C.plot(kind='density')
-plt.savefig('distribution.pdf')
+print(C.describe())
+
+# T is the number of dates for which data was collected and N is the number of stocks being studied
+# T x N random matrix with elements that belong to a standard normal distribution having mean 0 and variance 1
+columns = [f'column_{num}' for num in range(nprice.shape[1])]
+index = [f'index_{num}' for num in range(nprice.shape[0])]
+A = pd.DataFrame(np.random.normal(loc = 0, scale = 1, size = nprice.shape), columns = columns, index = index)
+#A = pd.DataFrame(np.random.randn(nprice.shape[0], nprice.shape[1]), columns = columns, index = index)
+
+print(A.describe())
+
+# N x N random matrix whose elements are all uncorrelated, having mean 0 and variance 1
+R = A.corr()
+
+print(R.describe())
