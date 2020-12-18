@@ -52,10 +52,8 @@ for name in price.columns:
 C = nprice.corr()
 
 # eigenvalues and eigenvectors calculation for elements in correlation matrix
-values, vectors = la.eig(C.to_numpy())
-
-print(min(values))
-print(max(values))
+eigvals, eigvecs = la.eig(C.to_numpy())
+eigvals = eigvals.real
 
 # T is the number of dates for which data was collected and N is the number of stocks being studied
 # T x N random matrix with elements that belong to a standard normal distribution having mean 0 and variance 1
@@ -68,7 +66,14 @@ A = pd.DataFrame(np.random.normal(loc = 0, scale = 1, size = nprice.shape), colu
 R = A.corr()
 
 # eigenvalues and eigenvectors calculation for elements in random matrix
-rvalues, rvectors = la.eig(R.to_numpy())
+reigvals, reigvecs = la.eig(R.to_numpy())
+reigvals = reigvals.real
 
-print(min(rvalues))
-print(max(rvalues))
+T, N = nprice.shape
+Q = T/N
+
+lambdaMin = 1 + (1/Q) - 2 * np.sqrt(1/Q)
+lambdaMax = 1 + (1/Q) + 2 * np.sqrt(1/Q)
+
+plt.boxplot(eigvals)
+plt.savefig('figure1boxplot.pdf')
