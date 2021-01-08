@@ -1,0 +1,57 @@
+\documentclass[a4paper,10pt,openright]{report}
+\setlength{\parindent}{0pt} % set noindent for entire file
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,top=25mm,bottom=25mm,left=15mm,right=20mm]{geometry}
+\usepackage{xcolor,graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{etoolbox}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{textcmds}
+\usepackage{times}
+
+\graphicspath{ {/home/saran/Exam/} }
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\singlespacing
+\pagestyle{plain}
+
+\begin{small}
+\begin{center}
+\textbf{Practical Exam} \\
+Date: 08/01/2021 \hspace{2mm} Name: D.Saravanan
+\end{center}
+\end{small}
+
+\vspace{10px}
+
+\lstinputlisting[language=Python]{program.py}
+
+\lstinputlisting{answer.txt}
+
+%figure_1
+\begin{figure}[ht!]
+\includegraphics[width=20cm,height=10cm,keepaspectratio]{image1.pdf}
+\centering
+\end{figure}
+
+\lstinputlisting[language=Python]{program.r}
+\end{document}
