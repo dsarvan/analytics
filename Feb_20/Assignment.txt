@@ -1,0 +1,5 @@
+!. Create a directory with the name "nielit" and "Nielit".
+2. Create a file in "nielit" directory with the permission of 777.
+3. Enter 100 lines of random text in that file.
+4. Write a command to display the number of lines of the file.
+5. Find the file size of the file in MB.
